@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Movie Reviews - CineScope</title>
+  <link rel="stylesheet" href="home.css" />
+  <link rel="stylesheet" href="reviews.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z" fill="currentColor" />
+      </svg>
+      <h1>CineScope</h1>
+    </div>
+    <nav>
+      <a href="./home.html">Home</a>
+      <a href="./reviews.html" class="active">Reviews</a>
+      <a href="./editors-choice.html">Editor's Choice</a>
+      <a href="#">Movie Comparisons</a>
+      <a href="#">Viewer Comments</a>
+      <a href="#">Contact Us</a>
+    </nav>
+    <button class="search-btn" aria-label="Search">
+      🔍
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Movie Reviews</h2>
+        <p>Discover the latest films through our expert analysis and comprehensive reviews.</p>
+        <div class="search-container">
+          <input type="text" placeholder="Search for movies..." class="search-input">
+          <button class="search-button">Search</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="filters-section">
+      <div class="filters-container">
+        <div class="filter-group">
+          <label>Genre:</label>
+          <select class="filter-select">
+            <option value="">All Genres</option>
+            <option value="sci-fi">Sci-Fi</option>
+            <option value="historical drama">Historical Drama</option>
+            <option value="action comedy">Action Comedy</option>
+            <option value="thriller">Thriller</option>
+            <option value="romance">Romance</option>
+            <option value="adventure">Adventure</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Rating:</label>
+          <select class="filter-select">
+            <option value="">All Ratings</option>
+            <option value="5">5 Stars</option>
+            <option value="4">4+ Stars</option>
+            <option value="3">3+ Stars</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Year:</label>
+          <select class="filter-select">
+            <option value="">All Years</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+          </select>
+        </div>
+        <button class="clear-filters">Clear Filters</button>
+      </div>
+    </section>
+
+    <section class="reviews-section">
+      <div class="reviews-header">
+        <h3>Latest Reviews</h3>
+        <div class="sort-options">
+          <label>Sort by:</label>
+          <select class="sort-select">
+            <option value="latest">Latest</option>
+            <option value="rating">Highest Rated</option>
+            <option value="title">Title A-Z</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="reviews-grid">
+        <article class="review-card featured">
+          <div class="review-image" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg');">
+            <div class="featured-badge">Featured</div>
+            <div class="fallback-text">Avengers: Endgame</div>
+          </div>
+          <div class="review-content">
+            <div class="review-header">
+              <h4>Avengers: Endgame</h4>
+              <div class="rating-stars">★★★★★</div>
+            </div>
+            <p class="review-excerpt">A breathtaking superhero epic that redefines the genre with stunning visuals and compelling narrative. Directors Russo brothers deliver a masterpiece that will be remembered for generations.</p>
+            <div class="review-meta">
+              <span class="genre">Sci-Fi</span>
+              <span class="year">2024</span>
+              <span class="runtime">2h 35m</span>
+            </div>
+            <div class="review-stats">
+              <div class="stat">
+                <span class="stat-label">Plot</span>
+                <div class="stat-bar">
+                  <div class="stat-fill" style="width: 95%"></div>
+                </div>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Acting</span>
+                <div class="stat-bar">
+                  <div class="stat-fill" style="width: 90%"></div>
+                </div>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Visuals</span>
+                <div class="stat-bar">
+                  <div class="stat-fill" style="width: 98%"></div>
+                </div>
+              </div>
+            </div>
+            <button class="read-more-btn">Read Full Review</button>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-image" style="background-image: url('https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg');">
+            <div class="fallback-text">Oppenheimer</div>
+          </div>
+          <div class="review-content">
+            <div class="review-header">
+              <h4>Oppenheimer</h4>
+              <div class="rating-stars">★★★★★</div>
+            </div>
+            <p class="review-excerpt">A gripping historical drama exploring the complexities of the atomic bomb creation with powerful performances and haunting score. Christopher Nolan's direction brings this period piece to life.</p>
+            <div class="review-meta">
+              <span class="genre">Historical Drama</span>
+              <span class="year">2024</span>
+              <span class="runtime">2h 15m</span>
+            </div>
+            <div class="review-stats">
+              <div class="stat">
+                <span class="stat-label">Plot</span>
+                <div class="stat-bar">
+                  <div class="stat-fill" style="width: 88%"></div>
+                </div>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Acting</span>
+                <div class="stat-bar">
+                  <div class="stat-fill" style="width: 92%"></div>
+                </div>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Visuals</span>
+                <div class="stat-bar">
+                  <div class="stat-fill" style="width: 85%"></div>
+                </div>
+              </div>
+            </div>
+            <button class="read-more-btn">Read Full Review</button>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-image" style="background-image: url('https://image.tmdb.org/t/p/w500/4SYTH5FdB0dAORV98Nwg3llgVnY.jpg');">
+            <div class="fallback-text">Deadpool</div>
+          </div>
+          <div class="review-content">
+            <div class="review-header">
+              <h4>Deadpool</h4>
+              <div class="rating-stars">★★★★☆</div>
+            </div>
+            <p class="review-excerpt">A thrilling action-comedy that keeps you on the edge of your seat. Perfect blend of humor and adrenaline-pumping sequences with Ryan Reynolds' iconic performance.</p>
+            <div class="review-meta">
+              <span class="genre">Action Comedy</span>
+              <span class="year">2024</span>
+              <span class="runtime">1h 58m</span>
+            </div>
+            <div class="review-stats">
+              <div class="stat">
+                <span class="stat-label">Plot</span>
+                <div class="stat-bar">
+                  <div class="stat-fill" style="width: 82%"></div>
+                </div>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Acting</span>
+                <div class="stat-bar">
+                  <div class="stat-fill" style="width: 88%"></div>
+                </div>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Visuals</span>
+                <div class="stat-bar">
+                  <div class="stat-fill" style="width: 90%"></div>
+                </div>
+              </div>
+            </div>
+            <button class="read-more-btn">Read Full Review</button>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-image" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg');">
+            <div class="fallback-text">Inception</div>
+          </div>
+          <div class="review-content">
+            <div class="review-header">
+              <h4>Inception</h4>
+              <div class="rating-stars">★★★★★</div>
+            </div>
+            <p class="review-excerpt">A psychological thriller that masterfully builds tension through dream manipulation. The atmospheric cinematography and stellar performances create an unforgettable experience.</p>
+            <div class="review-meta">
+              <span class="genre">Thriller</span>
+              <span class="year">2024</span>
+              <span class="runtime">1h 45m</span>
+            </div>
+            <div class="review-stats">
+              <div class="stat">
+                <span class="stat-label">Plot</span>
+                <div class="stat-bar">
+                  <div class="stat-fill" style="width: 95%"></div>
+                </div>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Acting</span>
+                <div class="stat-bar">
+                  <div class="stat-fill" style="width: 96%"></div>
+                </div>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Visuals</span>
+                <div class="stat-bar">
+                  <div class="stat-fill" style="width: 92%"></div>
+                </div>
+              </div>
+            </div>
+            <button class="read-more-btn">Read Full Review</button>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-image" style="background-image: url('https://image.tmdb.org/t/p/w500/uDO8zWDhfWwoFdKS4fzkUJt0Rf0.jpg');">
+            <div class="fallback-text">La La Land</div>
+          </div>
+          <div class="review-content">
+            <div class="review-header">
+              <h4>La La Land</h4>
+              <div class="rating-stars">★★★★☆</div>
+            </div>
+            <p class="review-excerpt">A romantic musical that delivers laughs and heart. The chemistry between Emma Stone and Ryan Gosling makes this modern classic truly enjoyable.</p>
+            <div class="review-meta">
+              <span class="genre">Romance</span>
+              <span class="year">2024</span>
+              <span class="runtime">1h 52m</span>
+            </div>
+            <div class="review-stats">
+              <div class="stat">
+                <span class="stat-label">Plot</span>
+                <div class="stat-bar">
+                  <div class="stat-fill" style="width: 70%"></div>
+                </div>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Acting</span>
+                <div class="stat-bar">
+                  <div class="stat-fill" style="width: 85%"></div>
+                </div>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Visuals</span>
+                <div class="stat-bar">
+                  <div class="stat-fill" style="width: 78%"></div>
+                </div>
+              </div>
+            </div>
+            <button class="read-more-btn">Read Full Review</button>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BN2EwM2I5OWMtMGQyMi00Zjg1LWJkNTctZTcwYWM4MmJhN2YxXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg');">
+            <div class="fallback-text">Mad Max: Fury Road</div>
+          </div>
+          <div class="review-content">
+            <div class="review-header">
+              <h4>Mad Max: Fury Road</h4>
+              <div class="rating-stars">★★★★☆</div>
+            </div>
+            <p class="review-excerpt">An epic adventure film with breathtaking desert landscapes. The action sequences are spectacular, with George Miller's visionary direction creating a masterpiece.</p>
+            <div class="review-meta">
+              <span class="genre">Adventure</span>
+              <span class="year">2024</span>
+              <span class="runtime">2h 20m</span>
+            </div>
+            <div class="review-stats">
+              <div class="stat">
+                <span class="stat-label">Plot</span>
+                <div class="stat-bar">
+                  <div class="stat-fill" style="width: 80%"></div>
+                </div>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Acting</span>
+                <div class="stat-bar">
+                  <div class="stat-fill" style="width: 85%"></div>
+                </div>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Visuals</span>
+                <div class="stat-bar">
+                  <div class="stat-fill" style="width: 95%"></div>
+                </div>
+              </div>
+            </div>
+            <button class="read-more-btn">Read Full Review</button>
+          </div>
+        </article>
+      </div>
+
+      <div class="pagination">
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">3</button>
+        <button class="page-btn">Next</button>
+      </div>
+    </section>
+
+    <section class="newsletter-section">
+      <h3>Stay Updated</h3>
+      <p>Get the latest movie reviews and recommendations delivered to your inbox.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Enter your email address" class="newsletter-input">
+        <button class="newsletter-btn">Subscribe</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <nav class="footer-nav">
+        <a href="./home.html">Home</a>
+        <a href="./reviews.html">Reviews</a>
+        <a href="#">Editor's Choice</a>
+        <a href="#">Movie Comparisons</a>
+        <a href="#">Viewer Comments</a>
+        <a href="#">Contact Us</a>
+        <a href="#">About Us</a>
+      </nav>
+              <p class="copyright">© 2025 CineScope. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="reviews.js"></script>
+</body>
+</html> 

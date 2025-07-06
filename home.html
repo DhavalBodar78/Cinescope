@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CineScope</title>
+  <link rel="stylesheet" href="home.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z" fill="currentColor" />
+      </svg>
+      <h1>CineScope</h1>
+    </div>
+    <nav>
+      <a href="home.html" class="active">Home</a>
+      <a href="./reviews.html">Reviews</a>
+      <a href="./editors-choice.html">Editor's Choice</a>
+      <a href="#">Movie Comparisons</a>
+      <a href="#">Viewer Comments</a>
+      <a href="#">Contact Us</a>
+    </nav>
+    <button class="search-btn" aria-label="Search">
+      🔍
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Welcome to CineScope</h2>
+        <p>Your ultimate destination for insightful movie reviews, comparisons, and community discussions.</p>
+        <a href="./reviews.html" class="explore-btn">Explore Reviews</a>
+      </div>
+    </section>
+
+    <section class="reviews-section">
+      <h3>Latest Reviews</h3>
+      <div class="reviews-grid">
+        <article class="review-card">
+          <div class="review-image" style="background-image: url('pexels-cottonbro-3945317.jpg');"></div>
+          <div class="review-content">
+            <h4>The Stellar Odyssey</h4>
+            <p>A breathtaking space opera that redefines the genre with stunning visuals and compelling narrative.</p>
+            <div class="review-meta">
+              <span class="rating">★★★★☆</span>
+              <span class="genre">Sci-Fi</span>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-image" style="background-image: url('pexels-cottonbro-3945319.jpg');"></div>
+          <div class="review-content">
+            <h4>Echoes of the Past</h4>
+            <p>A gripping historical drama exploring human nature with powerful performances and haunting score.</p>
+            <div class="review-meta">
+              <span class="rating">★★★★★</span>
+              <span class="genre">Historical Drama</span>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="comparison-section">
+      <h3>Movie Comparisons</h3>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Movie Title</th>
+              <th>Director</th>
+              <th>Genre</th>
+              <th>Rating</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Avengers: Endgame</td>
+              <td>Russo Brothers</td>
+              <td>Sci-Fi</td>
+              <td><span class="rating-badge">4.5/5</span></td>
+            </tr>
+            <tr>
+              <td>Oppenheimer</td>
+              <td>Christopher Nolan</td>
+              <td>Historical Drama</td>
+              <td><span class="rating-badge">4.0/5</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="view-more">View full comparison</p>
+    </section>
+
+    <section class="comments-section">
+      <h3>Viewer Comments</h3>
+      <div class="comments-container">
+        <div class="comment">
+          <img src="pexels-tima-miroshnichenko-7991158.jpg" alt="Liam Carter" />
+          <div class="comment-content">
+            <p class="name">Liam Carter <span>2 weeks ago</span></p>
+            <p>The Stellar Odyssey was an incredible journey! The visuals were stunning, and the story kept me engaged from start to finish. Highly recommend!</p>
+          </div>
+        </div>
+        <div class="comment">
+          <img src="pexels-tima-miroshnichenko-7991380.jpg" alt="Sophia Bennett" />
+          <div class="comment-content">
+            <p class="name">Sophia Bennett <span>3 weeks ago</span></p>
+            <p>Echoes of the Past is a powerful and moving film. The performances were outstanding, and the historical setting was beautifully realized. A must-see for any history buff.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <h3>Contact Us</h3>
+      <p>We value your feedback and suggestions. Please feel free to reach out to us with any comments or questions.</p>
+      <button class="contact-btn">Contact Us</button>
+    </section>
+
+    <section class="about-section">
+      <h3>About Us</h3>
+      <p>CineScope is dedicated to providing insightful and comprehensive movie reviews. Our team of passionate film critics offers in-depth analysis and thoughtful commentary on the latest releases and classic films.</p>
+      <p class="learn-more">Learn more</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <nav class="footer-nav">
+        <a href="#">Home</a>
+        <a href="#">Reviews</a>
+        <a href="#">Editor's Choice</a>
+        <a href="#">Movie Comparisons</a>
+        <a href="#">Viewer Comments</a>
+        <a href="#">Contact Us</a>
+        <a href="#">About Us</a>
+      </nav>
+              <p class="copyright">© 2025 CineScope. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
