@@ -3,34 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Editor's Choice - CineScope</title>
+  <title>Movie Suggestions - CineScope</title>
   <link rel="stylesheet" href="home.css" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&family=Anton&family=Oswald:wght@400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
   <style>
-    .featured-grid {
+    .suggestions-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 2.5rem;
       margin-bottom: 4rem;
       animation: fadeInUp 1s ease-out 0.2s both;
     }
     
-    .featured-card {
+    .suggestion-card {
       background: rgba(42, 42, 42, 0.9);
       border-radius: 20px;
-      overflow: hidden;
+      padding: 2rem;
       border: 1px solid #3a3a3a;
       transition: all 0.4s ease;
       position: relative;
+      overflow: hidden;
     }
     
-    .featured-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+    .suggestion-card:hover {
       border-color: #00d4ff;
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
     }
     
-    .featured-card::before {
+    .suggestion-card::before {
       content: '';
       position: absolute;
       top: 0;
@@ -43,15 +44,204 @@
       z-index: 1;
     }
     
-    .featured-card:hover::before {
+    .suggestion-card:hover::before {
       opacity: 1;
     }
     
-    .badge {
+    .suggestion-poster {
+      width: 100%;
+      height: 300px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 15px;
+      margin-bottom: 1.5rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .suggestion-card:hover .suggestion-poster {
+      transform: scale(1.05);
+    }
+    
+    .suggestion-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .suggestion-title {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.8rem;
+      color: #ffffff;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+    
+    .suggestion-meta {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #d0d0d0;
+      font-size: 0.9rem;
+    }
+    
+    .meta-item strong {
+      color: #00d4ff;
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .suggestion-description {
+      color: #d0d0d0;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+    
+    .suggestion-stats {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: rgba(26, 26, 26, 0.8);
+      border-radius: 10px;
+    }
+    
+    .stat-item {
+      text-align: center;
+      color: #d0d0d0;
+    }
+    
+    .stat-number {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.2rem;
+      color: #00d4ff;
+      display: block;
+    }
+    
+    .stat-label {
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.8rem;
+      color: #b8b8d4;
+    }
+    
+    .suggestion-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .action-btn {
+      background: linear-gradient(135deg, #00d4ff, #0099cc);
+      color: #121212;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+      flex: 1;
+      min-width: 120px;
+    }
+    
+    .action-btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 25px rgba(0, 212, 255, 0.3);
+    }
+    
+    .secondary-btn {
+      background: transparent;
+      color: #00d4ff;
+      border: 1px solid #00d4ff;
+    }
+    
+    .secondary-btn:hover {
+      background: #00d4ff;
+      color: #121212;
+    }
+    
+    .trending-section {
+      margin-top: 4rem;
+    }
+    
+    .trending-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
+    
+    .trending-card {
+      background: rgba(42, 42, 42, 0.8);
+      border-radius: 15px;
+      padding: 1.5rem;
+      border: 1px solid #3a3a3a;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    
+    .trending-card:hover {
+      border-color: #00d4ff;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 212, 255, 0.1);
+    }
+    
+    .trending-poster {
+      width: 80px;
+      height: 120px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px;
+      margin: 0 auto 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .trending-card:hover .trending-poster {
+      transform: scale(1.05);
+    }
+    
+    .trending-title {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.2rem;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
+    
+    .trending-genre {
+      color: #b8b8d4;
+      font-size: 0.9rem;
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+    
+    .trending-votes {
+      color: #00d4ff;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    
+    .priority-badge {
       position: absolute;
       top: 1rem;
       right: 1rem;
-      background: linear-gradient(135deg, #00d4ff, #0099cc);
+      background: linear-gradient(135deg, #ffd700, #ffb700);
       color: #121212;
       padding: 0.5rem 1rem;
       border-radius: 20px;
@@ -63,194 +253,17 @@
       z-index: 3;
     }
     
-    .featured-image {
-      height: 300px;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      transition: all 0.3s ease;
-    }
-    
-    .featured-card:hover .featured-image {
-      transform: scale(1.05);
-    }
-    
-    .featured-content {
-      padding: 2rem;
-      position: relative;
-      z-index: 2;
-    }
-    
-    .featured-content h3 {
-      font-family: 'Anton', sans-serif;
-      font-size: 1.8rem;
-      font-weight: 400;
-      color: #ffffff;
-      margin-bottom: 1rem;
-      letter-spacing: 1px;
-    }
-    
-    .featured-content .rating {
-      color: #ffd700;
-      font-weight: 600;
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-    }
-    
-    .featured-content .meta {
-      color: #d0d0d0;
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
-    }
-    
-    .featured-content .description {
-      color: #d0d0d0;
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-      font-size: 1rem;
-    }
-    
-    .editor-quote {
-      background: rgba(0, 212, 255, 0.1);
-      border-left: 4px solid #00d4ff;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-      font-style: italic;
-      color: #e0e0e0;
-      font-size: 1.1rem;
-    }
-    
-    .movie-info {
-      background: rgba(42, 42, 42, 0.8);
-      border-radius: 15px;
-      padding: 1.5rem;
-      margin-top: 1.5rem;
-      border: 1px solid #3a3a3a;
-      transition: all 0.3s ease;
-    }
-    
-    .movie-info:hover {
-      border-color: #00d4ff;
-      transform: translateY(-2px);
-    }
-    
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1rem;
-    }
-    
-    .info-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: #d0d0d0;
-    }
-    
-    .info-item strong {
-      color: #00d4ff;
-      font-family: 'Oswald', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 0.8rem;
-    }
-    
-    .mentions-section {
-      margin-top: 4rem;
-    }
-    
-    .mentions-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      animation: fadeInUp 1s ease-out 0.4s both;
-    }
-    
-    .mention-card {
-      background: rgba(42, 42, 42, 0.8);
-      border-radius: 15px;
-      padding: 1.5rem;
-      border: 1px solid #3a3a3a;
-      transition: all 0.3s ease;
-      text-align: center;
-    }
-    
-    .mention-card:hover {
-      border-color: #00d4ff;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(0, 212, 255, 0.1);
-    }
-    
-    .mention-image {
-      width: 80px;
-      height: 120px;
-      background-size: cover;
-      background-position: center;
-      border-radius: 8px;
-      margin: 0 auto 1rem;
-      transition: all 0.3s ease;
-    }
-    
-    .mention-card:hover .mention-image {
-      transform: scale(1.05);
-    }
-    
-    .mention-title {
-      font-family: 'Anton', sans-serif;
-      font-size: 1.2rem;
-      color: #ffffff;
-      margin-bottom: 0.5rem;
-      letter-spacing: 1px;
-    }
-    
-    .mention-rating {
-      color: #ffd700;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-    
-    .mention-genre {
-      color: #b8b8d4;
-      font-size: 0.9rem;
-      font-family: 'Oswald', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    
-    .editors-note {
-      background: rgba(42, 42, 42, 0.9);
-      border-radius: 20px;
-      padding: 2.5rem;
-      border: 1px solid #3a3a3a;
-      margin-top: 3rem;
-      animation: fadeInUp 1s ease-out 0.6s both;
-    }
-    
-    .editors-note h4 {
-      font-family: 'Anton', sans-serif;
-      font-size: 1.8rem;
-      color: #00d4ff;
-      margin-bottom: 1.5rem;
-      text-align: center;
-      letter-spacing: 2px;
-    }
-    
-    .editors-note p {
-      color: #d0d0d0;
-      line-height: 1.8;
-      font-size: 1.1rem;
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
     @media (max-width: 768px) {
-      .featured-grid {
+      .suggestions-grid {
         grid-template-columns: 1fr;
       }
       
-      .mentions-grid {
+      .trending-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+      
+      .suggestion-actions {
+        flex-direction: column;
       }
     }
   </style>
@@ -266,10 +279,10 @@
     <nav>
       <a href="./index.html">Home</a>
       <a href="./reviews.html">Reviews</a>
-      <a href="./editors-choice.html" class="active">Editor's Choice</a>
+      <a href="./editors-choice.html">Editor's Choice</a>
       <a href="./polls.html">Polls</a>
       <a href="./viewer-comments.html">Viewer Comments</a>
-      <a href="./suggestions.html">Suggestions</a>
+      <a href="./suggestions.html" class="active">Suggestions</a>
       <a href="./contact.html">Contact</a>
       <a href="./about.html">About</a>
     </nav>
@@ -281,153 +294,222 @@
   <main>
     <section class="hero">
       <div class="hero-content">
-        <h2>Editor's Choice</h2>
-        <p>Our carefully curated selection of the finest films that deserve your attention. These are the movies that left us speechless, moved us to tears, or simply reminded us why we fell in love with cinema.</p>
+        <h2>Movie Suggestions</h2>
+        <p>Discover upcoming films we're excited to review and vote for which movies you'd like us to cover next. Your suggestions help shape our content!</p>
       </div>
     </section>
 
     <section>
-      <h3>This Week's Top Picks</h3>
+      <h3>Upcoming Reviews</h3>
       
-      <div class="featured-grid">
-        <div class="featured-card">
-          <div class="badge">Editor's Pick</div>
-          <div class="featured-image" style="background-image: url('The-Batman-2022-poster.jpg');"></div>
-          <div class="featured-content">
-            <h3>The Batman (2022)</h3>
-            <div class="rating">★★★★★</div>
-            <div class="meta">Director: Matt Reeves | Cast: Robert Pattinson, Zoë Kravitz, Paul Dano</div>
-            <div class="description">
-              Matt Reeves delivers a masterful reinvention of the Dark Knight that feels both fresh and faithful to the character's essence. Robert Pattinson's brooding performance perfectly captures Batman's psychological complexity, while the film's neo-noir aesthetic creates a Gotham City that feels genuinely dangerous and atmospheric.
-            </div>
-            <div class="editor-quote">
-              "A cinematic masterpiece that redefines what a superhero film can be. Reeves has created something truly special here."
-            </div>
-            <div class="movie-info">
-              <h4 style="font-family: 'Oswald', sans-serif; color: #00d4ff; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Movie Details</h4>
-              <div class="info-grid">
-                <div class="info-item">
-                  <strong>Runtime:</strong> 176 minutes
-                </div>
-                <div class="info-item">
-                  <strong>Release:</strong> March 4, 2022
-                </div>
-                <div class="info-item">
-                  <strong>Budget:</strong> $200 million
-                </div>
-                <div class="info-item">
-                  <strong>Box Office:</strong> $770 million
-                </div>
+      <div class="suggestions-grid">
+        <div class="suggestion-card">
+          <div class="priority-badge">High Priority</div>
+          <div class="suggestion-poster" style="background-image: url('Dune-Part-Two-2024-poster.jpg');"></div>
+          <div class="suggestion-content">
+            <h4 class="suggestion-title">Pushpa 2: The Rule</h4>
+            <div class="suggestion-meta">
+              <div class="meta-item">
+                <strong>Director:</strong> Sukumar
               </div>
+              <div class="meta-item">
+                <strong>Cast:</strong> Allu Arjun, Rashmika Mandanna
+              </div>
+              <div class="meta-item">
+                <strong>Release:</strong> August 15, 2024
+              </div>
+            </div>
+            <div class="suggestion-description">
+              The highly anticipated sequel to the 2021 blockbuster Pushpa: The Rise. Allu Arjun returns as Pushpa Raj, continuing the story of the red sandalwood smuggler. With massive expectations and a star-studded cast, this film promises to be one of the biggest releases of 2024.
+            </div>
+            <div class="suggestion-stats">
+              <div class="stat-item">
+                <span class="stat-number">2,847</span>
+                <span class="stat-label">Votes</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">95%</span>
+                <span class="stat-label">Anticipation</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">#1</span>
+                <span class="stat-label">Trending</span>
+              </div>
+            </div>
+            <div class="suggestion-actions">
+              <button class="action-btn">Vote for Review</button>
+              <button class="action-btn secondary-btn">Learn More</button>
             </div>
           </div>
         </div>
 
-        <div class="featured-card">
-          <div class="badge">Staff Favorite</div>
-          <div class="featured-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BNTkyOGVjMGEtNmQzZi00NzFlLTlhOWQtODYyMDc2ZGJmYzFhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg');"></div>
-          <div class="featured-content">
-            <h3>3 Idiots (2009)</h3>
-            <div class="rating">★★★★★</div>
-            <div class="meta">Director: Rajkumar Hirani | Cast: Aamir Khan, R. Madhavan, Sharman Joshi</div>
-            <div class="description">
-              A heartwarming and hilarious exploration of friendship, education, and following your dreams. Aamir Khan's performance is pitch-perfect, and the film's message about the importance of passion over pressure resonates across cultures and generations.
-            </div>
-            <div class="editor-quote">
-              "Still the most relevant campus drama. A film that makes you laugh, cry, and think about what truly matters in life."
-            </div>
-            <div class="movie-info">
-              <h4 style="font-family: 'Oswald', sans-serif; color: #00d4ff; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Movie Details</h4>
-              <div class="info-grid">
-                <div class="info-item">
-                  <strong>Runtime:</strong> 170 minutes
-                </div>
-                <div class="info-item">
-                  <strong>Release:</strong> December 25, 2009
-                </div>
-                <div class="info-item">
-                  <strong>Budget:</strong> ₹35 crore
-                </div>
-                <div class="info-item">
-                  <strong>Box Office:</strong> ₹460 crore
-                </div>
+        <div class="suggestion-card">
+          <div class="priority-badge">Coming Soon</div>
+          <div class="suggestion-poster" style="background-image: url('https://m.media-amazon.com/images/M/MV5BZWI4ZGE1NjYtN2ZmNy00NDQ5LTllMDgtNzQ5NzE4MGVkNmE5XkEyXkFqcGdeQXVyMTUzOTcyODA5._V1_.jpg');"></div>
+          <div class="suggestion-content">
+            <h4 class="suggestion-title">Jawan</h4>
+            <div class="suggestion-meta">
+              <div class="meta-item">
+                <strong>Director:</strong> Atlee
               </div>
+              <div class="meta-item">
+                <strong>Cast:</strong> Shah Rukh Khan, Nayanthara
+              </div>
+              <div class="meta-item">
+                <strong>Release:</strong> September 7, 2023
+              </div>
+            </div>
+            <div class="suggestion-description">
+              Shah Rukh Khan's action thriller that became one of the highest-grossing Indian films of 2023. The film follows a man seeking justice for his father and features high-octane action sequences and emotional drama. A perfect blend of commercial cinema and social messaging.
+            </div>
+            <div class="suggestion-stats">
+              <div class="stat-item">
+                <span class="stat-number">1,923</span>
+                <span class="stat-label">Votes</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">88%</span>
+                <span class="stat-label">Anticipation</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">#2</span>
+                <span class="stat-label">Trending</span>
+              </div>
+            </div>
+            <div class="suggestion-actions">
+              <button class="action-btn">Vote for Review</button>
+              <button class="action-btn secondary-btn">Learn More</button>
             </div>
           </div>
         </div>
 
-        <div class="featured-card">
-          <div class="badge">Classic Pick</div>
-          <div class="featured-image" style="background-image: url('Inception-2010-poster.jpg');"></div>
-          <div class="featured-content">
-            <h3>Inception (2010)</h3>
-            <div class="rating">★★★★★</div>
-            <div class="meta">Director: Christopher Nolan | Cast: Leonardo DiCaprio, Joseph Gordon-Levitt, Ellen Page</div>
-            <div class="description">
-              Christopher Nolan's mind-bending thriller remains a masterpiece of complex storytelling and visual innovation. The film's intricate plot, stunning practical effects, and philosophical depth create an experience that rewards multiple viewings and continues to inspire filmmakers today.
-            </div>
-            <div class="editor-quote">
-              "A film that proves blockbuster entertainment can be both intellectually stimulating and visually spectacular."
-            </div>
-            <div class="movie-info">
-              <h4 style="font-family: 'Oswald', sans-serif; color: #00d4ff; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Movie Details</h4>
-              <div class="info-grid">
-                <div class="info-item">
-                  <strong>Runtime:</strong> 148 minutes
-                </div>
-                <div class="info-item">
-                  <strong>Release:</strong> July 16, 2010
-                </div>
-                <div class="info-item">
-                  <strong>Budget:</strong> $160 million
-                </div>
-                <div class="info-item">
-                  <strong>Box Office:</strong> $836 million
-                </div>
+        <div class="suggestion-card">
+          <div class="priority-badge">New Release</div>
+          <div class="suggestion-poster" style="background-image: url('https://m.media-amazon.com/images/M/MV5BM2MyNTAwZGEtNTAxNC00ODVjLTgzZjUtYmQ0NzJiZjMzYjIyXkEyXkFqcGdeQXVyNDM2ODU5NDU@._V1_.jpg');"></div>
+          <div class="suggestion-content">
+            <h4 class="suggestion-title">Deadpool & Wolverine</h4>
+            <div class="suggestion-meta">
+              <div class="meta-item">
+                <strong>Director:</strong> Shawn Levy
               </div>
+              <div class="meta-item">
+                <strong>Cast:</strong> Ryan Reynolds, Hugh Jackman
+              </div>
+              <div class="meta-item">
+                <strong>Release:</strong> July 26, 2024
+              </div>
+            </div>
+            <div class="suggestion-description">
+              The highly anticipated Marvel film that brings together Ryan Reynolds' Deadpool and Hugh Jackman's Wolverine in what promises to be a hilarious and action-packed adventure. With the multiverse concept and fan-favorite characters, this could be one of the biggest superhero films of the year.
+            </div>
+            <div class="suggestion-stats">
+              <div class="stat-item">
+                <span class="stat-number">2,156</span>
+                <span class="stat-label">Votes</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">92%</span>
+                <span class="stat-label">Anticipation</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">#3</span>
+                <span class="stat-label">Trending</span>
+              </div>
+            </div>
+            <div class="suggestion-actions">
+              <button class="action-btn">Vote for Review</button>
+              <button class="action-btn secondary-btn">Learn More</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="suggestion-card">
+          <div class="priority-badge">Popular</div>
+          <div class="suggestion-poster" style="background-image: url('https://m.media-amazon.com/images/M/MV5BYTdiOTIyZTQtNmQ1OS00NjZlLWEyMDgtYjVmNTZkN2FkZWFhXkEyXkFqcGdeQXVyMTM3ODc0ODky._V1_.jpg');"></div>
+          <div class="suggestion-content">
+            <h4 class="suggestion-title">The Marvels</h4>
+            <div class="suggestion-meta">
+              <div class="meta-item">
+                <strong>Director:</strong> Nia DaCosta
+              </div>
+              <div class="meta-item">
+                <strong>Cast:</strong> Brie Larson, Iman Vellani, Teyonah Parris
+              </div>
+              <div class="meta-item">
+                <strong>Release:</strong> November 10, 2023
+              </div>
+            </div>
+            <div class="suggestion-description">
+              The sequel to Captain Marvel brings together three powerful heroes in an epic space adventure. With cosmic action, humor, and the introduction of new characters, this film expands the Marvel Cinematic Universe in exciting new directions.
+            </div>
+            <div class="suggestion-stats">
+              <div class="stat-item">
+                <span class="stat-number">1,654</span>
+                <span class="stat-label">Votes</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">85%</span>
+                <span class="stat-label">Anticipation</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">#4</span>
+                <span class="stat-label">Trending</span>
+              </div>
+            </div>
+            <div class="suggestion-actions">
+              <button class="action-btn">Vote for Review</button>
+              <button class="action-btn secondary-btn">Learn More</button>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="mentions-section">
-        <h3>Honorable Mentions</h3>
-        <div class="mentions-grid">
-          <div class="mention-card">
-            <div class="mention-image" style="background-image: url('INTERSTELLAR (2014) poster by Jximedesigns.jpg');"></div>
-            <div class="mention-title">Interstellar</div>
-            <div class="mention-rating">★★★★★</div>
-            <div class="mention-genre">Sci-Fi Drama</div>
+      <div class="trending-section">
+        <h3>Trending Suggestions</h3>
+        
+        <div class="trending-grid">
+          <div class="trending-card">
+            <div class="trending-poster" style="background-image: url('Dune-Part-Two-2024-poster.jpg');"></div>
+            <div class="trending-title">Kalki 2898 AD</div>
+            <div class="trending-genre">Sci-Fi Action</div>
+            <div class="trending-votes">1,234 votes</div>
           </div>
           
-          <div class="mention-card">
-            <div class="mention-image" style="background-image: url('Oppenheimer.jpeg');"></div>
-            <div class="mention-title">Oppenheimer</div>
-            <div class="mention-rating">★★★★★</div>
-            <div class="mention-genre">Historical Drama</div>
+          <div class="trending-card">
+            <div class="trending-poster" style="background-image: url('Dune-Part-Two-2024-poster.jpg');"></div>
+            <div class="trending-title">Furiosa</div>
+            <div class="trending-genre">Action Adventure</div>
+            <div class="trending-votes">987 votes</div>
           </div>
           
-          <div class="mention-card">
-            <div class="mention-image" style="background-image: url('La-La-Land-2016-poster.jpg');"></div>
-            <div class="mention-title">La La Land</div>
-            <div class="mention-rating">★★★★★</div>
-            <div class="mention-genre">Musical Romance</div>
+          <div class="trending-card">
+            <div class="trending-poster" style="background-image: url('Dune-Part-Two-2024-poster.jpg');"></div>
+            <div class="trending-title">Joker: Folie à Deux</div>
+            <div class="trending-genre">Psychological Thriller</div>
+            <div class="trending-votes">876 votes</div>
           </div>
           
-          <div class="mention-card">
-            <div class="mention-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BODI0YzFhNDItYjVhYy00OTU3LTg0YzctNDM2N2E5NzA5Y2JkXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg');"></div>
-            <div class="mention-title">RRR</div>
-            <div class="mention-rating">★★★★☆</div>
-            <div class="mention-genre">Action Drama</div>
+          <div class="trending-card">
+            <div class="trending-poster" style="background-image: url('Dune-Part-Two-2024-poster.jpg');"></div>
+            <div class="trending-title">Gladiator 2</div>
+            <div class="trending-genre">Historical Drama</div>
+            <div class="trending-votes">765 votes</div>
+          </div>
+          
+          <div class="trending-card">
+            <div class="trending-poster" style="background-image: url('Dune-Part-Two-2024-poster.jpg');"></div>
+            <div class="trending-title">Mission: Impossible 8</div>
+            <div class="trending-genre">Action Thriller</div>
+            <div class="trending-votes">654 votes</div>
+          </div>
+          
+          <div class="trending-card">
+            <div class="trending-poster" style="background-image: url('Dune-Part-Two-2024-poster.jpg');"></div>
+            <div class="trending-title">Avatar 3</div>
+            <div class="trending-genre">Sci-Fi Fantasy</div>
+            <div class="trending-votes">543 votes</div>
           </div>
         </div>
-      </div>
-
-      <div class="editors-note">
-        <h4>From Our Editors</h4>
-        <p>
-          Every week, our team of passionate film critics comes together to discuss the films that have moved us, challenged us, and reminded us why we love cinema. These selections represent not just quality filmmaking, but stories that have the power to change perspectives, evoke emotions, and create lasting memories. We believe in the transformative power of great cinema, and these films exemplify that belief.
-        </p>
       </div>
     </section>
   </main>
@@ -447,7 +529,7 @@
       <p class="copyright"> 2025 CineScope – Honest Movie Reviews. All rights reserved.</p>
     </div>
   </footer>
-  
+
   <!-- Search Modal -->
   <div id="searchModal" class="search-modal" style="display: none;">
     <div class="search-modal-content">
@@ -730,13 +812,13 @@
         
         // Determine which elements to search based on content type filter
         if (contentType === 'reviews') {
-          elements = document.querySelectorAll('.featured-card, .mention-card');
+          elements = document.querySelectorAll('.suggestion-card, .trending-card');
         } else if (contentType === 'comments') {
-          elements = document.querySelectorAll('.editor-quote, .editors-note');
+          elements = document.querySelectorAll('.suggestion-description');
         } else if (contentType === 'comparison') {
-          elements = document.querySelectorAll('.movie-info');
+          elements = document.querySelectorAll('.suggestion-stats, .suggestion-meta');
         } else {
-          elements = document.querySelectorAll('.featured-card, .mention-card, .editor-quote, .editors-note, h3, h4, p');
+          elements = document.querySelectorAll('.suggestion-card, .trending-card, .suggestion-description, h3, h4, p');
         }
         
         let found = false;
@@ -757,11 +839,11 @@
           if (genre && matches) {
             const text = element.textContent.toLowerCase();
             const genreMap = {
-              'sci-fi': ['sci-fi', 'science fiction', 'space', 'future'],
+              'sci-fi': ['sci-fi', 'science fiction', 'space', 'future', 'fantasy'],
               'drama': ['drama', 'dramatic'],
               'historical': ['historical', 'history', 'biography'],
-              'superhero': ['superhero', 'batman', 'superman'],
-              'action': ['action', 'thriller', 'intense'],
+              'superhero': ['superhero', 'batman', 'superman', 'marvel', 'dc'],
+              'action': ['action', 'thriller', 'intense', 'mission'],
               'thriller': ['thriller', 'suspense', 'mystery']
             };
             
@@ -772,22 +854,28 @@
             }
           }
           
-          // Rating filter
+          // Rating filter (for suggestions page, we'll use votes/popularity as proxy)
           if (rating && matches) {
-            const ratingElements = element.querySelectorAll('.rating, .mention-rating');
-            let hasRating = false;
+            const voteElements = element.querySelectorAll('.stat-number, .trending-votes');
+            let hasHighRating = false;
             
-            ratingElements.forEach(ratingEl => {
-              const ratingText = ratingEl.textContent;
-              const stars = (ratingText.match(/★/g) || []).length;
-              const numRating = parseFloat(ratingText.match(/\d+\.?\d*/));
+            voteElements.forEach(voteEl => {
+              const voteText = voteEl.textContent;
+              const voteNumber = parseInt(voteText.replace(/[^0-9]/g, ''));
               
-              if (stars >= parseInt(rating) || numRating >= parseInt(rating)) {
-                hasRating = true;
+              // Use vote count as proxy for rating (higher votes = higher rating)
+              const ratingThreshold = {
+                '5': 2000,
+                '4': 1000,
+                '3': 500
+              };
+              
+              if (voteNumber >= (ratingThreshold[rating] || 0)) {
+                hasHighRating = true;
               }
             });
             
-            if (!hasRating) {
+            if (!hasHighRating) {
               matches = false;
             }
           }

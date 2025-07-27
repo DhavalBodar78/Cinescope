@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Viewer Comments - CineScope</title>
+  <link rel="stylesheet" href="home.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&family=Anton&family=Oswald:wght@400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <style>
+    .comments-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .comment-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+    
+    .stat-card {
+      background: rgba(42, 42, 42, 0.9);
+      border-radius: 15px;
+      padding: 1.5rem;
+      border: 1px solid #3a3a3a;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .stat-card:hover {
+      border-color: #00d4ff;
+      transform: translateY(-3px);
+    }
+    
+    .stat-number {
+      font-family: 'Anton', sans-serif;
+      font-size: 2rem;
+      color: #00d4ff;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #b8b8d4;
+      font-size: 0.9rem;
+    }
+    
+    .filter-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    
+    .filter-btn {
+      background: rgba(42, 42, 42, 0.9);
+      border: 1px solid #3a3a3a;
+      color: #d0d0d0;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+    }
+    
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: linear-gradient(135deg, #00d4ff, #0099cc);
+      color: #121212;
+      border-color: #00d4ff;
+      transform: translateY(-2px);
+    }
+    
+    .comments-grid {
+      display: grid;
+      gap: 2rem;
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
+    
+    .comment-card {
+      background: rgba(42, 42, 42, 0.9);
+      border-radius: 20px;
+      padding: 2rem;
+      border: 1px solid #3a3a3a;
+      transition: all 0.3s ease;
+    }
+    
+    .comment-card:hover {
+      border-color: #00d4ff;
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0, 212, 255, 0.1);
+    }
+    
+    .comment-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .comment-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #00d4ff;
+      transition: all 0.3s ease;
+    }
+    
+    .comment-card:hover .comment-avatar {
+      transform: scale(1.1);
+    }
+    
+    .comment-info {
+      flex: 1;
+    }
+    
+    .comment-author {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.3rem;
+    }
+    
+    .comment-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: #b8b8d4;
+      font-size: 0.9rem;
+    }
+    
+    .comment-rating {
+      color: #ffd700;
+      font-weight: 600;
+    }
+    
+    .comment-date {
+      color: #b8b8d4;
+    }
+    
+    .comment-content {
+      color: #d0d0d0;
+      line-height: 1.7;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .comment-movie {
+      background: rgba(0, 212, 255, 0.1);
+      border: 1px solid #00d4ff;
+      border-radius: 10px;
+      padding: 0.8rem 1rem;
+      color: #00d4ff;
+      font-size: 0.9rem;
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: inline-block;
+    }
+    
+    .comment-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid #3a3a3a;
+    }
+    
+    .action-btn {
+      background: transparent;
+      border: 1px solid #3a3a3a;
+      color: #b8b8d4;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+    
+    .action-btn:hover {
+      border-color: #00d4ff;
+      color: #00d4ff;
+      transform: translateY(-2px);
+    }
+    
+    @media (max-width: 768px) {
+      .comments-header {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .filter-buttons {
+        justify-content: center;
+      }
+      
+      .comment-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z" fill="currentColor" />
+      </svg>
+      <h1>CineScope</h1>
+    </div>
+    <nav>
+      <a href="./index.html">Home</a>
+      <a href="./reviews.html">Reviews</a>
+      <a href="./editors-choice.html">Editor's Choice</a>
+      <a href="./polls.html">Polls</a>
+      <a href="./viewer-comments.html" class="active">Viewer Comments</a>
+      <a href="./suggestions.html">Suggestions</a>
+      <a href="./contact.html">Contact</a>
+      <a href="./about.html">About</a>
+    </nav>
+    <button class="search-btn" aria-label="Search">
+      🔍
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Viewer Comments</h2>
+        <p>Discover what our community thinks about the latest releases and classic films. Read authentic reactions and opinions from movie lovers around the world.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="comments-header">
+        <h3>Community Comments</h3>
+        <div class="filter-buttons">
+          <button class="filter-btn active">All Comments</button>
+          <button class="filter-btn">Recent</button>
+          <button class="filter-btn">Most Liked</button>
+          <button class="filter-btn">5-Star Reviews</button>
+          <button class="filter-btn">Bollywood</button>
+          <button class="filter-btn">Hollywood</button>
+        </div>
+      </div>
+
+      <div class="comment-stats">
+        <div class="stat-card">
+          <span class="stat-number">1,247</span>
+          <span class="stat-label">Total Comments</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">892</span>
+          <span class="stat-label">Active Users</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">4.2</span>
+          <span class="stat-label">Avg Rating</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">45</span>
+          <span class="stat-label">Countries</span>
+        </div>
+      </div>
+
+      <div class="comments-grid">
+        <div class="comment-card">
+          <div class="comment-header">
+            <img src="pexels-tima-miroshnichenko-7991158.jpg" alt="Liam Carter" class="comment-avatar" />
+            <div class="comment-info">
+              <div class="comment-author">Liam Carter</div>
+              <div class="comment-meta">
+                <span class="comment-rating">★★★★★</span>
+                <span class="comment-date">2 weeks ago</span>
+              </div>
+            </div>
+          </div>
+          <div class="comment-content">
+            "Interstellar was an incredible journey! The visuals were stunning, and the story kept me engaged from start to finish. Nolan really knows how to make you think while entertaining you. The emotional depth of the father-daughter relationship really got to me. Highly recommend!"
+          </div>
+          <div class="comment-movie">Commenting on: Interstellar (2014)</div>
+          <div class="comment-actions">
+            <button class="action-btn">👍 Like (24)</button>
+            <button class="action-btn">💬 Reply</button>
+            <button class="action-btn">📤 Share</button>
+          </div>
+        </div>
+
+        <div class="comment-card">
+          <div class="comment-header">
+            <img src="pexels-tima-miroshnichenko-7991380.jpg" alt="Sophia Bennett" class="comment-avatar" />
+            <div class="comment-info">
+              <div class="comment-author">Sophia Bennett</div>
+              <div class="comment-meta">
+                <span class="comment-rating">★★★★★</span>
+                <span class="comment-date">3 weeks ago</span>
+              </div>
+            </div>
+          </div>
+          <div class="comment-content">
+            "Oppenheimer is a powerful and moving film. The performances were outstanding, especially Cillian Murphy's portrayal. The historical setting was beautifully realized, and the sound design was incredible. A must-see for any history buff or film lover."
+          </div>
+          <div class="comment-movie">Commenting on: Oppenheimer (2023)</div>
+          <div class="comment-actions">
+            <button class="action-btn">👍 Like (31)</button>
+            <button class="action-btn">💬 Reply</button>
+            <button class="action-btn">📤 Share</button>
+          </div>
+        </div>
+
+        <div class="comment-card">
+          <div class="comment-header">
+            <img src="pexels-tima-miroshnichenko-7991576.jpg" alt="Raj Patel" class="comment-avatar" />
+            <div class="comment-info">
+              <div class="comment-author">Raj Patel</div>
+              <div class="comment-meta">
+                <span class="comment-rating">★★★☆☆</span>
+                <span class="comment-date">1 week ago</span>
+              </div>
+            </div>
+          </div>
+          <div class="comment-content">
+            "Finally watched Animal and I have mixed feelings. The action sequences were incredible, and Ranbir Kapoor's performance was outstanding. However, the storyline was a bit too intense for my taste, and some scenes were unnecessarily graphic."
+          </div>
+          <div class="comment-movie">Commenting on: Animal (2023)</div>
+          <div class="comment-actions">
+            <button class="action-btn">👍 Like (18)</button>
+            <button class="action-btn">💬 Reply</button>
+            <button class="action-btn">📤 Share</button>
+          </div>
+        </div>
+
+        <div class="comment-card">
+          <div class="comment-header">
+            <img src="pexels-tima-miroshnichenko-7991579.jpg" alt="Maria Rodriguez" class="comment-avatar" />
+            <div class="comment-info">
+              <div class="comment-author">Maria Rodriguez</div>
+              <div class="comment-meta">
+                <span class="comment-rating">★★★★★</span>
+                <span class="comment-date">4 weeks ago</span>
+              </div>
+            </div>
+          </div>
+          <div class="comment-content">
+            "La La Land is pure cinematic magic! The music, the dancing, the romance - everything works perfectly together. Emma Stone and Ryan Gosling are perfect together, and the ending is both heartbreaking and beautiful. This film reminds me why I fell in love with movies."
+          </div>
+          <div class="comment-movie">Commenting on: La La Land (2016)</div>
+          <div class="comment-actions">
+            <button class="action-btn">👍 Like (42)</button>
+            <button class="action-btn">💬 Reply</button>
+            <button class="action-btn">📤 Share</button>
+          </div>
+        </div>
+
+        <div class="comment-card">
+          <div class="comment-header">
+            <img src="pexels-tima-miroshnichenko-7991486.jpg" alt="David Kim" class="comment-avatar" />
+            <div class="comment-info">
+              <div class="comment-author">David Kim</div>
+              <div class="comment-meta">
+                <span class="comment-rating">★★★★☆</span>
+                <span class="comment-date">2 weeks ago</span>
+              </div>
+            </div>
+          </div>
+          <div class="comment-content">
+            "RRR is pure entertainment! The action sequences are absolutely insane, and the dance numbers are infectious. It's three hours of non-stop fun with heart. The friendship between the two leads is beautiful, and the film's message about unity is powerful."
+          </div>
+          <div class="comment-movie">Commenting on: RRR (2022)</div>
+          <div class="comment-actions">
+            <button class="action-btn">👍 Like (29)</button>
+            <button class="action-btn">💬 Reply</button>
+            <button class="action-btn">📤 Share</button>
+          </div>
+        </div>
+
+        <div class="comment-card">
+          <div class="comment-header">
+            <img src="pexels-tima-miroshnichenko-7991380.jpg" alt="Priya Sharma" class="comment-avatar" />
+            <div class="comment-info">
+              <div class="comment-author">Priya Sharma</div>
+              <div class="comment-meta">
+                <span class="comment-rating">★★★★★</span>
+                <span class="comment-date">1 month ago</span>
+              </div>
+            </div>
+          </div>
+          <div class="comment-content">
+            "The Batman exceeded all my expectations! Robert Pattinson was perfect as Bruce Wayne, and the film's dark, noir atmosphere was exactly what I wanted. The detective elements were great, and the action sequences were well-choreographed. One of the best superhero films ever made."
+          </div>
+          <div class="comment-movie">Commenting on: The Batman (2022)</div>
+          <div class="comment-actions">
+            <button class="action-btn">👍 Like (56)</button>
+            <button class="action-btn">💬 Reply</button>
+            <button class="action-btn">📤 Share</button>
+          </div>
+        </div>
+
+        <div class="comment-card">
+          <div class="comment-header">
+            <img src="pexels-tima-miroshnichenko-7991576.jpg" alt="Alex Chen" class="comment-avatar" />
+            <div class="comment-info">
+              <div class="comment-author">Alex Chen</div>
+              <div class="comment-meta">
+                <span class="comment-rating">★★★★★</span>
+                <span class="comment-date">3 weeks ago</span>
+              </div>
+            </div>
+          </div>
+          <div class="comment-content">
+            "Dune: Part Two was absolutely breathtaking! The visual effects were mind-blowing, and the story was perfectly paced. Villeneuve has created a masterpiece that honors the source material while being accessible to newcomers. The sandworm sequences alone are worth the price of admission!"
+          </div>
+          <div class="comment-movie">Commenting on: Dune: Part Two (2024)</div>
+          <div class="comment-actions">
+            <button class="action-btn">👍 Like (38)</button>
+            <button class="action-btn">💬 Reply</button>
+            <button class="action-btn">📤 Share</button>
+          </div>
+        </div>
+
+        <div class="comment-card">
+          <div class="comment-header">
+            <img src="pexels-tima-miroshnichenko-7991158.jpg" alt="Emma Wilson" class="comment-avatar" />
+            <div class="comment-info">
+              <div class="comment-author">Emma Wilson</div>
+              <div class="comment-meta">
+                <span class="comment-rating">★★★★★</span>
+                <span class="comment-date">2 months ago</span>
+              </div>
+            </div>
+          </div>
+          <div class="comment-content">
+            "Inception is still mind-bending after all these years! The concept is brilliant, the execution is flawless, and the performances are outstanding. Christopher Nolan really knows how to make you question reality while keeping you on the edge of your seat."
+          </div>
+          <div class="comment-movie">Commenting on: Inception (2010)</div>
+          <div class="comment-actions">
+            <button class="action-btn">👍 Like (67)</button>
+            <button class="action-btn">💬 Reply</button>
+            <button class="action-btn">📤 Share</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <nav class="footer-nav">
+        <a href="./index.html">Home</a>
+        <a href="./reviews.html">Reviews</a>
+        <a href="./editors-choice.html">Editor's Choice</a>
+        <a href="./polls.html">Polls</a>
+        <a href="./viewer-comments.html">Viewer Comments</a>
+        <a href="./suggestions.html">Suggestions</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./about.html">About Us</a>
+      </nav>
+      <p class="copyright"> 2025 CineScope – Honest Movie Reviews. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Search Modal -->
+  <div id="searchModal" class="search-modal" style="display: none;">
+    <div class="search-modal-content">
+      <div class="search-modal-header">
+        <h3> Advanced Search</h3>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="search-modal-body">
+        <div class="search-input-group">
+          <input type="text" id="searchInput" placeholder="Enter movie title, director, or keywords..." />
+        </div>
+        
+        <div class="search-filters">
+          <div class="filter-group">
+            <label>Genre:</label>
+            <select id="genreFilter">
+              <option value="">All Genres</option>
+              <option value="sci-fi">Sci-Fi</option>
+              <option value="drama">Drama</option>
+              <option value="historical">Historical</option>
+              <option value="superhero">Superhero</option>
+              <option value="action">Action</option>
+              <option value="thriller">Thriller</option>
+            </select>
+          </div>
+          
+          <div class="filter-group">
+            <label>Rating:</label>
+            <select id="ratingFilter">
+              <option value="">All Ratings</option>
+              <option value="5">★★★★★ (5 stars)</option>
+              <option value="4">★★★★☆ (4+ stars)</option>
+              <option value="3">★★★☆☆ (3+ stars)</option>
+            </select>
+          </div>
+          
+          <div class="filter-group">
+            <label>Content Type:</label>
+            <select id="contentFilter">
+              <option value="">All Content</option>
+              <option value="reviews">Movie Reviews</option>
+              <option value="comments">User Comments</option>
+              <option value="comparison">Movie Comparisons</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="search-actions">
+          <button id="searchBtn" class="search-action-btn primary">Search</button>
+          <button id="clearBtn" class="search-action-btn secondary">Clear Filters</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .search-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 2000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .search-modal-content {
+      background: white;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+    
+    .search-modal-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .search-modal-header h3 {
+      margin: 0;
+      font-size: 1.4em;
+    }
+    
+    .close-modal {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+    
+    .close-modal:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .search-modal-body {
+      padding: 25px;
+    }
+    
+    .search-input-group {
+      margin-bottom: 25px;
+    }
+    
+    #searchInput {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e1e5e9;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+      box-sizing: border-box;
+    }
+    
+    #searchInput:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+    
+    .search-filters {
+      margin-bottom: 25px;
+    }
+    
+    .filter-group {
+      margin-bottom: 15px;
+    }
+    
+    .filter-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+      color: #333;
+    }
+    
+    .filter-group select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 2px solid #e1e5e9;
+      border-radius: 6px;
+      font-size: 14px;
+      background: white;
+      transition: border-color 0.3s;
+      box-sizing: border-box;
+    }
+    
+    .filter-group select:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+    
+    .search-actions {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .search-action-btn {
+      flex: 1;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .search-action-btn.primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    
+    .search-action-btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+    
+    .search-action-btn.secondary {
+      background: #f8f9fa;
+      color: #6c757d;
+      border: 2px solid #e9ecef;
+    }
+    
+    .search-action-btn.secondary:hover {
+      background: #e9ecef;
+    }
+  </style>
+
+  <script>
+    // Enhanced Search functionality with filters for viewer-comments page
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchBtnHeader = document.querySelector('.search-btn');
+      const searchModal = document.getElementById('searchModal');
+      const closeModal = document.querySelector('.close-modal');
+      const searchInput = document.getElementById('searchInput');
+      const genreFilter = document.getElementById('genreFilter');
+      const ratingFilter = document.getElementById('ratingFilter');
+      const contentFilter = document.getElementById('contentFilter');
+      const searchActionBtn = document.getElementById('searchBtn');
+      const clearBtn = document.getElementById('clearBtn');
+      
+      // Open search modal
+      searchBtnHeader.addEventListener('click', function() {
+        searchModal.style.display = 'flex';
+        searchInput.focus();
+      });
+      
+      // Close modal
+      closeModal.addEventListener('click', closeSearchModal);
+      searchModal.addEventListener('click', function(e) {
+        if (e.target === searchModal) {
+          closeSearchModal();
+        }
+      });
+      
+      // Close modal with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && searchModal.style.display === 'flex') {
+          closeSearchModal();
+        }
+      });
+      
+      // Search on Enter key
+      searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          performSearch();
+        }
+      });
+      
+      // Search button click
+      searchActionBtn.addEventListener('click', performSearch);
+      
+      // Clear filters
+      clearBtn.addEventListener('click', function() {
+        searchInput.value = '';
+        genreFilter.value = '';
+        ratingFilter.value = '';
+        contentFilter.value = '';
+        removeHighlights();
+      });
+      
+      function closeSearchModal() {
+        searchModal.style.display = 'none';
+      }
+      
+      function performSearch() {
+        const query = searchInput.value.trim();
+        const genre = genreFilter.value;
+        const rating = ratingFilter.value;
+        const contentType = contentFilter.value;
+        
+        if (!query && !genre && !rating && !contentType) {
+          alert('Please enter a search term or select at least one filter.');
+          return;
+        }
+        
+        closeSearchModal();
+        searchWithFilters(query, genre, rating, contentType);
+      }
+      
+      function searchWithFilters(query, genre, rating, contentType) {
+        removeHighlights();
+        
+        let elements = [];
+        
+        // Determine which elements to search based on content type filter
+        if (contentType === 'reviews') {
+          elements = document.querySelectorAll('.comment-card');
+        } else if (contentType === 'comments') {
+          elements = document.querySelectorAll('.comment-content, .comment-author');
+        } else if (contentType === 'comparison') {
+          elements = document.querySelectorAll('.comment-movie, .comment-rating');
+        } else {
+          elements = document.querySelectorAll('.comment-card, .comment-content, .comment-author, .comment-movie, h3, h4, p');
+        }
+        
+        let found = false;
+        let matchCount = 0;
+        
+        elements.forEach(element => {
+          let matches = true;
+          
+          // Text search
+          if (query) {
+            const text = element.textContent.toLowerCase();
+            if (!text.includes(query.toLowerCase())) {
+              matches = false;
+            }
+          }
+          
+          // Genre filter
+          if (genre && matches) {
+            const text = element.textContent.toLowerCase();
+            const genreMap = {
+              'sci-fi': ['sci-fi', 'science fiction', 'space', 'future', 'dune', 'inception'],
+              'drama': ['drama', 'dramatic', 'emotion', 'la la land'],
+              'historical': ['historical', 'history', 'biography', 'oppenheimer'],
+              'superhero': ['superhero', 'batman', 'superman', 'marvel', 'spider-man', 'black panther', 'thor'],
+              'action': ['action', 'thriller', 'intense', 'godzilla', 'kong'],
+              'thriller': ['thriller', 'suspense', 'mystery']
+            };
+            
+            const genreKeywords = genreMap[genre] || [genre];
+            const hasGenre = genreKeywords.some(keyword => text.includes(keyword));
+            if (!hasGenre) {
+              matches = false;
+            }
+          }
+          
+          // Rating filter
+          if (rating && matches) {
+            const ratingElements = element.querySelectorAll('.comment-rating');
+            let hasHighRating = false;
+            
+            ratingElements.forEach(ratingEl => {
+              const stars = ratingEl.textContent.split('★').length - 1;
+              if (stars >= parseInt(rating)) {
+                hasHighRating = true;
+              }
+            });
+            
+            // If no rating elements found, allow general content to pass through
+            if (ratingElements.length === 0) {
+              hasHighRating = true;
+            }
+            
+            if (!hasHighRating) {
+              matches = false;
+            }
+          }
+          
+          if (matches) {
+            if (query) {
+              highlightText(element, query);
+            } else {
+              element.style.border = '2px solid #667eea';
+              element.style.borderRadius = '8px';
+              element.classList.add('search-highlighted');
+            }
+            
+            if (!found) {
+              element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              found = true;
+            }
+            matchCount++;
+          }
+        });
+        
+        if (!found) {
+          alert('No results found matching your search criteria. Try adjusting your filters or search terms.');
+        } else {
+          const filterText = [];
+          if (query) filterText.push(`"${query}"`);
+          if (genre) filterText.push(`Genre: ${genre}`);
+          if (rating) filterText.push(`Rating: ${rating}+ stars`);
+          if (contentType) filterText.push(`Type: ${contentType}`);
+          
+          showSearchNotification(`Found ${matchCount} result(s) for ${filterText.join(', ')}`);
+        }
+      }
+      
+      function highlightText(element, searchTerm) {
+        const regex = new RegExp(`(${searchTerm})`, 'gi');
+        const walker = document.createTreeWalker(
+          element,
+          NodeFilter.SHOW_TEXT,
+          null,
+          false
+        );
+        
+        const textNodes = [];
+        let node;
+        while (node = walker.nextNode()) {
+          textNodes.push(node);
+        }
+        
+        textNodes.forEach(textNode => {
+          const parent = textNode.parentNode;
+          if (parent.tagName !== 'MARK') {
+            const text = textNode.textContent;
+            if (regex.test(text)) {
+              const highlightedHTML = text.replace(regex, '<mark style="background-color: yellow; padding: 2px;">$1</mark>');
+              const wrapper = document.createElement('span');
+              wrapper.innerHTML = highlightedHTML;
+              parent.replaceChild(wrapper, textNode);
+            }
+          }
+        });
+        
+        element.classList.add('search-highlighted');
+      }
+      
+      function removeHighlights() {
+        const highlighted = document.querySelectorAll('.search-highlighted');
+        highlighted.forEach(element => {
+          // Remove text highlights
+          const marks = element.querySelectorAll('mark');
+          marks.forEach(mark => {
+            mark.outerHTML = mark.innerHTML;
+          });
+          
+          // Remove border highlights
+          element.style.border = '';
+          element.style.borderRadius = '';
+          element.classList.remove('search-highlighted');
+        });
+      }
+      
+      function showSearchNotification(message) {
+        const notification = document.createElement('div');
+        notification.textContent = message;
+        notification.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 12px 20px;
+          border-radius: 8px;
+          z-index: 1000;
+          font-family: inherit;
+          box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+          max-width: 300px;
+          font-size: 14px;
+        `;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+          notification.style.opacity = '0';
+          notification.style.transform = 'translateY(-20px)';
+          setTimeout(() => notification.remove(), 300);
+        }, 4000);
+      }
+    });
+  </script>
+</body>
+</html>

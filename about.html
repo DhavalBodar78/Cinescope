@@ -3,255 +3,170 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Editor's Choice - CineScope</title>
+  <title>About Us - CineScope</title>
   <link rel="stylesheet" href="home.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&family=Anton&family=Oswald:wght@400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    .featured-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 2.5rem;
+    .about-section {
       margin-bottom: 4rem;
-      animation: fadeInUp 1s ease-out 0.2s both;
     }
     
-    .featured-card {
-      background: rgba(42, 42, 42, 0.9);
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid #3a3a3a;
-      transition: all 0.4s ease;
-      position: relative;
-    }
-    
-    .featured-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
-      border-color: #00d4ff;
-    }
-    
-    .featured-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), transparent);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: 1;
-    }
-    
-    .featured-card:hover::before {
-      opacity: 1;
-    }
-    
-    .badge {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: linear-gradient(135deg, #00d4ff, #0099cc);
-      color: #121212;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-weight: 600;
-      font-size: 0.8rem;
-      font-family: 'Oswald', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      z-index: 3;
-    }
-    
-    .featured-image {
-      height: 300px;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      transition: all 0.3s ease;
-    }
-    
-    .featured-card:hover .featured-image {
-      transform: scale(1.05);
-    }
-    
-    .featured-content {
+    .mission-card {
+      background: rgba(42, 42, 74, 0.8);
+      border-radius: 15px;
       padding: 2rem;
-      position: relative;
-      z-index: 2;
-    }
-    
-    .featured-content h3 {
-      font-family: 'Anton', sans-serif;
-      font-size: 1.8rem;
-      font-weight: 400;
-      color: #ffffff;
-      margin-bottom: 1rem;
-      letter-spacing: 1px;
-    }
-    
-    .featured-content .rating {
-      color: #ffd700;
-      font-weight: 600;
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-    }
-    
-    .featured-content .meta {
-      color: #d0d0d0;
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
-    }
-    
-    .featured-content .description {
-      color: #d0d0d0;
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-      font-size: 1rem;
-    }
-    
-    .editor-quote {
-      background: rgba(0, 212, 255, 0.1);
-      border-left: 4px solid #00d4ff;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-      font-style: italic;
-      color: #e0e0e0;
-      font-size: 1.1rem;
-    }
-    
-    .movie-info {
-      background: rgba(42, 42, 42, 0.8);
-      border-radius: 15px;
-      padding: 1.5rem;
-      margin-top: 1.5rem;
-      border: 1px solid #3a3a3a;
-      transition: all 0.3s ease;
-    }
-    
-    .movie-info:hover {
-      border-color: #00d4ff;
-      transform: translateY(-2px);
-    }
-    
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1rem;
-    }
-    
-    .info-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: #d0d0d0;
-    }
-    
-    .info-item strong {
-      color: #00d4ff;
-      font-family: 'Oswald', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 0.8rem;
-    }
-    
-    .mentions-section {
-      margin-top: 4rem;
-    }
-    
-    .mentions-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      animation: fadeInUp 1s ease-out 0.4s both;
-    }
-    
-    .mention-card {
-      background: rgba(42, 42, 42, 0.8);
-      border-radius: 15px;
-      padding: 1.5rem;
-      border: 1px solid #3a3a3a;
-      transition: all 0.3s ease;
+      margin-bottom: 2rem;
+      border: 1px solid #3a3a5a;
       text-align: center;
     }
     
-    .mention-card:hover {
-      border-color: #00d4ff;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(0, 212, 255, 0.1);
+    .mission-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
     }
     
-    .mention-image {
-      width: 80px;
-      height: 120px;
-      background-size: cover;
-      background-position: center;
-      border-radius: 8px;
-      margin: 0 auto 1rem;
-      transition: all 0.3s ease;
-    }
-    
-    .mention-card:hover .mention-image {
-      transform: scale(1.05);
-    }
-    
-    .mention-title {
-      font-family: 'Anton', sans-serif;
-      font-size: 1.2rem;
+    .mission-title {
+      font-size: 1.8rem;
+      font-weight: 700;
       color: #ffffff;
-      margin-bottom: 0.5rem;
-      letter-spacing: 1px;
+      margin-bottom: 1rem;
     }
     
-    .mention-rating {
-      color: #ffd700;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-    
-    .mention-genre {
+    .mission-text {
       color: #b8b8d4;
-      font-size: 0.9rem;
-      font-family: 'Oswald', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    
-    .editors-note {
-      background: rgba(42, 42, 42, 0.9);
-      border-radius: 20px;
-      padding: 2.5rem;
-      border: 1px solid #3a3a3a;
-      margin-top: 3rem;
-      animation: fadeInUp 1s ease-out 0.6s both;
-    }
-    
-    .editors-note h4 {
-      font-family: 'Anton', sans-serif;
-      font-size: 1.8rem;
-      color: #00d4ff;
-      margin-bottom: 1.5rem;
-      text-align: center;
-      letter-spacing: 2px;
-    }
-    
-    .editors-note p {
-      color: #d0d0d0;
       line-height: 1.8;
       font-size: 1.1rem;
-      text-align: center;
       max-width: 800px;
       margin: 0 auto;
     }
     
-    @media (max-width: 768px) {
-      .featured-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .mentions-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      }
+    .values-section {
+      margin-top: 3rem;
+    }
+    
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .value-card {
+      background: rgba(42, 42, 74, 0.8);
+      border-radius: 15px;
+      padding: 2rem;
+      border: 1px solid #3a3a5a;
+      transition: all 0.3s ease;
+    }
+    
+    .value-card:hover {
+      border-color: #00d4ff;
+      transform: translateY(-3px);
+    }
+    
+    .value-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .value-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 1rem;
+    }
+    
+    .value-description {
+      color: #b8b8d4;
+      line-height: 1.6;
+    }
+    
+    .team-section {
+      margin-top: 3rem;
+    }
+    
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    
+    .team-card {
+      background: rgba(42, 42, 74, 0.8);
+      border-radius: 15px;
+      padding: 2rem;
+      border: 1px solid #3a3a5a;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .team-card:hover {
+      border-color: #00d4ff;
+      transform: translateY(-3px);
+    }
+    
+    .team-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      object-fit: cover;
+      border: 3px solid #00d4ff;
+    }
+    
+    .team-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+    
+    .team-role {
+      color: #00d4ff;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    
+    .team-bio {
+      color: #b8b8d4;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    
+    .stats-section {
+      margin-top: 3rem;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+    
+    .stat-card {
+      background: rgba(42, 42, 74, 0.8);
+      border-radius: 15px;
+      padding: 2rem;
+      border: 1px solid #3a3a5a;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .stat-card:hover {
+      border-color: #00d4ff;
+      transform: translateY(-2px);
+    }
+    
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #00d4ff;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      color: #b8b8d4;
+      font-size: 1rem;
     }
   </style>
 </head>
@@ -266,12 +181,12 @@
     <nav>
       <a href="./index.html">Home</a>
       <a href="./reviews.html">Reviews</a>
-      <a href="./editors-choice.html" class="active">Editor's Choice</a>
+      <a href="./editors-choice.html">Editor's Choice</a>
       <a href="./polls.html">Polls</a>
       <a href="./viewer-comments.html">Viewer Comments</a>
       <a href="./suggestions.html">Suggestions</a>
       <a href="./contact.html">Contact</a>
-      <a href="./about.html">About</a>
+      <a href="./about.html" class="active">About</a>
     </nav>
     <button class="search-btn" aria-label="Search">
       🔍
@@ -281,153 +196,137 @@
   <main>
     <section class="hero">
       <div class="hero-content">
-        <h2>Editor's Choice</h2>
-        <p>Our carefully curated selection of the finest films that deserve your attention. These are the movies that left us speechless, moved us to tears, or simply reminded us why we fell in love with cinema.</p>
+        <h2>About CineScope</h2>
+        <p>Discover our mission, values, and the passionate team behind honest movie reviews that help you make informed decisions about what to watch.</p>
       </div>
     </section>
 
-    <section>
-      <h3>This Week's Top Picks</h3>
-      
-      <div class="featured-grid">
-        <div class="featured-card">
-          <div class="badge">Editor's Pick</div>
-          <div class="featured-image" style="background-image: url('The-Batman-2022-poster.jpg');"></div>
-          <div class="featured-content">
-            <h3>The Batman (2022)</h3>
-            <div class="rating">★★★★★</div>
-            <div class="meta">Director: Matt Reeves | Cast: Robert Pattinson, Zoë Kravitz, Paul Dano</div>
-            <div class="description">
-              Matt Reeves delivers a masterful reinvention of the Dark Knight that feels both fresh and faithful to the character's essence. Robert Pattinson's brooding performance perfectly captures Batman's psychological complexity, while the film's neo-noir aesthetic creates a Gotham City that feels genuinely dangerous and atmospheric.
-            </div>
-            <div class="editor-quote">
-              "A cinematic masterpiece that redefines what a superhero film can be. Reeves has created something truly special here."
-            </div>
-            <div class="movie-info">
-              <h4 style="font-family: 'Oswald', sans-serif; color: #00d4ff; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Movie Details</h4>
-              <div class="info-grid">
-                <div class="info-item">
-                  <strong>Runtime:</strong> 176 minutes
-                </div>
-                <div class="info-item">
-                  <strong>Release:</strong> March 4, 2022
-                </div>
-                <div class="info-item">
-                  <strong>Budget:</strong> $200 million
-                </div>
-                <div class="info-item">
-                  <strong>Box Office:</strong> $770 million
-                </div>
-              </div>
-            </div>
+    <section class="about-section">
+      <div class="mission-card">
+        <div class="mission-icon">🎬</div>
+        <div class="mission-title">Our Mission</div>
+        <div class="mission-text">
+          At CineScope, we believe that honest, thoughtful film criticism is essential in today's entertainment landscape. Our mission is to provide authentic, unbiased reviews that help movie lovers make informed decisions about what to watch. We're committed to celebrating great cinema while being honest about films that don't meet expectations.
+        </div>
+      </div>
+    </section>
+
+    <section class="values-section">
+      <h3>Why We Review Films Honestly</h3>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">🎯</div>
+          <div class="value-title">Authenticity</div>
+          <div class="value-description">
+            We believe in honest criticism that serves our readers, not studios or marketing campaigns. Every review reflects our genuine opinion, backed by thoughtful analysis and years of cinematic experience.
           </div>
         </div>
-
-        <div class="featured-card">
-          <div class="badge">Staff Favorite</div>
-          <div class="featured-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BNTkyOGVjMGEtNmQzZi00NzFlLTlhOWQtODYyMDc2ZGJmYzFhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg');"></div>
-          <div class="featured-content">
-            <h3>3 Idiots (2009)</h3>
-            <div class="rating">★★★★★</div>
-            <div class="meta">Director: Rajkumar Hirani | Cast: Aamir Khan, R. Madhavan, Sharman Joshi</div>
-            <div class="description">
-              A heartwarming and hilarious exploration of friendship, education, and following your dreams. Aamir Khan's performance is pitch-perfect, and the film's message about the importance of passion over pressure resonates across cultures and generations.
-            </div>
-            <div class="editor-quote">
-              "Still the most relevant campus drama. A film that makes you laugh, cry, and think about what truly matters in life."
-            </div>
-            <div class="movie-info">
-              <h4 style="font-family: 'Oswald', sans-serif; color: #00d4ff; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Movie Details</h4>
-              <div class="info-grid">
-                <div class="info-item">
-                  <strong>Runtime:</strong> 170 minutes
-                </div>
-                <div class="info-item">
-                  <strong>Release:</strong> December 25, 2009
-                </div>
-                <div class="info-item">
-                  <strong>Budget:</strong> ₹35 crore
-                </div>
-                <div class="info-item">
-                  <strong>Box Office:</strong> ₹460 crore
-                </div>
-              </div>
-            </div>
+        
+        <div class="value-card">
+          <div class="value-icon">🌍</div>
+          <div class="value-title">Diversity</div>
+          <div class="value-description">
+            We celebrate cinema from around the world, from Hollywood blockbusters to independent films, from Bollywood epics to international arthouse cinema. Every film deserves a fair chance.
           </div>
         </div>
-
-        <div class="featured-card">
-          <div class="badge">Classic Pick</div>
-          <div class="featured-image" style="background-image: url('Inception-2010-poster.jpg');"></div>
-          <div class="featured-content">
-            <h3>Inception (2010)</h3>
-            <div class="rating">★★★★★</div>
-            <div class="meta">Director: Christopher Nolan | Cast: Leonardo DiCaprio, Joseph Gordon-Levitt, Ellen Page</div>
-            <div class="description">
-              Christopher Nolan's mind-bending thriller remains a masterpiece of complex storytelling and visual innovation. The film's intricate plot, stunning practical effects, and philosophical depth create an experience that rewards multiple viewings and continues to inspire filmmakers today.
-            </div>
-            <div class="editor-quote">
-              "A film that proves blockbuster entertainment can be both intellectually stimulating and visually spectacular."
-            </div>
-            <div class="movie-info">
-              <h4 style="font-family: 'Oswald', sans-serif; color: #00d4ff; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Movie Details</h4>
-              <div class="info-grid">
-                <div class="info-item">
-                  <strong>Runtime:</strong> 148 minutes
-                </div>
-                <div class="info-item">
-                  <strong>Release:</strong> July 16, 2010
-                </div>
-                <div class="info-item">
-                  <strong>Budget:</strong> $160 million
-                </div>
-                <div class="info-item">
-                  <strong>Box Office:</strong> $836 million
-                </div>
-              </div>
-            </div>
+        
+        <div class="value-card">
+          <div class="value-icon">💡</div>
+          <div class="value-title">Education</div>
+          <div class="value-description">
+            Our reviews don't just tell you what to watch—they help you understand why a film works or doesn't work. We believe in making film criticism accessible and enlightening.
+          </div>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">🤝</div>
+          <div class="value-title">Community</div>
+          <div class="value-description">
+            We're building a community of film lovers who value honest discussion. Your opinions matter, and we encourage respectful dialogue about the films we all love.
+          </div>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">⚖️</div>
+          <div class="value-title">Balance</div>
+          <div class="value-description">
+            We celebrate both the technical achievements and storytelling prowess of films. A great movie can be entertaining and artistically significant at the same time.
+          </div>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">🔍</div>
+          <div class="value-title">Transparency</div>
+          <div class="value-description">
+            We're upfront about our review process and criteria. No sponsored content, no hidden agendas—just honest opinions from passionate film critics.
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="mentions-section">
-        <h3>Honorable Mentions</h3>
-        <div class="mentions-grid">
-          <div class="mention-card">
-            <div class="mention-image" style="background-image: url('INTERSTELLAR (2014) poster by Jximedesigns.jpg');"></div>
-            <div class="mention-title">Interstellar</div>
-            <div class="mention-rating">★★★★★</div>
-            <div class="mention-genre">Sci-Fi Drama</div>
+    <section class="team-section">
+      <h3>Meet Our Team</h3>
+      <div class="team-grid">
+        <div class="team-card">
+          <img src="pexels-tima-miroshnichenko-7991158.jpg" alt="Sarah Johnson" class="team-avatar" />
+          <div class="team-name">Sarah Johnson</div>
+          <div class="team-role">Senior Film Critic</div>
+          <div class="team-bio">
+            With over 15 years of experience in film criticism, Sarah specializes in independent cinema and international films. Her reviews are known for their depth and cultural sensitivity.
           </div>
-          
-          <div class="mention-card">
-            <div class="mention-image" style="background-image: url('Oppenheimer.jpeg');"></div>
-            <div class="mention-title">Oppenheimer</div>
-            <div class="mention-rating">★★★★★</div>
-            <div class="mention-genre">Historical Drama</div>
+        </div>
+        
+        <div class="team-card">
+          <img src="pexels-tima-miroshnichenko-7991380.jpg" alt="Michael Chen" class="team-avatar" />
+          <div class="team-name">Michael Chen</div>
+          <div class="team-role">Action & Sci-Fi Specialist</div>
+          <div class="team-bio">
+            Michael brings his passion for blockbuster cinema and technical expertise to our team. He has a keen eye for visual effects and action choreography.
           </div>
-          
-          <div class="mention-card">
-            <div class="mention-image" style="background-image: url('La-La-Land-2016-poster.jpg');"></div>
-            <div class="mention-title">La La Land</div>
-            <div class="mention-rating">★★★★★</div>
-            <div class="mention-genre">Musical Romance</div>
+        </div>
+        
+        <div class="team-card">
+          <img src="pexels-tima-miroshnichenko-7991486.jpg" alt="Emma Rodriguez" class="team-avatar" />
+          <div class="team-name">Emma Rodriguez</div>
+          <div class="team-role">Comedy & Romance Expert</div>
+          <div class="team-bio">
+            Emma has a gift for finding the heart in every film. Her reviews focus on emotional storytelling and the human connections that make cinema special.
           </div>
-          
-          <div class="mention-card">
-            <div class="mention-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BODI0YzFhNDItYjVhYy00OTU3LTg0YzctNDM2N2E5NzA5Y2JkXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg');"></div>
-            <div class="mention-title">RRR</div>
-            <div class="mention-rating">★★★★☆</div>
-            <div class="mention-genre">Action Drama</div>
+        </div>
+        
+        <div class="team-card">
+          <img src="pexels-tima-miroshnichenko-7991576.jpg" alt="Rajesh Kumar" class="team-avatar" />
+          <div class="team-name">Rajesh Kumar</div>
+          <div class="team-role">Bollywood Editor</div>
+          <div class="team-bio">
+            Rajesh brings deep knowledge of Indian cinema to our team. His reviews bridge cultural gaps and introduce global audiences to the richness of Bollywood.
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="editors-note">
-        <h4>From Our Editors</h4>
-        <p>
-          Every week, our team of passionate film critics comes together to discuss the films that have moved us, challenged us, and reminded us why we love cinema. These selections represent not just quality filmmaking, but stories that have the power to change perspectives, evoke emotions, and create lasting memories. We believe in the transformative power of great cinema, and these films exemplify that belief.
-        </p>
+    <section class="stats-section">
+      <h3>Our Impact</h3>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number">500+</span>
+          <span class="stat-label">Movies Reviewed</span>
+        </div>
+        
+        <div class="stat-card">
+          <span class="stat-number">50K+</span>
+          <span class="stat-label">Monthly Readers</span>
+        </div>
+        
+        <div class="stat-card">
+          <span class="stat-number">4.8</span>
+          <span class="stat-label">Reader Rating</span>
+        </div>
+        
+        <div class="stat-card">
+          <span class="stat-number">25+</span>
+          <span class="stat-label">Countries Reached</span>
+        </div>
       </div>
     </section>
   </main>
@@ -447,7 +346,7 @@
       <p class="copyright"> 2025 CineScope – Honest Movie Reviews. All rights reserved.</p>
     </div>
   </footer>
-  
+
   <!-- Search Modal -->
   <div id="searchModal" class="search-modal" style="display: none;">
     <div class="search-modal-content">
@@ -730,13 +629,13 @@
         
         // Determine which elements to search based on content type filter
         if (contentType === 'reviews') {
-          elements = document.querySelectorAll('.featured-card, .mention-card');
+          elements = document.querySelectorAll('.mission-card, .value-card');
         } else if (contentType === 'comments') {
-          elements = document.querySelectorAll('.editor-quote, .editors-note');
+          elements = document.querySelectorAll('.mission-text, .value-description, .team-bio');
         } else if (contentType === 'comparison') {
-          elements = document.querySelectorAll('.movie-info');
+          elements = document.querySelectorAll('.stat-card, .stats-section');
         } else {
-          elements = document.querySelectorAll('.featured-card, .mention-card, .editor-quote, .editors-note, h3, h4, p');
+          elements = document.querySelectorAll('.mission-card, .value-card, .team-card, .stat-card, h3, h4, p');
         }
         
         let found = false;
@@ -753,14 +652,14 @@
             }
           }
           
-          // Genre filter
+          // Genre filter (for about page, we'll search for movie-related content)
           if (genre && matches) {
             const text = element.textContent.toLowerCase();
             const genreMap = {
               'sci-fi': ['sci-fi', 'science fiction', 'space', 'future'],
-              'drama': ['drama', 'dramatic'],
+              'drama': ['drama', 'dramatic', 'emotion'],
               'historical': ['historical', 'history', 'biography'],
-              'superhero': ['superhero', 'batman', 'superman'],
+              'superhero': ['superhero', 'batman', 'superman', 'marvel'],
               'action': ['action', 'thriller', 'intense'],
               'thriller': ['thriller', 'suspense', 'mystery']
             };
@@ -772,22 +671,26 @@
             }
           }
           
-          // Rating filter
+          // Rating filter (for about page, we'll use stats as proxy)
           if (rating && matches) {
-            const ratingElements = element.querySelectorAll('.rating, .mention-rating');
-            let hasRating = false;
+            const statElements = element.querySelectorAll('.stat-number');
+            let hasHighRating = false;
             
-            ratingElements.forEach(ratingEl => {
-              const ratingText = ratingEl.textContent;
-              const stars = (ratingText.match(/★/g) || []).length;
-              const numRating = parseFloat(ratingText.match(/\d+\.?\d*/));
+            statElements.forEach(statEl => {
+              const statText = statEl.textContent;
+              const numRating = parseFloat(statText);
               
-              if (stars >= parseInt(rating) || numRating >= parseInt(rating)) {
-                hasRating = true;
+              if (numRating >= parseInt(rating)) {
+                hasHighRating = true;
               }
             });
             
-            if (!hasRating) {
+            // If no stats found, allow general content to pass through
+            if (statElements.length === 0) {
+              hasHighRating = true;
+            }
+            
+            if (!hasHighRating) {
               matches = false;
             }
           }

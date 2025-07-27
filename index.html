@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CineScope</title>
+  <title>CineScope – Honest Movie Reviews</title>
   <link rel="stylesheet" href="home.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&family=Anton&family=Oswald:wght@400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
 </head>
 <body>
   <header>
@@ -19,9 +19,11 @@
       <a href="./index.html" class="active">Home</a>
       <a href="./reviews.html">Reviews</a>
       <a href="./editors-choice.html">Editor's Choice</a>
-      <a href="#">Movie Comparisons</a>
-      <a href="#">Viewer Comments</a>
-      <a href="#">Contact Us</a>
+      <a href="./polls.html">Polls</a>
+      <a href="./viewer-comments.html">Viewer Comments</a>
+      <a href="./suggestions.html">Suggestions</a>
+      <a href="./contact.html">Contact</a>
+      <a href="./about.html">About</a>
     </nav>
     <button class="search-btn" aria-label="Search">
       🔍
@@ -32,37 +34,41 @@
     <section class="hero">
       <div class="hero-content">
         <h2>Welcome to CineScope</h2>
-        <p>Your ultimate destination for insightful movie reviews, comparisons, and community discussions.</p>
+        <p>Your ultimate destination for honest, insightful movie reviews. We bring you authentic perspectives on the latest releases and timeless classics from Bollywood and beyond.</p>
         <a href="./reviews.html" class="explore-btn">Explore Reviews</a>
       </div>
     </section>
 
     <section class="reviews-section">
-      <h3>Latest Reviews</h3>
+      <h3>Featured Reviews</h3>
       <div class="reviews-grid">
         <article class="review-card">
-          <div class="review-image" style="background-image: url('pexels-cottonbro-3945317.jpg');"></div>
+          <div class="review-image" style="background-image: url('INTERSTELLAR (2014) poster by Jximedesigns.jpg');">
+            <div class="fallback-text">Interstellar</div>
+          </div>
           <div class="review-content">
-            <h4>The Stellar Odyssey</h4>
-            <p>A breathtaking space opera that redefines the genre with stunning visuals and compelling narrative.</p>
+            <h4>Interstellar (2014)</h4>
+            <p>Christopher Nolan's ambitious space epic transcends the boundaries of science fiction. With stunning visuals, a haunting score by Hans Zimmer, and emotional depth that matches its cosmic scale, Interstellar is a masterpiece that explores love, sacrifice, and humanity's place in the universe.</p>
             <div class="review-meta">
-              <span class="rating">★★★★☆</span>
-              <span class="genre">Sci-Fi</span>
+              <span class="rating">★★★★★</span>
+              <span class="genre">Sci-Fi Drama</span>
             </div>
-            <button class="read-more-btn">Read More</button>
+            <button class="read-more-btn">Read Full Review</button>
           </div>
         </article>
 
         <article class="review-card">
-          <div class="review-image" style="background-image: url('pexels-cottonbro-3945319.jpg');"></div>
+          <div class="review-image" style="background-image: url('Oppenheimer.jpeg');">
+            <div class="fallback-text">Oppenheimer</div>
+          </div>
           <div class="review-content">
-            <h4>Echoes of the Past</h4>
-            <p>A gripping historical drama exploring human nature with powerful performances and haunting score.</p>
+            <h4>Oppenheimer (2023)</h4>
+            <p>Nolan's biographical thriller about the father of the atomic bomb is a cinematic tour de force. Cillian Murphy delivers a career-defining performance, while the film's technical achievements in sound design and visual storytelling create an immersive experience that lingers long after the credits roll.</p>
             <div class="review-meta">
               <span class="rating">★★★★★</span>
               <span class="genre">Historical Drama</span>
             </div>
-            <button class="read-more-btn">Read More</button>
+            <button class="read-more-btn">Read Full Review</button>
           </div>
         </article>
       </div>
@@ -78,20 +84,37 @@
               <th>Director</th>
               <th>Genre</th>
               <th>Rating</th>
+              <th>Box Office</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Avengers: Endgame</td>
-              <td>Russo Brothers</td>
-              <td>Sci-Fi</td>
-              <td><span class="rating-badge">4.5/5</span></td>
-            </tr>
-            <tr>
               <td>Oppenheimer</td>
               <td>Christopher Nolan</td>
               <td>Historical Drama</td>
-              <td><span class="rating-badge">4.0/5</span></td>
+              <td><span class="rating-badge">4.8/5</span></td>
+              <td>$950M</td>
+            </tr>
+            <tr>
+              <td>The Batman</td>
+              <td>Matt Reeves</td>
+              <td>Superhero</td>
+              <td><span class="rating-badge">4.2/5</span></td>
+              <td>$770M</td>
+            </tr>
+            <tr>
+              <td>Dune: Part Two</td>
+              <td>Denis Villeneuve</td>
+              <td>Sci-Fi</td>
+              <td><span class="rating-badge">4.5/5</span></td>
+              <td>$700M</td>
+            </tr>
+            <tr>
+              <td>Animal</td>
+              <td>Sandeep Reddy Vanga</td>
+              <td>Action Drama</td>
+              <td><span class="rating-badge">3.8/5</span></td>
+              <td>$120M</td>
             </tr>
           </tbody>
         </table>
@@ -106,14 +129,21 @@
           <img src="pexels-tima-miroshnichenko-7991158.jpg" alt="Liam Carter" />
           <div class="comment-content">
             <p class="name">Liam Carter <span>2 weeks ago</span></p>
-            <p>The Stellar Odyssey was an incredible journey! The visuals were stunning, and the story kept me engaged from start to finish. Highly recommend!</p>
+            <p>Interstellar was an incredible journey! The visuals were stunning, and the story kept me engaged from start to finish. Nolan really knows how to make you think while entertaining you. Highly recommend!</p>
           </div>
         </div>
         <div class="comment">
           <img src="pexels-tima-miroshnichenko-7991380.jpg" alt="Sophia Bennett" />
           <div class="comment-content">
             <p class="name">Sophia Bennett <span>3 weeks ago</span></p>
-            <p>Echoes of the Past is a powerful and moving film. The performances were outstanding, and the historical setting was beautifully realized. A must-see for any history buff.</p>
+            <p>Oppenheimer is a powerful and moving film. The performances were outstanding, especially Cillian Murphy's portrayal. The historical setting was beautifully realized. A must-see for any history buff.</p>
+          </div>
+        </div>
+        <div class="comment">
+          <img src="pexels-tima-miroshnichenko-7991576.jpg" alt="Raj Patel" />
+          <div class="comment-content">
+            <p class="name">Raj Patel <span>1 week ago</span></p>
+            <p>Finally watched Animal and I have mixed feelings. The action sequences were incredible, but the storyline was a bit too intense for my taste. Ranbir Kapoor's performance was outstanding though!</p>
           </div>
         </div>
       </div>
@@ -121,30 +151,481 @@
 
     <section class="contact-section">
       <h3>Contact Us</h3>
-      <p>We value your feedback and suggestions. Please feel free to reach out to us with any comments or questions.</p>
-      <button class="contact-btn">Contact Us</button>
+      <p>We value your feedback and suggestions. Please feel free to reach out to us with any comments or questions about our reviews.</p>
+      <a href="./contact.html" class="contact-btn">Contact Us</a>
     </section>
 
     <section class="about-section">
-      <h3>About Us</h3>
-      <p>CineScope is dedicated to providing insightful and comprehensive movie reviews. Our team of passionate film critics offers in-depth analysis and thoughtful commentary on the latest releases and classic films.</p>
-      <p class="learn-more">Learn more</p>
+      <h3>About CineScope</h3>
+      <p>CineScope is dedicated to providing honest and comprehensive movie reviews. Our team of passionate film critics offers in-depth analysis and thoughtful commentary on the latest releases and classic films from around the world.</p>
+      <p>We believe in honest criticism that helps you make informed decisions about what to watch. No sponsored content, no biased reviews – just authentic perspectives from movie lovers.</p>
+      <a href="./about.html" class="learn-more">Learn more about us</a>
     </section>
   </main>
 
   <footer>
     <div class="footer-content">
       <nav class="footer-nav">
-        <a href="#">Home</a>
-        <a href="#">Reviews</a>
-        <a href="#">Editor's Choice</a>
-        <a href="#">Movie Comparisons</a>
-        <a href="#">Viewer Comments</a>
-        <a href="#">Contact Us</a>
-        <a href="#">About Us</a>
+        <a href="./index.html">Home</a>
+        <a href="./reviews.html">Reviews</a>
+        <a href="./editors-choice.html">Editor's Choice</a>
+        <a href="./polls.html">Polls</a>
+        <a href="./viewer-comments.html">Viewer Comments</a>
+        <a href="./suggestions.html">Suggestions</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./about.html">About Us</a>
       </nav>
-              <p class="copyright">© 2025 CineScope. All rights reserved.</p>
+      <p class="copyright">© 2025 CineScope – Honest Movie Reviews. All rights reserved.</p>
     </div>
   </footer>
+  <!-- Search Modal -->
+  <div id="searchModal" class="search-modal" style="display: none;">
+    <div class="search-modal-content">
+      <div class="search-modal-header">
+        <h3>🔍 Advanced Search</h3>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="search-modal-body">
+        <div class="search-input-group">
+          <input type="text" id="searchInput" placeholder="Enter movie title, director, or keywords..." />
+        </div>
+        
+        <div class="search-filters">
+          <div class="filter-group">
+            <label>Genre:</label>
+            <select id="genreFilter">
+              <option value="">All Genres</option>
+              <option value="sci-fi">Sci-Fi</option>
+              <option value="drama">Drama</option>
+              <option value="historical">Historical</option>
+              <option value="superhero">Superhero</option>
+              <option value="action">Action</option>
+              <option value="thriller">Thriller</option>
+            </select>
+          </div>
+          
+          <div class="filter-group">
+            <label>Rating:</label>
+            <select id="ratingFilter">
+              <option value="">All Ratings</option>
+              <option value="5">★★★★★ (5 stars)</option>
+              <option value="4">★★★★☆ (4+ stars)</option>
+              <option value="3">★★★☆☆ (3+ stars)</option>
+            </select>
+          </div>
+          
+          <div class="filter-group">
+            <label>Content Type:</label>
+            <select id="contentFilter">
+              <option value="">All Content</option>
+              <option value="reviews">Movie Reviews</option>
+              <option value="comments">User Comments</option>
+              <option value="comparison">Movie Comparisons</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="search-actions">
+          <button id="searchBtn" class="search-action-btn primary">Search</button>
+          <button id="clearBtn" class="search-action-btn secondary">Clear Filters</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .search-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 2000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .search-modal-content {
+      background: white;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+    
+    .search-modal-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .search-modal-header h3 {
+      margin: 0;
+      font-size: 1.4em;
+    }
+    
+    .close-modal {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+    
+    .close-modal:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .search-modal-body {
+      padding: 25px;
+    }
+    
+    .search-input-group {
+      margin-bottom: 25px;
+    }
+    
+    #searchInput {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e1e5e9;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+      box-sizing: border-box;
+    }
+    
+    #searchInput:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+    
+    .search-filters {
+      margin-bottom: 25px;
+    }
+    
+    .filter-group {
+      margin-bottom: 15px;
+    }
+    
+    .filter-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+      color: #333;
+    }
+    
+    .filter-group select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 2px solid #e1e5e9;
+      border-radius: 6px;
+      font-size: 14px;
+      background: white;
+      transition: border-color 0.3s;
+      box-sizing: border-box;
+    }
+    
+    .filter-group select:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+    
+    .search-actions {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .search-action-btn {
+      flex: 1;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .search-action-btn.primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    
+    .search-action-btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+    
+    .search-action-btn.secondary {
+      background: #f8f9fa;
+      color: #6c757d;
+      border: 2px solid #e9ecef;
+    }
+    
+    .search-action-btn.secondary:hover {
+      background: #e9ecef;
+    }
+  </style>
+
+  <script>
+    // Enhanced Search functionality with filters
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchBtn = document.querySelector('.search-btn');
+      const searchModal = document.getElementById('searchModal');
+      const closeModal = document.querySelector('.close-modal');
+      const searchInput = document.getElementById('searchInput');
+      const genreFilter = document.getElementById('genreFilter');
+      const ratingFilter = document.getElementById('ratingFilter');
+      const contentFilter = document.getElementById('contentFilter');
+      const searchActionBtn = document.getElementById('searchBtn');
+      const clearBtn = document.getElementById('clearBtn');
+      
+      // Open search modal
+      searchBtn.addEventListener('click', function() {
+        searchModal.style.display = 'flex';
+        searchInput.focus();
+      });
+      
+      // Close modal
+      closeModal.addEventListener('click', closeSearchModal);
+      searchModal.addEventListener('click', function(e) {
+        if (e.target === searchModal) {
+          closeSearchModal();
+        }
+      });
+      
+      // Close modal with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && searchModal.style.display === 'flex') {
+          closeSearchModal();
+        }
+      });
+      
+      // Search on Enter key
+      searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          performSearch();
+        }
+      });
+      
+      // Search button click
+      searchActionBtn.addEventListener('click', performSearch);
+      
+      // Clear filters
+      clearBtn.addEventListener('click', function() {
+        searchInput.value = '';
+        genreFilter.value = '';
+        ratingFilter.value = '';
+        contentFilter.value = '';
+        removeHighlights();
+      });
+      
+      function closeSearchModal() {
+        searchModal.style.display = 'none';
+      }
+      
+      function performSearch() {
+        const query = searchInput.value.trim();
+        const genre = genreFilter.value;
+        const rating = ratingFilter.value;
+        const contentType = contentFilter.value;
+        
+        if (!query && !genre && !rating && !contentType) {
+          alert('Please enter a search term or select at least one filter.');
+          return;
+        }
+        
+        closeSearchModal();
+        searchWithFilters(query, genre, rating, contentType);
+      }
+      
+      function searchWithFilters(query, genre, rating, contentType) {
+        removeHighlights();
+        
+        let elements = [];
+        
+        // Determine which elements to search based on content type filter
+        if (contentType === 'reviews') {
+          elements = document.querySelectorAll('.review-card');
+        } else if (contentType === 'comments') {
+          elements = document.querySelectorAll('.comment');
+        } else if (contentType === 'comparison') {
+          elements = document.querySelectorAll('table tr');
+        } else {
+          elements = document.querySelectorAll('.review-card, .comment, table tr, h4, p');
+        }
+        
+        let found = false;
+        let matchCount = 0;
+        
+        elements.forEach(element => {
+          let matches = true;
+          
+          // Text search
+          if (query) {
+            const text = element.textContent.toLowerCase();
+            if (!text.includes(query.toLowerCase())) {
+              matches = false;
+            }
+          }
+          
+          // Genre filter
+          if (genre && matches) {
+            const text = element.textContent.toLowerCase();
+            const genreMap = {
+              'sci-fi': ['sci-fi', 'science fiction', 'space', 'future'],
+              'drama': ['drama', 'dramatic'],
+              'historical': ['historical', 'history', 'biography'],
+              'superhero': ['superhero', 'batman', 'superman'],
+              'action': ['action', 'thriller', 'intense'],
+              'thriller': ['thriller', 'suspense', 'mystery']
+            };
+            
+            const genreKeywords = genreMap[genre] || [genre];
+            const hasGenre = genreKeywords.some(keyword => text.includes(keyword));
+            if (!hasGenre) {
+              matches = false;
+            }
+          }
+          
+          // Rating filter
+          if (rating && matches) {
+            const ratingElements = element.querySelectorAll('.rating, .rating-badge');
+            let hasRating = false;
+            
+            ratingElements.forEach(ratingEl => {
+              const ratingText = ratingEl.textContent;
+              const stars = (ratingText.match(/★/g) || []).length;
+              const numRating = parseFloat(ratingText.match(/\d+\.?\d*/));
+              
+              if (stars >= parseInt(rating) || numRating >= parseInt(rating)) {
+                hasRating = true;
+              }
+            });
+            
+            if (!hasRating) {
+              matches = false;
+            }
+          }
+          
+          if (matches) {
+            if (query) {
+              highlightText(element, query);
+            } else {
+              element.style.border = '2px solid #667eea';
+              element.style.borderRadius = '8px';
+              element.classList.add('search-highlighted');
+            }
+            
+            if (!found) {
+              element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              found = true;
+            }
+            matchCount++;
+          }
+        });
+        
+        if (!found) {
+          alert('No results found matching your search criteria. Try adjusting your filters or search terms.');
+        } else {
+          const filterText = [];
+          if (query) filterText.push(`"${query}"`);
+          if (genre) filterText.push(`Genre: ${genre}`);
+          if (rating) filterText.push(`Rating: ${rating}+ stars`);
+          if (contentType) filterText.push(`Type: ${contentType}`);
+          
+          showSearchNotification(`Found ${matchCount} result(s) for ${filterText.join(', ')}`);
+        }
+      }
+      
+      function highlightText(element, searchTerm) {
+        const regex = new RegExp(`(${searchTerm})`, 'gi');
+        const walker = document.createTreeWalker(
+          element,
+          NodeFilter.SHOW_TEXT,
+          null,
+          false
+        );
+        
+        const textNodes = [];
+        let node;
+        while (node = walker.nextNode()) {
+          textNodes.push(node);
+        }
+        
+        textNodes.forEach(textNode => {
+          const parent = textNode.parentNode;
+          if (parent.tagName !== 'MARK') {
+            const text = textNode.textContent;
+            if (regex.test(text)) {
+              const highlightedHTML = text.replace(regex, '<mark style="background-color: yellow; padding: 2px;">$1</mark>');
+              const wrapper = document.createElement('span');
+              wrapper.innerHTML = highlightedHTML;
+              parent.replaceChild(wrapper, textNode);
+            }
+          }
+        });
+        
+        element.classList.add('search-highlighted');
+      }
+      
+      function removeHighlights() {
+        const highlighted = document.querySelectorAll('.search-highlighted');
+        highlighted.forEach(element => {
+          // Remove text highlights
+          const marks = element.querySelectorAll('mark');
+          marks.forEach(mark => {
+            mark.outerHTML = mark.innerHTML;
+          });
+          
+          // Remove border highlights
+          element.style.border = '';
+          element.style.borderRadius = '';
+          element.classList.remove('search-highlighted');
+        });
+      }
+      
+      function showSearchNotification(message) {
+        const notification = document.createElement('div');
+        notification.textContent = message;
+        notification.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 12px 20px;
+          border-radius: 8px;
+          z-index: 1000;
+          font-family: inherit;
+          box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+          max-width: 300px;
+          font-size: 14px;
+        `;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+          notification.style.opacity = '0';
+          notification.style.transform = 'translateY(-20px)';
+          setTimeout(() => notification.remove(), 300);
+        }, 4000);
+      }
+    });
+  </script>
 </body>
 </html>

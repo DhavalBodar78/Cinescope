@@ -3,254 +3,218 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Editor's Choice - CineScope</title>
+  <title>Movie Polls - CineScope</title>
   <link rel="stylesheet" href="home.css" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&family=Anton&family=Oswald:wght@400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
   <style>
-    .featured-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 2.5rem;
-      margin-bottom: 4rem;
-      animation: fadeInUp 1s ease-out 0.2s both;
-    }
-    
-    .featured-card {
+    .current-poll {
       background: rgba(42, 42, 42, 0.9);
       border-radius: 20px;
-      overflow: hidden;
+      padding: 2.5rem;
       border: 1px solid #3a3a3a;
-      transition: all 0.4s ease;
+      margin-bottom: 3rem;
+      animation: fadeInUp 1s ease-out;
+    }
+    
+    .poll-question {
+      font-family: 'Anton', sans-serif;
+      font-size: 2rem;
+      color: #ffffff;
+      margin-bottom: 2rem;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+    
+    .poll-options {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .poll-option {
+      background: rgba(26, 26, 26, 0.8);
+      border-radius: 15px;
+      padding: 1.5rem;
+      border: 1px solid #3a3a3a;
+      transition: all 0.3s ease;
+    }
+    
+    .poll-option:hover {
+      border-color: #00d4ff;
+      transform: translateX(5px);
+    }
+    
+    .option-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    
+    .option-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.2rem;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .option-percentage {
+      font-weight: 600;
+      color: #00d4ff;
+      font-size: 1.1rem;
+    }
+    
+    .bar-container {
+      width: 100%;
+      height: 30px;
+      background: rgba(26, 26, 26, 0.8);
+      border-radius: 15px;
+      overflow: hidden;
       position: relative;
     }
     
-    .featured-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
-      border-color: #00d4ff;
+    .bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #00d4ff, #0099cc);
+      border-radius: 15px;
+      transition: width 1s ease-in-out;
+      position: relative;
     }
     
-    .featured-card::before {
+    .bar-fill::after {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), transparent);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: 1;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      animation: shimmer 2s infinite;
     }
     
-    .featured-card:hover::before {
-      opacity: 1;
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
     }
     
-    .badge {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: linear-gradient(135deg, #00d4ff, #0099cc);
-      color: #121212;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-weight: 600;
-      font-size: 0.8rem;
-      font-family: 'Oswald', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      z-index: 3;
-    }
-    
-    .featured-image {
-      height: 300px;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      transition: all 0.3s ease;
-    }
-    
-    .featured-card:hover .featured-image {
-      transform: scale(1.05);
-    }
-    
-    .featured-content {
-      padding: 2rem;
-      position: relative;
-      z-index: 2;
-    }
-    
-    .featured-content h3 {
-      font-family: 'Anton', sans-serif;
-      font-size: 1.8rem;
-      font-weight: 400;
-      color: #ffffff;
-      margin-bottom: 1rem;
-      letter-spacing: 1px;
-    }
-    
-    .featured-content .rating {
-      color: #ffd700;
-      font-weight: 600;
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-    }
-    
-    .featured-content .meta {
-      color: #d0d0d0;
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
-    }
-    
-    .featured-content .description {
-      color: #d0d0d0;
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-      font-size: 1rem;
-    }
-    
-    .editor-quote {
-      background: rgba(0, 212, 255, 0.1);
-      border-left: 4px solid #00d4ff;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-      font-style: italic;
-      color: #e0e0e0;
-      font-size: 1.1rem;
-    }
-    
-    .movie-info {
-      background: rgba(42, 42, 42, 0.8);
-      border-radius: 15px;
-      padding: 1.5rem;
-      margin-top: 1.5rem;
-      border: 1px solid #3a3a3a;
-      transition: all 0.3s ease;
-    }
-    
-    .movie-info:hover {
-      border-color: #00d4ff;
-      transform: translateY(-2px);
-    }
-    
-    .info-grid {
+    .poll-stats {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 1rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid #3a3a3a;
     }
     
-    .info-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+    .stat-item {
+      text-align: center;
       color: #d0d0d0;
     }
     
-    .info-item strong {
+    .stat-number {
+      font-family: 'Anton', sans-serif;
+      font-size: 2rem;
       color: #00d4ff;
+      display: block;
+    }
+    
+    .stat-label {
       font-family: 'Oswald', sans-serif;
       text-transform: uppercase;
       letter-spacing: 1px;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
+      color: #b8b8d4;
     }
     
-    .mentions-section {
+    .previous-polls {
       margin-top: 4rem;
     }
     
-    .mentions-grid {
+    .poll-cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
-      animation: fadeInUp 1s ease-out 0.4s both;
+      animation: fadeInUp 1s ease-out 0.2s both;
     }
     
-    .mention-card {
-      background: rgba(42, 42, 42, 0.8);
-      border-radius: 15px;
-      padding: 1.5rem;
-      border: 1px solid #3a3a3a;
-      transition: all 0.3s ease;
-      text-align: center;
-    }
-    
-    .mention-card:hover {
-      border-color: #00d4ff;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(0, 212, 255, 0.1);
-    }
-    
-    .mention-image {
-      width: 80px;
-      height: 120px;
-      background-size: cover;
-      background-position: center;
-      border-radius: 8px;
-      margin: 0 auto 1rem;
-      transition: all 0.3s ease;
-    }
-    
-    .mention-card:hover .mention-image {
-      transform: scale(1.05);
-    }
-    
-    .mention-title {
-      font-family: 'Anton', sans-serif;
-      font-size: 1.2rem;
-      color: #ffffff;
-      margin-bottom: 0.5rem;
-      letter-spacing: 1px;
-    }
-    
-    .mention-rating {
-      color: #ffd700;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-    
-    .mention-genre {
-      color: #b8b8d4;
-      font-size: 0.9rem;
-      font-family: 'Oswald', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    
-    .editors-note {
+    .poll-card {
       background: rgba(42, 42, 42, 0.9);
-      border-radius: 20px;
-      padding: 2.5rem;
+      border-radius: 15px;
+      padding: 2rem;
       border: 1px solid #3a3a3a;
-      margin-top: 3rem;
-      animation: fadeInUp 1s ease-out 0.6s both;
+      transition: all 0.3s ease;
     }
     
-    .editors-note h4 {
+    .poll-card:hover {
+      border-color: #00d4ff;
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 212, 255, 0.1);
+    }
+    
+    .poll-card h4 {
       font-family: 'Anton', sans-serif;
-      font-size: 1.8rem;
-      color: #00d4ff;
-      margin-bottom: 1.5rem;
-      text-align: center;
-      letter-spacing: 2px;
+      font-size: 1.3rem;
+      color: #ffffff;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
     }
     
-    .editors-note p {
+    .poll-results {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .result-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #3a3a3a;
+    }
+    
+    .result-item:last-child {
+      border-bottom: none;
+    }
+    
+    .result-movie {
       color: #d0d0d0;
-      line-height: 1.8;
-      font-size: 1.1rem;
+      font-weight: 500;
+    }
+    
+    .result-votes {
+      color: #00d4ff;
+      font-weight: 600;
+    }
+    
+    .upcoming-polls {
+      margin-top: 4rem;
       text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
+    }
+    
+    .upcoming-message {
+      background: rgba(42, 42, 42, 0.9);
+      border-radius: 15px;
+      padding: 2rem;
+      border: 1px solid #3a3a3a;
+      color: #d0d0d0;
+      font-size: 1.1rem;
+      line-height: 1.6;
     }
     
     @media (max-width: 768px) {
-      .featured-grid {
+      .poll-question {
+        font-size: 1.5rem;
+      }
+      
+      .poll-cards {
         grid-template-columns: 1fr;
       }
       
-      .mentions-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      .poll-stats {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
@@ -266,8 +230,8 @@
     <nav>
       <a href="./index.html">Home</a>
       <a href="./reviews.html">Reviews</a>
-      <a href="./editors-choice.html" class="active">Editor's Choice</a>
-      <a href="./polls.html">Polls</a>
+      <a href="./editors-choice.html">Editor's Choice</a>
+      <a href="./polls.html" class="active">Polls</a>
       <a href="./viewer-comments.html">Viewer Comments</a>
       <a href="./suggestions.html">Suggestions</a>
       <a href="./contact.html">Contact</a>
@@ -281,153 +245,211 @@
   <main>
     <section class="hero">
       <div class="hero-content">
-        <h2>Editor's Choice</h2>
-        <p>Our carefully curated selection of the finest films that deserve your attention. These are the movies that left us speechless, moved us to tears, or simply reminded us why we fell in love with cinema.</p>
+        <h2>Movie Polls</h2>
+        <p>Discover what our community thinks about the latest releases and classic films. Vote in our polls and see how your opinions compare to other movie lovers.</p>
       </div>
     </section>
 
     <section>
-      <h3>This Week's Top Picks</h3>
+      <h3>Current Poll</h3>
       
-      <div class="featured-grid">
-        <div class="featured-card">
-          <div class="badge">Editor's Pick</div>
-          <div class="featured-image" style="background-image: url('The-Batman-2022-poster.jpg');"></div>
-          <div class="featured-content">
-            <h3>The Batman (2022)</h3>
-            <div class="rating">★★★★★</div>
-            <div class="meta">Director: Matt Reeves | Cast: Robert Pattinson, Zoë Kravitz, Paul Dano</div>
-            <div class="description">
-              Matt Reeves delivers a masterful reinvention of the Dark Knight that feels both fresh and faithful to the character's essence. Robert Pattinson's brooding performance perfectly captures Batman's psychological complexity, while the film's neo-noir aesthetic creates a Gotham City that feels genuinely dangerous and atmospheric.
+      <div class="current-poll">
+        <h4 class="poll-question">What's the Best Action Movie of 2024?</h4>
+        
+        <div class="poll-options">
+          <div class="poll-option">
+            <div class="option-header">
+              <span class="option-title">Dune: Part Two</span>
+              <span class="option-percentage">45%</span>
             </div>
-            <div class="editor-quote">
-              "A cinematic masterpiece that redefines what a superhero film can be. Reeves has created something truly special here."
+            <div class="bar-container">
+              <div class="bar-fill" style="width: 45%;"></div>
             </div>
-            <div class="movie-info">
-              <h4 style="font-family: 'Oswald', sans-serif; color: #00d4ff; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Movie Details</h4>
-              <div class="info-grid">
-                <div class="info-item">
-                  <strong>Runtime:</strong> 176 minutes
-                </div>
-                <div class="info-item">
-                  <strong>Release:</strong> March 4, 2022
-                </div>
-                <div class="info-item">
-                  <strong>Budget:</strong> $200 million
-                </div>
-                <div class="info-item">
-                  <strong>Box Office:</strong> $770 million
-                </div>
-              </div>
+          </div>
+          
+          <div class="poll-option">
+            <div class="option-header">
+              <span class="option-title">Godzilla x Kong: The New Empire</span>
+              <span class="option-percentage">30%</span>
+            </div>
+            <div class="bar-container">
+              <div class="bar-fill" style="width: 30%;"></div>
+            </div>
+          </div>
+          
+          <div class="poll-option">
+            <div class="option-header">
+              <span class="option-title">Captain America: Civil War</span>
+              <span class="option-percentage">25%</span>
+            </div>
+            <div class="bar-container">
+              <div class="bar-fill" style="width: 25%;"></div>
             </div>
           </div>
         </div>
+        
+        <div class="poll-stats">
+          <div class="stat-item">
+            <span class="stat-number">2,847</span>
+            <span class="stat-label">Total Votes</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">3</span>
+            <span class="stat-label">Options</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">7 Days</span>
+            <span class="stat-label">Duration</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">Active</span>
+            <span class="stat-label">Status</span>
+          </div>
+        </div>
+      </div>
 
-        <div class="featured-card">
-          <div class="badge">Staff Favorite</div>
-          <div class="featured-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BNTkyOGVjMGEtNmQzZi00NzFlLTlhOWQtODYyMDc2ZGJmYzFhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg');"></div>
-          <div class="featured-content">
-            <h3>3 Idiots (2009)</h3>
-            <div class="rating">★★★★★</div>
-            <div class="meta">Director: Rajkumar Hirani | Cast: Aamir Khan, R. Madhavan, Sharman Joshi</div>
-            <div class="description">
-              A heartwarming and hilarious exploration of friendship, education, and following your dreams. Aamir Khan's performance is pitch-perfect, and the film's message about the importance of passion over pressure resonates across cultures and generations.
-            </div>
-            <div class="editor-quote">
-              "Still the most relevant campus drama. A film that makes you laugh, cry, and think about what truly matters in life."
-            </div>
-            <div class="movie-info">
-              <h4 style="font-family: 'Oswald', sans-serif; color: #00d4ff; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Movie Details</h4>
-              <div class="info-grid">
-                <div class="info-item">
-                  <strong>Runtime:</strong> 170 minutes
-                </div>
-                <div class="info-item">
-                  <strong>Release:</strong> December 25, 2009
-                </div>
-                <div class="info-item">
-                  <strong>Budget:</strong> ₹35 crore
-                </div>
-                <div class="info-item">
-                  <strong>Box Office:</strong> ₹460 crore
-                </div>
+      <div class="previous-polls">
+        <h3>Previous Poll Results</h3>
+        
+        <div class="poll-cards">
+          <div class="poll-card">
+            <h4>Best Sci-Fi Movie of 2023?</h4>
+            <div class="poll-results">
+              <div class="result-item">
+                <span class="result-movie">Oppenheimer</span>
+                <span class="result-votes">52%</span>
+              </div>
+              <div class="result-item">
+                <span class="result-movie">The Creator</span>
+                <span class="result-votes">28%</span>
+              </div>
+              <div class="result-item">
+                <span class="result-movie">Rebel Moon</span>
+                <span class="result-votes">20%</span>
               </div>
             </div>
           </div>
-        </div>
-
-        <div class="featured-card">
-          <div class="badge">Classic Pick</div>
-          <div class="featured-image" style="background-image: url('Inception-2010-poster.jpg');"></div>
-          <div class="featured-content">
-            <h3>Inception (2010)</h3>
-            <div class="rating">★★★★★</div>
-            <div class="meta">Director: Christopher Nolan | Cast: Leonardo DiCaprio, Joseph Gordon-Levitt, Ellen Page</div>
-            <div class="description">
-              Christopher Nolan's mind-bending thriller remains a masterpiece of complex storytelling and visual innovation. The film's intricate plot, stunning practical effects, and philosophical depth create an experience that rewards multiple viewings and continues to inspire filmmakers today.
+          
+          <div class="poll-card">
+            <h4>Most Anticipated Movie of 2024?</h4>
+            <div class="poll-results">
+              <div class="result-item">
+                <span class="result-movie">Dune: Part Two</span>
+                <span class="result-votes">38%</span>
+              </div>
+              <div class="result-item">
+                <span class="result-movie">Deadpool & Wolverine</span>
+                <span class="result-votes">32%</span>
+              </div>
+              <div class="result-item">
+                <span class="result-movie">Joker: Folie à Deux</span>
+                <span class="result-votes">30%</span>
+              </div>
             </div>
-            <div class="editor-quote">
-              "A film that proves blockbuster entertainment can be both intellectually stimulating and visually spectacular."
+          </div>
+          
+          <div class="poll-card">
+            <h4>Best Bollywood Movie of 2023?</h4>
+            <div class="poll-results">
+              <div class="result-item">
+                <span class="result-movie">Animal</span>
+                <span class="result-votes">35%</span>
+              </div>
+              <div class="result-item">
+                <span class="result-movie">Jawan</span>
+                <span class="result-votes">30%</span>
+              </div>
+              <div class="result-item">
+                <span class="result-movie">Pathaan</span>
+                <span class="result-votes">25%</span>
+              </div>
+              <div class="result-item">
+                <span class="result-movie">Tiger 3</span>
+                <span class="result-votes">10%</span>
+              </div>
             </div>
-            <div class="movie-info">
-              <h4 style="font-family: 'Oswald', sans-serif; color: #00d4ff; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">Movie Details</h4>
-              <div class="info-grid">
-                <div class="info-item">
-                  <strong>Runtime:</strong> 148 minutes
-                </div>
-                <div class="info-item">
-                  <strong>Release:</strong> July 16, 2010
-                </div>
-                <div class="info-item">
-                  <strong>Budget:</strong> $160 million
-                </div>
-                <div class="info-item">
-                  <strong>Box Office:</strong> $836 million
-                </div>
+          </div>
+          
+          <div class="poll-card">
+            <h4>Favorite Superhero Movie?</h4>
+            <div class="poll-results">
+              <div class="result-item">
+                <span class="result-movie">The Batman</span>
+                <span class="result-votes">42%</span>
+              </div>
+              <div class="result-item">
+                <span class="result-movie">Spider-Man: No Way Home</span>
+                <span class="result-votes">28%</span>
+              </div>
+              <div class="result-item">
+                <span class="result-movie">Black Panther: Wakanda Forever</span>
+                <span class="result-votes">20%</span>
+              </div>
+              <div class="result-item">
+                <span class="result-movie">Thor: Love and Thunder</span>
+                <span class="result-votes">10%</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="poll-card">
+            <h4>Best Musical of the Decade?</h4>
+            <div class="poll-results">
+              <div class="result-item">
+                <span class="result-movie">La La Land</span>
+                <span class="result-votes">45%</span>
+              </div>
+              <div class="result-item">
+                <span class="result-movie">The Greatest Showman</span>
+                <span class="result-votes">30%</span>
+              </div>
+              <div class="result-item">
+                <span class="result-movie">Mamma Mia! Here We Go Again</span>
+                <span class="result-votes">15%</span>
+              </div>
+              <div class="result-item">
+                <span class="result-movie">Rocketman</span>
+                <span class="result-votes">10%</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="poll-card">
+            <h4>Most Rewatchable Movie?</h4>
+            <div class="poll-results">
+              <div class="result-item">
+                <span class="result-movie">Inception</span>
+                <span class="result-votes">35%</span>
+              </div>
+              <div class="result-item">
+                <span class="result-movie">Interstellar</span>
+                <span class="result-votes">25%</span>
+              </div>
+              <div class="result-item">
+                <span class="result-movie">The Dark Knight</span>
+                <span class="result-votes">20%</span>
+              </div>
+              <div class="result-item">
+                <span class="result-movie">RRR</span>
+                <span class="result-votes">20%</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="mentions-section">
-        <h3>Honorable Mentions</h3>
-        <div class="mentions-grid">
-          <div class="mention-card">
-            <div class="mention-image" style="background-image: url('INTERSTELLAR (2014) poster by Jximedesigns.jpg');"></div>
-            <div class="mention-title">Interstellar</div>
-            <div class="mention-rating">★★★★★</div>
-            <div class="mention-genre">Sci-Fi Drama</div>
-          </div>
-          
-          <div class="mention-card">
-            <div class="mention-image" style="background-image: url('Oppenheimer.jpeg');"></div>
-            <div class="mention-title">Oppenheimer</div>
-            <div class="mention-rating">★★★★★</div>
-            <div class="mention-genre">Historical Drama</div>
-          </div>
-          
-          <div class="mention-card">
-            <div class="mention-image" style="background-image: url('La-La-Land-2016-poster.jpg');"></div>
-            <div class="mention-title">La La Land</div>
-            <div class="mention-rating">★★★★★</div>
-            <div class="mention-genre">Musical Romance</div>
-          </div>
-          
-          <div class="mention-card">
-            <div class="mention-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BODI0YzFhNDItYjVhYy00OTU3LTg0YzctNDM2N2E5NzA5Y2JkXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg');"></div>
-            <div class="mention-title">RRR</div>
-            <div class="mention-rating">★★★★☆</div>
-            <div class="mention-genre">Action Drama</div>
-          </div>
+      <div class="upcoming-polls">
+        <h3>Upcoming Polls</h3>
+        <div class="upcoming-message">
+          <p>We're planning exciting new polls for the coming weeks! Stay tuned for polls about:</p>
+          <ul style="text-align: left; max-width: 600px; margin: 1rem auto;">
+            <li>Best Director of 2024</li>
+            <li>Most Underrated Movie of the Year</li>
+            <li>Favorite Movie Soundtrack</li>
+            <li>Best Performance by an Actor</li>
+          </ul>
+          <p>Have a poll suggestion? Let us know in the comments section!</p>
         </div>
-      </div>
-
-      <div class="editors-note">
-        <h4>From Our Editors</h4>
-        <p>
-          Every week, our team of passionate film critics comes together to discuss the films that have moved us, challenged us, and reminded us why we love cinema. These selections represent not just quality filmmaking, but stories that have the power to change perspectives, evoke emotions, and create lasting memories. We believe in the transformative power of great cinema, and these films exemplify that belief.
-        </p>
       </div>
     </section>
   </main>
@@ -447,7 +469,7 @@
       <p class="copyright"> 2025 CineScope – Honest Movie Reviews. All rights reserved.</p>
     </div>
   </footer>
-  
+
   <!-- Search Modal -->
   <div id="searchModal" class="search-modal" style="display: none;">
     <div class="search-modal-content">
@@ -652,9 +674,9 @@
   </style>
 
   <script>
-    // Enhanced Search functionality with filters
+    // Enhanced Search functionality with filters for polls page
     document.addEventListener('DOMContentLoaded', function() {
-      const searchBtn = document.querySelector('.search-btn');
+      const searchBtnHeader = document.querySelector('.search-btn');
       const searchModal = document.getElementById('searchModal');
       const closeModal = document.querySelector('.close-modal');
       const searchInput = document.getElementById('searchInput');
@@ -665,7 +687,7 @@
       const clearBtn = document.getElementById('clearBtn');
       
       // Open search modal
-      searchBtn.addEventListener('click', function() {
+      searchBtnHeader.addEventListener('click', function() {
         searchModal.style.display = 'flex';
         searchInput.focus();
       });
@@ -730,13 +752,13 @@
         
         // Determine which elements to search based on content type filter
         if (contentType === 'reviews') {
-          elements = document.querySelectorAll('.featured-card, .mention-card');
+          elements = document.querySelectorAll('.poll-card, .current-poll');
         } else if (contentType === 'comments') {
-          elements = document.querySelectorAll('.editor-quote, .editors-note');
+          elements = document.querySelectorAll('.hero-content, .poll-results, .result-item');
         } else if (contentType === 'comparison') {
-          elements = document.querySelectorAll('.movie-info');
+          elements = document.querySelectorAll('.poll-option, .poll-stats');
         } else {
-          elements = document.querySelectorAll('.featured-card, .mention-card, .editor-quote, .editors-note, h3, h4, p');
+          elements = document.querySelectorAll('.poll-card, .current-poll, .poll-option, .result-item, h3, h4, p');
         }
         
         let found = false;
@@ -757,11 +779,11 @@
           if (genre && matches) {
             const text = element.textContent.toLowerCase();
             const genreMap = {
-              'sci-fi': ['sci-fi', 'science fiction', 'space', 'future'],
-              'drama': ['drama', 'dramatic'],
+              'sci-fi': ['sci-fi', 'science fiction', 'space', 'future', 'dune'],
+              'drama': ['drama', 'dramatic', 'emotion', 'la la land'],
               'historical': ['historical', 'history', 'biography'],
-              'superhero': ['superhero', 'batman', 'superman'],
-              'action': ['action', 'thriller', 'intense'],
+              'superhero': ['superhero', 'batman', 'superman', 'marvel', 'spider-man', 'black panther', 'thor'],
+              'action': ['action', 'thriller', 'intense', 'godzilla', 'kong'],
               'thriller': ['thriller', 'suspense', 'mystery']
             };
             
@@ -772,22 +794,29 @@
             }
           }
           
-          // Rating filter
+          // Rating filter (use poll percentages as proxy)
           if (rating && matches) {
-            const ratingElements = element.querySelectorAll('.rating, .mention-rating');
-            let hasRating = false;
+            const percentageElements = element.querySelectorAll('.option-percentage, .result-votes');
+            let hasHighRating = false;
             
-            ratingElements.forEach(ratingEl => {
-              const ratingText = ratingEl.textContent;
-              const stars = (ratingText.match(/★/g) || []).length;
-              const numRating = parseFloat(ratingText.match(/\d+\.?\d*/));
+            percentageElements.forEach(percentEl => {
+              const percentText = percentEl.textContent.replace('%', '');
+              const numPercent = parseFloat(percentText);
               
-              if (stars >= parseInt(rating) || numRating >= parseInt(rating)) {
-                hasRating = true;
+              // Convert percentage to star rating (rough approximation)
+              const starRating = Math.round((numPercent / 100) * 5);
+              
+              if (starRating >= parseInt(rating)) {
+                hasHighRating = true;
               }
             });
             
-            if (!hasRating) {
+            // If no percentages found, allow general content to pass through
+            if (percentageElements.length === 0) {
+              hasHighRating = true;
+            }
+            
+            if (!hasHighRating) {
               matches = false;
             }
           }

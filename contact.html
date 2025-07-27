@@ -3,9 +3,152 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Movie Reviews - CineScope</title>
-  <link rel="stylesheet" href="reviews.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&family=Anton&family=Oswald:wght@400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <title>Contact Us - CineScope</title>
+  <link rel="stylesheet" href="home.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    .contact-section {
+      margin-bottom: 4rem;
+    }
+    
+    .contact-form {
+      background: rgba(42, 42, 74, 0.8);
+      border-radius: 15px;
+      padding: 2rem;
+      border: 1px solid #3a3a5a;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+      display: block;
+      color: #ffffff;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid #3a3a5a;
+      border-radius: 8px;
+      background: rgba(26, 26, 58, 0.8);
+      color: #ffffff;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: #00d4ff;
+      box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+    }
+    
+    .form-textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    
+    .submit-btn {
+      background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+      color: #0f0f23;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(0, 212, 255, 0.4);
+    }
+    
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .contact-info {
+      margin-top: 3rem;
+    }
+    
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .info-card {
+      background: rgba(42, 42, 74, 0.8);
+      border-radius: 10px;
+      padding: 1.5rem;
+      border: 1px solid #3a3a5a;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .info-card:hover {
+      border-color: #00d4ff;
+      transform: translateY(-2px);
+    }
+    
+    .info-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .info-title {
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+    
+    .info-text {
+      color: #b8b8d4;
+      font-size: 0.9rem;
+    }
+    
+    .thank-you-message {
+      background: rgba(0, 212, 255, 0.1);
+      border: 1px solid #00d4ff;
+      color: #00d4ff;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      text-align: center;
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    .error-message {
+      background: rgba(255, 107, 107, 0.1);
+      border: 1px solid #ff6b6b;
+      color: #ff6b6b;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      text-align: center;
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -17,12 +160,12 @@
     </div>
     <nav>
       <a href="./index.html">Home</a>
-      <a href="./reviews.html" class="active">Reviews</a>
+      <a href="./reviews.html">Reviews</a>
       <a href="./editors-choice.html">Editor's Choice</a>
       <a href="./polls.html">Polls</a>
       <a href="./viewer-comments.html">Viewer Comments</a>
       <a href="./suggestions.html">Suggestions</a>
-      <a href="./contact.html">Contact</a>
+      <a href="./contact.html" class="active">Contact</a>
       <a href="./about.html">About</a>
     </nav>
     <button class="search-btn" aria-label="Search">
@@ -33,58 +176,74 @@
   <main>
     <section class="hero">
       <div class="hero-content">
-        <h2>Movie Reviews</h2>
-        <p>Discover our comprehensive reviews of the latest releases and timeless classics. From Hollywood blockbusters to Bollywood gems, we provide honest insights to help you choose your next movie.</p>
+        <h2>Contact Us</h2>
+        <p>We value your feedback and suggestions. Get in touch with us for any questions, comments, or collaboration opportunities.</p>
       </div>
     </section>
 
-    <section class="reviews-section">
-      <div class="reviews-header">
-        <h3>Latest Reviews</h3>
-        <div class="controls">
-          <div class="search-container">
-            <input type="text" class="search-input" placeholder="Search movies..." />
-            <button class="search-button">🔍</button>
-          </div>
-          <div class="filter-container">
-            <select class="filter-select">
-              <option value="">All Genres</option>
-              <option value="Action">Action</option>
-              <option value="Drama">Drama</option>
-              <option value="Sci-Fi">Sci-Fi</option>
-              <option value="Comedy">Comedy</option>
-              <option value="Thriller">Thriller</option>
-              <option value="Romance">Romance</option>
-              <option value="Horror">Horror</option>
-              <option value="Bollywood">Bollywood</option>
-            </select>
-            <select class="filter-select">
-              <option value="">All Ratings</option>
-              <option value="5">5 Stars</option>
-              <option value="4">4+ Stars</option>
-              <option value="3">3+ Stars</option>
-              <option value="2">2+ Stars</option>
-            </select>
-            <select class="filter-select">
-              <option value="">All Years</option>
-              <option value="2024">2024</option>
-              <option value="2023">2023</option>
-              <option value="2022">2022</option>
-              <option value="2021">2021</option>
-              <option value="2020">2020</option>
-            </select>
-            <select class="sort-select">
-              <option value="latest">Latest First</option>
-              <option value="rating">Highest Rated</option>
-              <option value="title">Alphabetical</option>
-            </select>
-            <button class="clear-filters">Clear All</button>
-          </div>
+    <section class="contact-section">
+      <h3>Send us a Message</h3>
+      <div class="contact-form">
+        <div class="thank-you-message" id="thankYouMessage">
+          Thank you for your message! We'll get back to you soon.
         </div>
+        
+        <div class="error-message" id="errorMessage">
+          Please fill in all required fields.
+        </div>
+        
+        <form id="contactForm" action="#" method="post">
+          <div class="form-group">
+            <label for="name" class="form-label">Name *</label>
+            <input type="text" id="name" name="name" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email" class="form-label">Email *</label>
+            <input type="email" id="email" name="email" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject" class="form-label">Subject</label>
+            <input type="text" id="subject" name="subject" class="form-input" placeholder="What's this about?">
+          </div>
+          
+          <div class="form-group">
+            <label for="message" class="form-label">Message *</label>
+            <textarea id="message" name="message" class="form-textarea" placeholder="Tell us what's on your mind..." required></textarea>
+          </div>
+          
+          <button type="submit" class="submit-btn" id="submitBtn">Send Message</button>
+        </form>
       </div>
+    </section>
 
-      <div class="reviews-grid" id="reviewsGrid">
-        <!-- Review cards will be dynamically generated here -->
+    <section class="contact-info">
+      <h3>Get in Touch</h3>
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-icon">📧</div>
+          <div class="info-title">Email</div>
+          <div class="info-text">contact@cinescope.com</div>
+        </div>
+        
+        <div class="info-card">
+          <div class="info-icon">🌐</div>
+          <div class="info-title">Website</div>
+          <div class="info-text">www.cinescope.com</div>
+        </div>
+        
+        <div class="info-card">
+          <div class="info-icon">📱</div>
+          <div class="info-title">Social Media</div>
+          <div class="info-text">@CineScopeReviews</div>
+        </div>
+        
+        <div class="info-card">
+          <div class="info-icon">⏰</div>
+          <div class="info-title">Response Time</div>
+          <div class="info-text">Within 24 hours</div>
+        </div>
       </div>
     </section>
   </main>
@@ -105,11 +264,109 @@
     </div>
   </footer>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const contactForm = document.getElementById('contactForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const thankYouMessage = document.getElementById('thankYouMessage');
+      const errorMessage = document.getElementById('errorMessage');
+      
+      // Hide messages initially
+      thankYouMessage.style.display = 'none';
+      errorMessage.style.display = 'none';
+      
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const subject = document.getElementById('subject').value.trim();
+        const message = document.getElementById('message').value.trim();
+        
+        // Validate required fields
+        if (!name || !email || !message) {
+          showMessage(errorMessage, 'Please fill in all required fields.');
+          return;
+        }
+        
+        // Validate email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          showMessage(errorMessage, 'Please enter a valid email address.');
+          return;
+        }
+        
+        // Disable submit button
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        
+        // Simulate form submission (no backend)
+        setTimeout(() => {
+          // Show success alert
+          alert('Thank you for your message! We have received your inquiry and will get back to you within 24 hours.');
+          
+          // Show success message
+          showMessage(thankYouMessage, 'Thank you for your message! We\'ll get back to you soon.');
+          
+          // Reset form
+          contactForm.reset();
+          
+          // Re-enable submit button
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+          
+          // Hide success message after 5 seconds
+          setTimeout(() => {
+            thankYouMessage.style.display = 'none';
+          }, 5000);
+          
+        }, 1000);
+      });
+      
+      function showMessage(element, message) {
+        // Hide other messages
+        thankYouMessage.style.display = 'none';
+        errorMessage.style.display = 'none';
+        
+        // Show the specified message
+        element.textContent = message;
+        element.style.display = 'block';
+        
+        // Hide error message after 5 seconds
+        if (element === errorMessage) {
+          setTimeout(() => {
+            errorMessage.style.display = 'none';
+          }, 5000);
+        }
+      }
+      
+      // Real-time validation
+      const requiredFields = ['name', 'email', 'message'];
+      requiredFields.forEach(fieldId => {
+        const field = document.getElementById(fieldId);
+        field.addEventListener('blur', function() {
+          if (this.value.trim() === '') {
+            this.style.borderColor = '#ff6b6b';
+          } else {
+            this.style.borderColor = '#3a3a5a';
+          }
+        });
+        
+        field.addEventListener('input', function() {
+          if (this.value.trim() !== '') {
+            this.style.borderColor = '#3a3a5a';
+          }
+        });
+      });
+    });
+  </script>
+  
   <!-- Search Modal -->
   <div id="searchModal" class="search-modal" style="display: none;">
     <div class="search-modal-content">
       <div class="search-modal-header">
-        <h3>🔍 Advanced Search</h3>
+        <h3> Advanced Search</h3>
         <button class="close-modal">&times;</button>
       </div>
       <div class="search-modal-body">
@@ -309,9 +566,9 @@
   </style>
 
   <script>
-    // Enhanced Search functionality with filters
+    // Enhanced Search functionality with filters for contact page
     document.addEventListener('DOMContentLoaded', function() {
-      const searchBtn = document.querySelector('.search-btn');
+      const searchBtnHeader = document.querySelector('.search-btn');
       const searchModal = document.getElementById('searchModal');
       const closeModal = document.querySelector('.close-modal');
       const searchInput = document.getElementById('searchInput');
@@ -322,7 +579,7 @@
       const clearBtn = document.getElementById('clearBtn');
       
       // Open search modal
-      searchBtn.addEventListener('click', function() {
+      searchBtnHeader.addEventListener('click', function() {
         searchModal.style.display = 'flex';
         searchInput.focus();
       });
@@ -387,13 +644,13 @@
         
         // Determine which elements to search based on content type filter
         if (contentType === 'reviews') {
-          elements = document.querySelectorAll('.review-card, .movie-card');
+          elements = document.querySelectorAll('.contact-form, .form-group');
         } else if (contentType === 'comments') {
-          elements = document.querySelectorAll('.review-content, .movie-description');
+          elements = document.querySelectorAll('.hero-content, .info-text');
         } else if (contentType === 'comparison') {
-          elements = document.querySelectorAll('.movie-info, .review-meta');
+          elements = document.querySelectorAll('.info-card, .contact-info');
         } else {
-          elements = document.querySelectorAll('.review-card, .movie-card, .review-content, .movie-description, h3, h4, p');
+          elements = document.querySelectorAll('.hero-content, .contact-form, .info-card, h3, h4, p, label');
         }
         
         let found = false;
@@ -410,12 +667,12 @@
             }
           }
           
-          // Genre filter
+          // Genre filter (for contact page, we'll search for movie-related content)
           if (genre && matches) {
             const text = element.textContent.toLowerCase();
             const genreMap = {
               'sci-fi': ['sci-fi', 'science fiction', 'space', 'future'],
-              'drama': ['drama', 'dramatic'],
+              'drama': ['drama', 'dramatic', 'emotion'],
               'historical': ['historical', 'history', 'biography'],
               'superhero': ['superhero', 'batman', 'superman', 'marvel'],
               'action': ['action', 'thriller', 'intense'],
@@ -429,22 +686,12 @@
             }
           }
           
-          // Rating filter
+          // Rating filter (for contact page, we'll allow general content)
           if (rating && matches) {
-            const ratingElements = element.querySelectorAll('.rating, .movie-rating, .review-rating');
-            let hasRating = false;
-            
-            ratingElements.forEach(ratingEl => {
-              const ratingText = ratingEl.textContent;
-              const stars = (ratingText.match(/★/g) || []).length;
-              const numRating = parseFloat(ratingText.match(/\d+\.?\d*/));
-              
-              if (stars >= parseInt(rating) || numRating >= parseInt(rating)) {
-                hasRating = true;
-              }
-            });
-            
-            if (!hasRating) {
+            // For contact page, we'll be more lenient with rating filters
+            // Allow content to pass through unless it explicitly mentions low ratings
+            const text = element.textContent.toLowerCase();
+            if (text.includes('poor') || text.includes('bad') || text.includes('terrible')) {
               matches = false;
             }
           }
@@ -554,7 +801,5 @@
       }
     });
   </script>
-
-  <script src="reviews.js"></script>
 </body>
-</html> 
+</html>
