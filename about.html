@@ -800,5 +800,349 @@
       }
     });
   </script>
+  <!-- Universal Search Dropdown -->
+  <div id="searchDropdown" class="search-dropdown" style="display: none;">
+    <div class="search-dropdown-content">
+      <div class="search-section">
+        <div class="search-input-container">
+          <input type="text" id="quickSearchInput" placeholder="Search for movies, directors, genres..." />
+          <button id="quickSearchBtn" class="quick-search-btn">🔍</button>
+        </div>
+      </div>
+      
+      <div class="recommendations-section">
+        <h4>🎬 Recommended Movies</h4>
+        <div class="recommended-movies">
+          <div class="movie-suggestion" data-movie="interstellar">
+            <img src="INTERSTELLAR (2014) poster by Jximedesigns.jpg" alt="Interstellar" />
+            <div class="movie-info">
+              <span class="movie-title">Interstellar</span>
+              <span class="movie-genre">Sci-Fi Drama</span>
+              <span class="movie-rating">★★★★★</span>
+            </div>
+          </div>
+          
+          <div class="movie-suggestion" data-movie="oppenheimer">
+            <img src="Oppenheimer.jpeg" alt="Oppenheimer" />
+            <div class="movie-info">
+              <span class="movie-title">Oppenheimer</span>
+              <span class="movie-genre">Historical Drama</span>
+              <span class="movie-rating">★★★★★</span>
+            </div>
+          </div>
+          
+          <div class="movie-suggestion" data-movie="batman">
+            <img src="The-Batman-2022-poster.jpg" alt="The Batman" />
+            <div class="movie-info">
+              <span class="movie-title">The Batman</span>
+              <span class="movie-genre">Action Thriller</span>
+              <span class="movie-rating">★★★★☆</span>
+            </div>
+          </div>
+          
+          <div class="movie-suggestion" data-movie="dune">
+            <img src="Dune-Part-Two-2024-poster.jpg" alt="Dune: Part Two" />
+            <div class="movie-info">
+              <span class="movie-title">Dune: Part Two</span>
+              <span class="movie-genre">Sci-Fi Epic</span>
+              <span class="movie-rating">★★★★★</span>
+            </div>
+          </div>
+          
+          <div class="movie-suggestion" data-movie="lalaland">
+            <img src="La-La-Land-2016-poster.jpg" alt="La La Land" />
+            <div class="movie-info">
+              <span class="movie-title">La La Land</span>
+              <span class="movie-genre">Musical Romance</span>
+              <span class="movie-rating">★★★★★</span>
+            </div>
+          </div>
+          
+          <div class="movie-suggestion" data-movie="inception">
+            <img src="Inception-2010-poster.jpg" alt="Inception" />
+            <div class="movie-info">
+              <span class="movie-title">Inception</span>
+              <span class="movie-genre">Sci-Fi Thriller</span>
+              <span class="movie-rating">★★★★★</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="quick-filters">
+          <h5>Quick Filters:</h5>
+          <div class="filter-tags">
+            <span class="filter-tag" data-filter="sci-fi">Sci-Fi</span>
+            <span class="filter-tag" data-filter="drama">Drama</span>
+            <span class="filter-tag" data-filter="action">Action</span>
+            <span class="filter-tag" data-filter="5-star">5 Star Movies</span>
+            <span class="filter-tag" data-filter="nolan">Christopher Nolan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .search-dropdown {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      width: 400px;
+      max-height: 80vh;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      border: 1px solid #00d4ff;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3), 0 0 0 1px rgba(0, 212, 255, 0.1);
+      z-index: 2000;
+      overflow: hidden;
+      animation: slideDown 0.3s ease;
+    }
+    
+    @keyframes slideDown {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    .search-dropdown-content {
+      padding: 0;
+      overflow-y: auto;
+      max-height: 80vh;
+    }
+    
+    .search-section {
+      padding: 20px;
+      border-bottom: 1px solid #333;
+    }
+    
+    .search-input-container {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    
+    #quickSearchInput {
+      flex: 1;
+      padding: 12px 16px;
+      border: 2px solid #333;
+      border-radius: 10px;
+      font-size: 14px;
+      background: #2d2d2d;
+      color: #ffffff;
+      transition: all 0.3s ease;
+    }
+    
+    #quickSearchInput::placeholder {
+      color: #888;
+    }
+    
+    #quickSearchInput:focus {
+      outline: none;
+      border-color: #00d4ff;
+      background: #333;
+      box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+    }
+    
+    .quick-search-btn {
+      padding: 12px 16px;
+      background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+      color: #121212;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+    
+    .quick-search-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+    }
+    
+    .recommendations-section {
+      padding: 20px;
+    }
+    
+    .recommendations-section h4 {
+      margin: 0 0 15px 0;
+      color: #00d4ff;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    
+    .recommended-movies {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    
+    .movie-suggestion {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px;
+      border-radius: 10px;
+      background: rgba(45, 45, 45, 0.5);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .movie-suggestion:hover {
+      background: rgba(0, 212, 255, 0.1);
+      border-color: #00d4ff;
+      transform: translateX(5px);
+    }
+    
+    .movie-suggestion img {
+      width: 40px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid #333;
+    }
+    
+    .movie-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    
+    .movie-title {
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    
+    .movie-genre {
+      color: #888;
+      font-size: 12px;
+    }
+    
+    .movie-rating {
+      color: #00d4ff;
+      font-size: 12px;
+    }
+    
+    .quick-filters {
+      border-top: 1px solid #333;
+      padding-top: 15px;
+    }
+    
+    .quick-filters h5 {
+      margin: 0 0 10px 0;
+      color: #00d4ff;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    
+    .filter-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .filter-tag {
+      padding: 6px 12px;
+      background: rgba(0, 212, 255, 0.1);
+      color: #00d4ff;
+      border: 1px solid #00d4ff;
+      border-radius: 20px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .filter-tag:hover {
+      background: #00d4ff;
+      color: #121212;
+      transform: translateY(-2px);
+    }
+    
+    @media (max-width: 600px) {
+      .search-dropdown {
+        right: 10px;
+        left: 10px;
+        width: auto;
+        top: 70px;
+      }
+      
+      .movie-suggestion {
+        padding: 8px;
+      }
+      
+      .movie-suggestion img {
+        width: 35px;
+        height: 50px;
+      }
+    }
+  </style>
+
+  <script>
+    // Universal Search functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchBtn = document.querySelector('.search-btn');
+      const searchDropdown = document.getElementById('searchDropdown');
+      const quickSearchInput = document.getElementById('quickSearchInput');
+      const quickSearchBtn = document.getElementById('quickSearchBtn');
+      const movieSuggestions = document.querySelectorAll('.movie-suggestion');
+      const filterTags = document.querySelectorAll('.filter-tag');
+      
+      // Toggle search dropdown
+      searchBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const isVisible = searchDropdown.style.display === 'block';
+        searchDropdown.style.display = isVisible ? 'none' : 'block';
+        if (!isVisible) {
+          quickSearchInput.focus();
+        }
+      });
+      
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!searchDropdown.contains(e.target) && !searchBtn.contains(e.target)) {
+          searchDropdown.style.display = 'none';
+        }
+      });
+      
+      // Prevent dropdown from closing when clicking inside
+      searchDropdown.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+      
+      // Quick search functionality
+      quickSearchBtn.addEventListener('click', performUniversalSearch);
+      quickSearchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          performUniversalSearch();
+        }
+      });
+      
+      // Movie suggestion clicks
+      movieSuggestions.forEach(suggestion => {
+        suggestion.addEventListener('click', function() {
+          const movieName = this.querySelector('.movie-title').textContent;
+          window.location.href = `./reviews.html?search=${encodeURIComponent(movieName)}`;
+        });
+      });
+      
+      // Filter tag clicks
+      filterTags.forEach(tag => {
+        tag.addEventListener('click', function() {
+          const filterValue = this.dataset.filter;
+          window.location.href = `./reviews.html?search=${encodeURIComponent(filterValue)}`;
+        });
+      });
+      
+      function performUniversalSearch() {
+        const searchTerm = quickSearchInput.value.trim();
+        if (searchTerm) {
+          window.location.href = `./reviews.html?search=${encodeURIComponent(searchTerm)}`;
+        }
+        searchDropdown.style.display = 'none';
+      }
+    });
+  </script>
+
 </body>
 </html>
