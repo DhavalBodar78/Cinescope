@@ -9,6 +9,8 @@
   <style>
     .contact-section {
       margin-bottom: 4rem;
+      font-family: 'Plus Jakarta Sans', 'Noto Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #ffffff;
     }
     
     .contact-form {
@@ -16,8 +18,9 @@
       border-radius: 15px;
       padding: 2rem;
       border: 1px solid #3a3a5a;
-      max-width: 600px;
+      max-width: 800px;
       margin: 0 auto;
+      font-family: inherit;
     }
     
     .form-group {
@@ -26,9 +29,13 @@
     
     .form-label {
       display: block;
-      color: #ffffff;
-      font-weight: 600;
+      color: #b8b8d4;
+      font-weight: 500;
       margin-bottom: 0.5rem;
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
     }
     
     .form-input,
@@ -41,6 +48,7 @@
       color: #ffffff;
       font-size: 1rem;
       transition: all 0.3s ease;
+      font-family: 'Plus Jakarta Sans', 'Noto Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     }
     
     .form-input:focus,
@@ -51,8 +59,9 @@
     }
     
     .form-textarea {
-      min-height: 120px;
+      min-height: 150px;
       resize: vertical;
+      line-height: 1.6;
     }
     
     .submit-btn {
@@ -65,8 +74,14 @@
       font-size: 1.1rem;
       cursor: pointer;
       transition: all 0.3s ease;
-      width: 100%;
+      width: auto;
+      min-width: 200px;
       box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: 'Oswald', sans-serif;
+      margin: 1rem 0;
+      display: inline-block;
     }
     
     .submit-btn:hover {
@@ -81,19 +96,22 @@
     }
     
     .contact-info {
-      margin-top: 3rem;
+      margin: 3rem auto 0;
+      max-width: 1200px;
+      padding: 0 1rem;
     }
     
     .info-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
     }
     
     .info-card {
       background: rgba(42, 42, 74, 0.8);
       border-radius: 10px;
-      padding: 1.5rem;
+      padding: 2rem;
       border: 1px solid #3a3a5a;
       text-align: center;
       transition: all 0.3s ease;
