@@ -3,17 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CineScope – Honest Movie Reviews</title>
+  <title>CineScope</title>
   <link rel="stylesheet" href="home.css" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&family=Anton&family=Oswald:wght@400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="modal.css" />
 </head>
 <body>
-  <!-- Light Trail Elements for Background Animation -->
-  <div class="light-trail"></div>
-  <div class="light-trail"></div>
-  <div class="light-trail"></div>
-  <div class="light-trail"></div>
-  
   <header>
     <div class="logo">
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,54 +20,54 @@
       <a href="./index.html" class="active">Home</a>
       <a href="./reviews.html">Reviews</a>
       <a href="./editors-choice.html">Editor's Choice</a>
-      <a href="./polls.html">Polls</a>
-      <a href="./viewer-comments.html">Viewer Comments</a>
-      <a href="./suggestions.html">Suggestions</a>
-      <a href="./contact.html">Contact</a>
-      <a href="./about.html">About</a>
+      <a href="#">Movie Comparisons</a>
+      <a href="#">Viewer Comments</a>
+      <a href="#">Contact Us</a>
     </nav>
-    <button class="search-btn" aria-label="Search">
-      🔍
-    </button>
+
   </header>
 
   <main>
     <section class="hero">
       <div class="hero-content">
         <h2>Welcome to CineScope</h2>
-        <p>Your ultimate destination for honest, insightful movie reviews. We bring you authentic perspectives on the latest releases and timeless classics from Bollywood and beyond.</p>
+        <p>Your ultimate destination for insightful movie reviews, comparisons, and community discussions.</p>
         <a href="./reviews.html" class="explore-btn">Explore Reviews</a>
       </div>
     </section>
 
     <section class="reviews-section">
-      <h3>Featured Reviews</h3>
+      <h3>Latest Reviews</h3>
       <div class="reviews-grid">
-        <article class="review-card">
+        <article class="review-card" data-movie-id="interstellar">
           <div class="review-image" style="background-image: url('INTERSTELLAR (2014) poster by Jximedesigns.jpg');">
             <div class="fallback-text">Interstellar</div>
           </div>
           <div class="review-content">
-            <h4>Interstellar (2014)</h4>
+            <h4>Interstellar</h4>
             <p>Christopher Nolan's ambitious space epic transcends the boundaries of science fiction. With stunning visuals, a haunting score by Hans Zimmer, and emotional depth that matches its cosmic scale, Interstellar is a masterpiece that explores love, sacrifice, and humanity's place in the universe.</p>
             <div class="review-meta">
               <span class="rating">★★★★★</span>
               <span class="genre">Sci-Fi Drama</span>
+              <span class="year">2014</span>
+              <span class="runtime">2h 49m</span>
             </div>
             <button class="read-more-btn">Read Full Review</button>
           </div>
         </article>
 
-        <article class="review-card">
+        <article class="review-card" data-movie-id="oppenheimer">
           <div class="review-image" style="background-image: url('Oppenheimer.jpeg');">
             <div class="fallback-text">Oppenheimer</div>
           </div>
           <div class="review-content">
-            <h4>Oppenheimer (2023)</h4>
+            <h4>Oppenheimer</h4>
             <p>Nolan's biographical thriller about the father of the atomic bomb is a cinematic tour de force. Cillian Murphy delivers a career-defining performance, while the film's technical achievements in sound design and visual storytelling create an immersive experience that lingers long after the credits roll.</p>
             <div class="review-meta">
               <span class="rating">★★★★★</span>
               <span class="genre">Historical Drama</span>
+              <span class="year">2023</span>
+              <span class="runtime">3h</span>
             </div>
             <button class="read-more-btn">Read Full Review</button>
           </div>
@@ -90,41 +85,25 @@
               <th>Director</th>
               <th>Genre</th>
               <th>Rating</th>
-              <th>Box Office</th>
             </tr>
           </thead>
           <tbody>
             <tr>
+              <td>Avengers: Endgame</td>
+              <td>Russo Brothers</td>
+              <td>Sci-Fi</td>
+              <td><span class="rating-badge">4.5/5</span></td>
+            </tr>
+            <tr>
               <td>Oppenheimer</td>
               <td>Christopher Nolan</td>
               <td>Historical Drama</td>
-              <td><span class="rating-badge">4.8/5</span></td>
-              <td>$950M</td>
-            </tr>
-            <tr>
-              <td>The Batman</td>
-              <td>Matt Reeves</td>
-              <td>Superhero</td>
-              <td><span class="rating-badge">4.2/5</span></td>
-              <td>$770M</td>
-            </tr>
-            <tr>
-              <td>Dune: Part Two</td>
-              <td>Denis Villeneuve</td>
-              <td>Sci-Fi</td>
-              <td><span class="rating-badge">4.5/5</span></td>
-              <td>$700M</td>
-            </tr>
-            <tr>
-              <td>Animal</td>
-              <td>Sandeep Reddy Vanga</td>
-              <td>Action Drama</td>
-              <td><span class="rating-badge">3.8/5</span></td>
-              <td>$120M</td>
+              <td><span class="rating-badge">4.0/5</span></td>
             </tr>
           </tbody>
         </table>
       </div>
+      <p class="view-more">View full comparison</p>
     </section>
 
     <section class="comments-section">
@@ -134,21 +113,14 @@
           <img src="pexels-tima-miroshnichenko-7991158.jpg" alt="Liam Carter" />
           <div class="comment-content">
             <p class="name">Liam Carter <span>2 weeks ago</span></p>
-            <p>Interstellar was an incredible journey! The visuals were stunning, and the story kept me engaged from start to finish. Nolan really knows how to make you think while entertaining you. Highly recommend!</p>
+            <p>The Stellar Odyssey was an incredible journey! The visuals were stunning, and the story kept me engaged from start to finish. Highly recommend!</p>
           </div>
         </div>
         <div class="comment">
           <img src="pexels-tima-miroshnichenko-7991380.jpg" alt="Sophia Bennett" />
           <div class="comment-content">
             <p class="name">Sophia Bennett <span>3 weeks ago</span></p>
-            <p>Oppenheimer is a powerful and moving film. The performances were outstanding, especially Cillian Murphy's portrayal. The historical setting was beautifully realized. A must-see for any history buff.</p>
-          </div>
-        </div>
-        <div class="comment">
-          <img src="pexels-tima-miroshnichenko-7991576.jpg" alt="Raj Patel" />
-          <div class="comment-content">
-            <p class="name">Raj Patel <span>1 week ago</span></p>
-            <p>Finally watched Animal and I have mixed feelings. The action sequences were incredible, but the storyline was a bit too intense for my taste. Ranbir Kapoor's performance was outstanding though!</p>
+            <p>Echoes of the Past is a powerful and moving film. The performances were outstanding, and the historical setting was beautifully realized. A must-see for any history buff.</p>
           </div>
         </div>
       </div>
@@ -156,624 +128,32 @@
 
     <section class="contact-section">
       <h3>Contact Us</h3>
-      <p>We value your feedback and suggestions. Please feel free to reach out to us with any comments or questions about our reviews.</p>
-      <a href="./contact.html" class="contact-btn">Contact Us</a>
+      <p>We value your feedback and suggestions. Please feel free to reach out to us with any comments or questions.</p>
+      <button class="contact-btn">Contact Us</button>
     </section>
 
     <section class="about-section">
-      <h3>About CineScope</h3>
-      <p>CineScope is dedicated to providing honest and comprehensive movie reviews. Our team of passionate film critics offers in-depth analysis and thoughtful commentary on the latest releases and classic films from around the world.</p>
-      <p>We believe in honest criticism that helps you make informed decisions about what to watch. No sponsored content, no biased reviews – just authentic perspectives from movie lovers.</p>
-      <a href="./about.html" class="learn-more">Learn more about us</a>
+      <h3>About Us</h3>
+      <p>CineScope is dedicated to providing insightful and comprehensive movie reviews. Our team of passionate film critics offers in-depth analysis and thoughtful commentary on the latest releases and classic films.</p>
+      <p class="learn-more">Learn more</p>
     </section>
   </main>
 
   <footer>
     <div class="footer-content">
       <nav class="footer-nav">
-        <a href="./index.html">Home</a>
-        <a href="./reviews.html">Reviews</a>
-        <a href="./editors-choice.html">Editor's Choice</a>
-        <a href="./polls.html">Polls</a>
-        <a href="./viewer-comments.html">Viewer Comments</a>
-        <a href="./suggestions.html">Suggestions</a>
-        <a href="./contact.html">Contact</a>
-        <a href="./about.html">About Us</a>
+        <a href="#">Home</a>
+        <a href="#">Reviews</a>
+        <a href="#">Editor's Choice</a>
+        <a href="#">Movie Comparisons</a>
+        <a href="#">Viewer Comments</a>
+        <a href="#">Contact Us</a>
+        <a href="#">About Us</a>
       </nav>
-      <p class="copyright">© 2025 CineScope – Honest Movie Reviews. All rights reserved.</p>
+              <p class="copyright"> 2025 CineScope. All rights reserved.</p>
     </div>
   </footer>
-  <!-- Universal Search Dropdown -->
-  <div id="searchDropdown" class="search-dropdown" style="display: none;">
-    <div class="search-dropdown-content">
-      <div class="search-section">
-        <div class="search-input-container">
-          <input type="text" id="quickSearchInput" placeholder="Search for movies, directors, genres..." />
-          <button id="quickSearchBtn" class="quick-search-btn">🔍</button>
-        </div>
-      </div>
-      
-      <div class="recommendations-section">
-        <h4>🎬 Recommended Movies</h4>
-        <div class="recommended-movies">
-          <div class="movie-suggestion" data-movie="interstellar">
-            <img src="INTERSTELLAR (2014) poster by Jximedesigns.jpg" alt="Interstellar" />
-            <div class="movie-info">
-              <span class="movie-title">Interstellar</span>
-              <span class="movie-genre">Sci-Fi Drama</span>
-              <span class="movie-rating">★★★★★</span>
-            </div>
-          </div>
-          
-          <div class="movie-suggestion" data-movie="oppenheimer">
-            <img src="Oppenheimer.jpeg" alt="Oppenheimer" />
-            <div class="movie-info">
-              <span class="movie-title">Oppenheimer</span>
-              <span class="movie-genre">Historical Drama</span>
-              <span class="movie-rating">★★★★★</span>
-            </div>
-          </div>
-          
-          <div class="movie-suggestion" data-movie="batman">
-            <img src="The-Batman-2022-poster.jpg" alt="The Batman" />
-            <div class="movie-info">
-              <span class="movie-title">The Batman</span>
-              <span class="movie-genre">Action Thriller</span>
-              <span class="movie-rating">★★★★☆</span>
-            </div>
-          </div>
-          
-          <div class="movie-suggestion" data-movie="dune">
-            <img src="Dune-Part-Two-2024-poster.jpg" alt="Dune: Part Two" />
-            <div class="movie-info">
-              <span class="movie-title">Dune: Part Two</span>
-              <span class="movie-genre">Sci-Fi Epic</span>
-              <span class="movie-rating">★★★★★</span>
-            </div>
-          </div>
-          
-          <div class="movie-suggestion" data-movie="lalaland">
-            <img src="La-La-Land-2016-poster.jpg" alt="La La Land" />
-            <div class="movie-info">
-              <span class="movie-title">La La Land</span>
-              <span class="movie-genre">Musical Romance</span>
-              <span class="movie-rating">★★★★★</span>
-            </div>
-          </div>
-          
-          <div class="movie-suggestion" data-movie="inception">
-            <img src="Inception-2010-poster.jpg" alt="Inception" />
-            <div class="movie-info">
-              <span class="movie-title">Inception</span>
-              <span class="movie-genre">Sci-Fi Thriller</span>
-              <span class="movie-rating">★★★★★</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="quick-filters">
-          <h5>Quick Filters:</h5>
-          <div class="filter-tags">
-            <span class="filter-tag" data-filter="sci-fi">Sci-Fi</span>
-            <span class="filter-tag" data-filter="drama">Drama</span>
-            <span class="filter-tag" data-filter="action">Action</span>
-            <span class="filter-tag" data-filter="5-star">5 Star Movies</span>
-            <span class="filter-tag" data-filter="nolan">Christopher Nolan</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <style>
-    .search-dropdown {
-      position: fixed;
-      top: 80px;
-      right: 20px;
-      width: 400px;
-      max-height: 80vh;
-      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-      border: 1px solid #00d4ff;
-      border-radius: 16px;
-      box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3), 0 0 0 1px rgba(0, 212, 255, 0.1);
-      z-index: 2000;
-      overflow: hidden;
-      animation: slideDown 0.3s ease;
-    }
-    
-    @keyframes slideDown {
-      from { transform: translateY(-20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-    
-    .search-dropdown-content {
-      padding: 0;
-      overflow-y: auto;
-      max-height: 80vh;
-    }
-    
-    .search-section {
-      padding: 20px;
-      border-bottom: 1px solid #333;
-    }
-    
-    .search-input-container {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-    
-    #quickSearchInput {
-      flex: 1;
-      padding: 12px 16px;
-      border: 2px solid #333;
-      border-radius: 10px;
-      font-size: 14px;
-      background: #2d2d2d;
-      color: #ffffff;
-      transition: all 0.3s ease;
-    }
-    
-    #quickSearchInput::placeholder {
-      color: #888;
-    }
-    
-    #quickSearchInput:focus {
-      outline: none;
-      border-color: #00d4ff;
-      background: #333;
-      box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
-    }
-    
-    .quick-search-btn {
-      padding: 12px 16px;
-      background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
-      color: #121212;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 14px;
-      transition: all 0.3s ease;
-    }
-    
-    .quick-search-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
-    }
-    
-    .recommendations-section {
-      padding: 20px;
-    }
-    
-    .recommendations-section h4 {
-      margin: 0 0 15px 0;
-      color: #00d4ff;
-      font-size: 16px;
-      font-weight: 600;
-    }
-    
-    .recommended-movies {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-    
-    .movie-suggestion {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px;
-      border-radius: 10px;
-      background: rgba(45, 45, 45, 0.5);
-      border: 1px solid transparent;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .movie-suggestion:hover {
-      background: rgba(0, 212, 255, 0.1);
-      border-color: #00d4ff;
-      transform: translateX(5px);
-    }
-    
-    .movie-suggestion img {
-      width: 40px;
-      height: 60px;
-      object-fit: cover;
-      border-radius: 6px;
-      border: 1px solid #333;
-    }
-    
-    .movie-info {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    
-    .movie-title {
-      color: #ffffff;
-      font-weight: 600;
-      font-size: 14px;
-    }
-    
-    .movie-genre {
-      color: #888;
-      font-size: 12px;
-    }
-    
-    .movie-rating {
-      color: #00d4ff;
-      font-size: 12px;
-    }
-    
-    .quick-filters {
-      border-top: 1px solid #333;
-      padding-top: 15px;
-    }
-    
-    .quick-filters h5 {
-      margin: 0 0 10px 0;
-      color: #00d4ff;
-      font-size: 14px;
-      font-weight: 600;
-    }
-    
-    .filter-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    
-    .filter-tag {
-      padding: 6px 12px;
-      background: rgba(0, 212, 255, 0.1);
-      color: #00d4ff;
-      border: 1px solid #00d4ff;
-      border-radius: 20px;
-      font-size: 12px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .filter-tag:hover {
-      background: #00d4ff;
-      color: #121212;
-      transform: translateY(-2px);
-    }
-    
-    /* Responsive design */
-    @media (max-width: 600px) {
-      .search-dropdown {
-        right: 10px;
-        left: 10px;
-        width: auto;
-        top: 70px;
-      }
-      
-      .movie-suggestion {
-        padding: 8px;
-      }
-      
-      .movie-suggestion img {
-        width: 35px;
-        height: 50px;
-      }
-    }
-  </style>
-
-  <script>
-    // Universal Search functionality
-    document.addEventListener('DOMContentLoaded', function() {
-      const searchBtn = document.querySelector('.search-btn');
-      const searchDropdown = document.getElementById('searchDropdown');
-      const quickSearchInput = document.getElementById('quickSearchInput');
-      const quickSearchBtn = document.getElementById('quickSearchBtn');
-      const movieSuggestions = document.querySelectorAll('.movie-suggestion');
-      const filterTags = document.querySelectorAll('.filter-tag');
-      
-      // Toggle search dropdown
-      searchBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const isVisible = searchDropdown.style.display === 'block';
-        searchDropdown.style.display = isVisible ? 'none' : 'block';
-        if (!isVisible) {
-          quickSearchInput.focus();
-        }
-      });
-      
-      // Close dropdown when clicking outside
-      document.addEventListener('click', function(e) {
-        if (!searchDropdown.contains(e.target) && !searchBtn.contains(e.target)) {
-          searchDropdown.style.display = 'none';
-        }
-      });
-      
-      // Prevent dropdown from closing when clicking inside
-      searchDropdown.addEventListener('click', function(e) {
-        e.stopPropagation();
-      });
-      
-      // Quick search functionality
-      quickSearchBtn.addEventListener('click', performUniversalSearch);
-      quickSearchInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-          performUniversalSearch();
-        }
-      });
-      
-      // Movie suggestion clicks
-      movieSuggestions.forEach(suggestion => {
-        suggestion.addEventListener('click', function() {
-          const movieName = this.querySelector('.movie-title').textContent;
-          // Redirect to reviews page with search
-          window.location.href = `./reviews.html?search=${encodeURIComponent(movieName)}`;
-        });
-      });
-      
-      // Filter tag clicks
-      filterTags.forEach(tag => {
-        tag.addEventListener('click', function() {
-          const filterValue = this.dataset.filter;
-          // Redirect to reviews page with filter
-          window.location.href = `./reviews.html?search=${encodeURIComponent(filterValue)}`;
-        });
-      });
-      
-      function performUniversalSearch() {
-        const searchTerm = quickSearchInput.value.trim();
-        if (searchTerm) {
-          // Redirect to reviews page with search term
-          window.location.href = `./reviews.html?search=${encodeURIComponent(searchTerm)}`;
-        }
-        searchDropdown.style.display = 'none';
-      }
-    });
- 
-    // Enhanced Search functionality with filters
-    document.addEventListener('DOMContentLoaded', function() {
-      const searchBtn = document.querySelector('.search-btn');
-      const searchModal = document.getElementById('searchModal');
-      const closeModal = document.querySelector('.close-modal');
-      const searchInput = document.getElementById('searchInput');
-      const genreFilter = document.getElementById('genreFilter');
-      const ratingFilter = document.getElementById('ratingFilter');
-      const contentFilter = document.getElementById('contentFilter');
-      const searchActionBtn = document.getElementById('searchBtn');
-      const clearBtn = document.getElementById('clearBtn');
-      
-      // Open search modal
-      searchBtn.addEventListener('click', function() {
-        searchModal.style.display = 'flex';
-        searchInput.focus();
-      });
-      
-      // Close modal
-      closeModal.addEventListener('click', closeSearchModal);
-      searchModal.addEventListener('click', function(e) {
-        if (e.target === searchModal) {
-          closeSearchModal();
-        }
-      });
-      
-      // Close modal with Escape key
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && searchModal.style.display === 'flex') {
-          closeSearchModal();
-        }
-      });
-      
-      // Search on Enter key
-      searchInput.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-          performSearch();
-        }
-      });
-      
-      // Search button click
-      searchActionBtn.addEventListener('click', performSearch);
-      
-      // Clear filters
-      clearBtn.addEventListener('click', function() {
-        searchInput.value = '';
-        genreFilter.value = '';
-        ratingFilter.value = '';
-        contentFilter.value = '';
-        removeHighlights();
-      });
-      
-      function closeSearchModal() {
-        searchModal.style.display = 'none';
-      }
-      
-      function performSearch() {
-        const query = searchInput.value.trim();
-        const genre = genreFilter.value;
-        const rating = ratingFilter.value;
-        const contentType = contentFilter.value;
-        
-        if (!query && !genre && !rating && !contentType) {
-          alert('Please enter a search term or select at least one filter.');
-          return;
-        }
-        
-        closeSearchModal();
-        searchWithFilters(query, genre, rating, contentType);
-      }
-      
-      function searchWithFilters(query, genre, rating, contentType) {
-        removeHighlights();
-        
-        let elements = [];
-        
-        // Determine which elements to search based on content type filter
-        if (contentType === 'reviews') {
-          elements = document.querySelectorAll('.review-card');
-        } else if (contentType === 'comments') {
-          elements = document.querySelectorAll('.comment');
-        } else if (contentType === 'comparison') {
-          elements = document.querySelectorAll('table tr');
-        } else {
-          elements = document.querySelectorAll('.review-card, .comment, table tr, h4, p');
-        }
-        
-        let found = false;
-        let matchCount = 0;
-        
-        elements.forEach(element => {
-          let matches = true;
-          
-          // Text search
-          if (query) {
-            const text = element.textContent.toLowerCase();
-            if (!text.includes(query.toLowerCase())) {
-              matches = false;
-            }
-          }
-          
-          // Genre filter
-          if (genre && matches) {
-            const text = element.textContent.toLowerCase();
-            const genreMap = {
-              'sci-fi': ['sci-fi', 'science fiction', 'space', 'future'],
-              'drama': ['drama', 'dramatic'],
-              'historical': ['historical', 'history', 'biography'],
-              'superhero': ['superhero', 'batman', 'superman'],
-              'action': ['action', 'thriller', 'intense'],
-              'thriller': ['thriller', 'suspense', 'mystery']
-            };
-            
-            const genreKeywords = genreMap[genre] || [genre];
-            const hasGenre = genreKeywords.some(keyword => text.includes(keyword));
-            if (!hasGenre) {
-              matches = false;
-            }
-          }
-          
-          // Rating filter
-          if (rating && matches) {
-            const ratingElements = element.querySelectorAll('.rating, .rating-badge');
-            let hasRating = false;
-            
-            ratingElements.forEach(ratingEl => {
-              const ratingText = ratingEl.textContent;
-              const stars = (ratingText.match(/★/g) || []).length;
-              const numRating = parseFloat(ratingText.match(/\d+\.?\d*/));
-              
-              if (stars >= parseInt(rating) || numRating >= parseInt(rating)) {
-                hasRating = true;
-              }
-            });
-            
-            if (!hasRating) {
-              matches = false;
-            }
-          }
-          
-          if (matches) {
-            if (query) {
-              highlightText(element, query);
-            } else {
-              element.style.border = '2px solid #667eea';
-              element.style.borderRadius = '8px';
-              element.classList.add('search-highlighted');
-            }
-            
-            if (!found) {
-              element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-              found = true;
-            }
-            matchCount++;
-          }
-        });
-        
-        if (!found) {
-          alert('No results found matching your search criteria. Try adjusting your filters or search terms.');
-        } else {
-          const filterText = [];
-          if (query) filterText.push(`"${query}"`);
-          if (genre) filterText.push(`Genre: ${genre}`);
-          if (rating) filterText.push(`Rating: ${rating}+ stars`);
-          if (contentType) filterText.push(`Type: ${contentType}`);
-          
-          showSearchNotification(`Found ${matchCount} result(s) for ${filterText.join(', ')}`);
-        }
-      }
-      
-      function highlightText(element, searchTerm) {
-        const regex = new RegExp(`(${searchTerm})`, 'gi');
-        const walker = document.createTreeWalker(
-          element,
-          NodeFilter.SHOW_TEXT,
-          null,
-          false
-        );
-        
-        const textNodes = [];
-        let node;
-        while (node = walker.nextNode()) {
-          textNodes.push(node);
-        }
-        
-        textNodes.forEach(textNode => {
-          const parent = textNode.parentNode;
-          if (parent.tagName !== 'MARK') {
-            const text = textNode.textContent;
-            if (regex.test(text)) {
-              const highlightedHTML = text.replace(regex, '<mark style="background-color: yellow; padding: 2px;">$1</mark>');
-              const wrapper = document.createElement('span');
-              wrapper.innerHTML = highlightedHTML;
-              parent.replaceChild(wrapper, textNode);
-            }
-          }
-        });
-        
-        element.classList.add('search-highlighted');
-      }
-      
-      function removeHighlights() {
-        const highlighted = document.querySelectorAll('.search-highlighted');
-        highlighted.forEach(element => {
-          // Remove text highlights
-          const marks = element.querySelectorAll('mark');
-          marks.forEach(mark => {
-            mark.outerHTML = mark.innerHTML;
-          });
-          
-          // Remove border highlights
-          element.style.border = '';
-          element.style.borderRadius = '';
-          element.classList.remove('search-highlighted');
-        });
-      }
-      
-      function showSearchNotification(message) {
-        const notification = document.createElement('div');
-        notification.textContent = message;
-        notification.style.cssText = `
-          position: fixed;
-          top: 20px;
-          right: 20px;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          color: white;
-          padding: 12px 20px;
-          border-radius: 8px;
-          z-index: 1000;
-          font-family: inherit;
-          box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
-          max-width: 300px;
-          font-size: 14px;
-        `;
-        
-        document.body.appendChild(notification);
-        
-        setTimeout(() => {
-          notification.style.opacity = '0';
-          notification.style.transform = 'translateY(-20px)';
-          setTimeout(() => notification.remove(), 300);
-        }, 4000);
-      }
-    });
-  </script>
+  <script src="script.js"></script>
+  <script src="modal.js"></script>
 </body>
 </html>
