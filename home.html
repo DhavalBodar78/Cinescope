@@ -8,6 +8,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
+  <!-- Light Trail Elements for Background Animation -->
+  <div class="light-trail"></div>
+  <div class="light-trail"></div>
+  <div class="light-trail"></div>
+  <div class="light-trail"></div>
+  
   <header>
     <div class="logo">
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -39,7 +45,7 @@
 
     <section class="reviews-section">
       <h3>Latest Reviews</h3>
-      <div class="reviews-grid">
+      <div class="reviews-grid" id="homeReviewsGrid">
         <article class="review-card">
           <div class="review-image" style="background-image: url('pexels-cottonbro-3945317.jpg');"></div>
           <div class="review-content">
@@ -65,6 +71,65 @@
             <button class="read-more-btn">Read More</button>
           </div>
         </article>
+      </div>
+      
+      <!-- Hidden additional movies that will be shown when "Show More" is clicked -->
+      <div class="additional-movies" id="additionalMovies" style="display: none;">
+        <article class="review-card">
+          <div class="review-image" style="background-image: url('The-Batman-2022-poster.jpg');"></div>
+          <div class="review-content">
+            <h4>The Batman (2022)</h4>
+            <p>Matt Reeves delivers a dark, grounded take on the Dark Knight with Robert Pattinson's brooding intensity and atmospheric storytelling.</p>
+            <div class="review-meta">
+              <span class="rating">★★★★☆</span>
+              <span class="genre">Action Thriller</span>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-image" style="background-image: url('Dune-Part-Two-2024-poster.jpg');"></div>
+          <div class="review-content">
+            <h4>Dune: Part Two (2024)</h4>
+            <p>Denis Villeneuve's epic conclusion to the Dune saga with spectacular visuals and Timothée Chalamet's transformative performance.</p>
+            <div class="review-meta">
+              <span class="rating">★★★★★</span>
+              <span class="genre">Sci-Fi Epic</span>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-image" style="background-image: url('La-La-Land-2016-poster.jpg');"></div>
+          <div class="review-content">
+            <h4>La La Land (2016)</h4>
+            <p>Damien Chazelle's modern musical masterpiece with Ryan Gosling and Emma Stone delivering career-defining performances.</p>
+            <div class="review-meta">
+              <span class="rating">★★★★★</span>
+              <span class="genre">Musical Romance</span>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-image" style="background-image: url('Inception-2010-poster.jpg');"></div>
+          <div class="review-content">
+            <h4>Inception (2010)</h4>
+            <p>Christopher Nolan's mind-bending thriller about dreams within dreams, a technical and narrative marvel.</p>
+            <div class="review-meta">
+              <span class="rating">★★★★★</span>
+              <span class="genre">Sci-Fi Thriller</span>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </article>
+      </div>
+      
+      <div class="show-more-container">
+        <button class="show-more-btn" id="showMoreBtn">Show More Movies</button>
       </div>
     </section>
 
@@ -96,7 +161,47 @@
           </tbody>
         </table>
       </div>
-      <p class="view-more">View full comparison</p>
+      
+      <!-- Hidden additional comparison rows -->
+      <div class="additional-comparisons" id="additionalComparisons" style="display: none;">
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Movie Title</th>
+                <th>Director</th>
+                <th>Genre</th>
+                <th>Rating</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Dune: Part Two</td>
+                <td>Denis Villeneuve</td>
+                <td>Sci-Fi Epic</td>
+                <td><span class="rating-badge">4.8/5</span></td>
+              </tr>
+              <tr>
+                <td>The Batman</td>
+                <td>Matt Reeves</td>
+                <td>Action Thriller</td>
+                <td><span class="rating-badge">4.2/5</span></td>
+              </tr>
+              <tr>
+                <td>La La Land</td>
+                <td>Damien Chazelle</td>
+                <td>Musical Romance</td>
+                <td><span class="rating-badge">4.6/5</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <div class="comparison-actions">
+        <p class="view-more" id="viewMoreComparison">View full comparison</p>
+        <button class="show-more-btn comparison-btn" id="showMoreComparisonBtn" style="display: none;">Show More Comparisons</button>
+      </div>
     </section>
 
     <section class="comments-section">
@@ -197,6 +302,57 @@
         <div class="search-actions">
           <button id="searchBtn" class="search-action-btn primary">Search</button>
           <button id="clearBtn" class="search-action-btn secondary">Clear Filters</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Dropdown -->
+  <div id="searchDropdown" class="search-dropdown" style="display: none;">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+
+  <!-- Movie Review Modal -->
+  <div id="movieModal" class="movie-modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="modal-body">
+        <div class="modal-header">
+          <div class="movie-poster"></div>
+          <div class="movie-info">
+            <h2 class="movie-title"></h2>
+            <div class="movie-meta">
+              <span class="movie-rating"></span>
+              <span class="movie-genre"></span>
+              <span class="movie-year"></span>
+            </div>
+            <div class="movie-stats">
+              <div class="stat-item">
+                <span class="stat-label">Director</span>
+                <span class="stat-value director"></span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Runtime</span>
+                <span class="stat-value runtime"></span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Release Date</span>
+                <span class="stat-value release-date"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-description">
+          <h3>Synopsis</h3>
+          <p class="movie-synopsis"></p>
+        </div>
+        <div class="modal-review">
+          <h3>Full Review</h3>
+          <div class="review-content-full"></div>
+        </div>
+        <div class="modal-actions">
+          <button class="action-btn primary">Add to Watchlist</button>
+          <button class="action-btn secondary">Share Review</button>
         </div>
       </div>
     </div>
@@ -586,6 +742,240 @@
           setTimeout(() => notification.remove(), 300);
         }, 4000);
       }
+    });
+
+    // Show More Movies Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const showMoreBtn = document.getElementById('showMoreBtn');
+      const additionalMovies = document.getElementById('additionalMovies');
+      const showMoreContainer = document.querySelector('.show-more-container');
+      
+      if (showMoreBtn && additionalMovies) {
+        showMoreBtn.addEventListener('click', function() {
+          // Show additional movies with smooth animation
+          additionalMovies.style.display = 'grid';
+          additionalMovies.style.opacity = '0';
+          
+          // Trigger reflow for animation
+          additionalMovies.offsetHeight;
+          
+          // Animate in
+          additionalMovies.style.transition = 'opacity 0.6s ease-out';
+          additionalMovies.style.opacity = '1';
+          
+          // Hide the show more button
+          showMoreContainer.classList.add('hidden');
+          
+          // Smooth scroll to the newly shown movies
+          setTimeout(() => {
+            additionalMovies.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'start' 
+            });
+          }, 300);
+        });
+      }
+
+      // Comparison Show More Functionality
+      const viewMoreComparison = document.getElementById('viewMoreComparison');
+      const showMoreComparisonBtn = document.getElementById('showMoreComparisonBtn');
+      const additionalComparisons = document.getElementById('additionalComparisons');
+      
+      if (viewMoreComparison && showMoreComparisonBtn && additionalComparisons) {
+        viewMoreComparison.addEventListener('click', function() {
+          // Show the show more button and hide the view more text
+          viewMoreComparison.style.display = 'none';
+          showMoreComparisonBtn.style.display = 'inline-block';
+        });
+        
+        showMoreComparisonBtn.addEventListener('click', function() {
+          // Show additional comparisons with smooth animation
+          additionalComparisons.style.display = 'block';
+          additionalComparisons.style.opacity = '0';
+          
+          // Trigger reflow for animation
+          additionalComparisons.offsetHeight;
+          
+          // Animate in
+          additionalComparisons.style.transition = 'opacity 0.6s ease-out';
+          additionalComparisons.style.opacity = '1';
+          
+          // Hide the show more button
+          showMoreComparisonBtn.style.display = 'none';
+          
+          // Smooth scroll to the newly shown comparisons
+          setTimeout(() => {
+            additionalComparisons.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'start' 
+            });
+          }, 300);
+        });
+      }
+    });
+
+    // Movie Review Modal Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const movieModal = document.getElementById('movieModal');
+      const closeModal = document.querySelector('.close-modal');
+      
+      // Movie data for the modal
+      const movieData = {
+        'The Stellar Odyssey': {
+          poster: 'pexels-cottonbro-3945317.jpg',
+          rating: '★★★★☆',
+          genre: 'Sci-Fi',
+          year: '2024',
+          director: 'Ava Sterling',
+          runtime: '2h 35m',
+          releaseDate: 'March 15, 2024',
+          synopsis: 'A breathtaking space opera that redefines the genre with stunning visuals and compelling narrative. Follow the journey of a crew of astronauts as they explore the far reaches of space.',
+          fullReview: 'The Stellar Odyssey is a breathtaking space opera that redefines the genre with stunning visuals and compelling narrative. Director Ava Sterling\'s masterpiece combines cutting-edge visual effects with a deeply human story that explores themes of exploration, sacrifice, and the unknown. The film\'s innovative approach to space travel and its emotional depth make it a standout in modern science fiction cinema.'
+        },
+        'Echoes of the Past': {
+          poster: 'pexels-cottonbro-3945319.jpg',
+          rating: '★★★★★',
+          genre: 'Historical Drama',
+          year: '2024',
+          director: 'Marcus Chen',
+          runtime: '2h 18m',
+          releaseDate: 'February 28, 2024',
+          synopsis: 'A gripping historical drama exploring human nature with powerful performances and haunting score. Set against the backdrop of a pivotal moment in history.',
+          fullReview: 'Echoes of the Past is a gripping historical drama that explores the complexities of human nature through powerful performances and haunting cinematography. Director Marcus Chen masterfully weaves together personal stories with grand historical events, creating a film that is both intimate and epic in scope. The attention to historical detail and the emotional depth of the characters make this a truly memorable cinematic experience.'
+        },
+        'The Batman (2022)': {
+          poster: 'The-Batman-2022-poster.jpg',
+          rating: '★★★★☆',
+          genre: 'Action Thriller',
+          year: '2022',
+          director: 'Matt Reeves',
+          runtime: '2h 56m',
+          releaseDate: 'March 4, 2022',
+          synopsis: 'Matt Reeves delivers a dark, grounded take on the Dark Knight with Robert Pattinson\'s brooding intensity and atmospheric storytelling.',
+          fullReview: 'Matt Reeves delivers a dark, grounded take on the Dark Knight. Robert Pattinson brings a brooding intensity to Bruce Wayne, while the film\'s noir-inspired cinematography creates a Batman film unlike any other. A masterclass in atmospheric storytelling that redefines the superhero genre.'
+        },
+        'Dune: Part Two (2024)': {
+          poster: 'Dune-Part-Two-2024-poster.jpg',
+          rating: '★★★★★',
+          genre: 'Sci-Fi Epic',
+          year: '2024',
+          director: 'Denis Villeneuve',
+          runtime: '2h 46m',
+          releaseDate: 'March 1, 2024',
+          synopsis: 'Denis Villeneuve\'s epic conclusion to the Dune saga with spectacular visuals and Timothée Chalamet\'s transformative performance.',
+          fullReview: 'Denis Villeneuve concludes his Dune saga with spectacular visuals and epic storytelling. Timothée Chalamet\'s Paul Atreides completes his transformation into a messianic leader in this sci-fi masterpiece that honors Frank Herbert\'s vision while creating a cinematic experience of unparalleled grandeur.'
+        },
+        'La La Land (2016)': {
+          poster: 'La-La-Land-2016-poster.jpg',
+          rating: '★★★★★',
+          genre: 'Musical Romance',
+          year: '2016',
+          director: 'Damien Chazelle',
+          runtime: '2h 8m',
+          releaseDate: 'December 9, 2016',
+          synopsis: 'Damien Chazelle\'s modern musical is a love letter to both romance and cinema. Ryan Gosling and Emma Stone deliver career-defining performances.',
+          fullReview: 'Damien Chazelle\'s modern musical is a love letter to both romance and cinema. Ryan Gosling and Emma Stone deliver career-defining performances in this bittersweet tale of dreams, love, and the sacrifices we make for art. The cinematography and music create pure magic, making this one of the most enchanting films of the decade.'
+        },
+        'Inception (2010)': {
+          poster: 'Inception-2010-poster.jpg',
+          rating: '★★★★★',
+          genre: 'Sci-Fi Thriller',
+          year: '2010',
+          director: 'Christopher Nolan',
+          runtime: '2h 28m',
+          releaseDate: 'July 16, 2010',
+          synopsis: 'Christopher Nolan\'s mind-bending thriller about dreams within dreams is a technical and narrative marvel.',
+          fullReview: 'Christopher Nolan\'s mind-bending thriller about dreams within dreams is a technical and narrative marvel. Leonardo DiCaprio leads an ensemble cast through layers of reality and subconsciousness. The film\'s innovative concept and stunning practical effects make it a modern classic that continues to inspire and challenge audiences.'
+        }
+      };
+
+      // Function to open movie modal
+      function openMovieModal(movieTitle) {
+        const movie = movieData[movieTitle];
+        if (!movie) return;
+
+        // Populate modal content
+        document.querySelector('.movie-poster').style.backgroundImage = `url('${movie.poster}')`;
+        document.querySelector('.movie-title').textContent = movieTitle;
+        document.querySelector('.movie-rating').textContent = movie.rating;
+        document.querySelector('.movie-genre').textContent = movie.genre;
+        document.querySelector('.movie-year').textContent = movie.year;
+        document.querySelector('.director').textContent = movie.director;
+        document.querySelector('.runtime').textContent = movie.runtime;
+        document.querySelector('.release-date').textContent = movie.releaseDate;
+        document.querySelector('.movie-synopsis').textContent = movie.synopsis;
+        document.querySelector('.review-content-full').textContent = movie.fullReview;
+
+        // Show modal
+        movieModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      // Function to close movie modal
+      function closeMovieModal() {
+        movieModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+
+      // Add click event to all "Read More" buttons
+      document.querySelectorAll('.read-more-btn').forEach(button => {
+        button.addEventListener('click', function() {
+          const movieCard = this.closest('.review-card');
+          const movieTitle = movieCard.querySelector('h4').textContent;
+          openMovieModal(movieTitle);
+        });
+      });
+
+      // Close modal when clicking close button or outside modal
+      if (closeModal) {
+        closeModal.addEventListener('click', closeMovieModal);
+      }
+
+      if (movieModal) {
+        movieModal.addEventListener('click', function(e) {
+          if (e.target === movieModal) {
+            closeMovieModal();
+          }
+        });
+      }
+
+      // Close modal with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && movieModal.classList.contains('active')) {
+          closeMovieModal();
+        }
+      });
+
+      // Action button functionality
+      document.querySelectorAll('.action-btn').forEach(button => {
+        button.addEventListener('click', function() {
+          if (this.textContent === 'Add to Watchlist') {
+            this.textContent = 'Added to Watchlist';
+            this.style.background = 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)';
+            setTimeout(() => {
+              this.textContent = 'Add to Watchlist';
+              this.style.background = 'linear-gradient(135deg, #00d4ff 0%, #0099cc 100%)';
+            }, 2000);
+          } else if (this.textContent === 'Share Review') {
+            // Create share functionality
+            if (navigator.share) {
+              navigator.share({
+                title: document.querySelector('.movie-title').textContent,
+                text: 'Check out this movie review on CineScope!',
+                url: window.location.href
+              });
+            } else {
+              // Fallback: copy to clipboard
+              navigator.clipboard.writeText(window.location.href).then(() => {
+                this.textContent = 'Link Copied!';
+                setTimeout(() => {
+                  this.textContent = 'Share Review';
+                }, 2000);
+              });
+            }
+          }
+        });
+      });
     });
   </script>
 </body>

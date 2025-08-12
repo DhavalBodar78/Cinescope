@@ -4,12 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Movie Reviews - CineScope</title>
-  <link rel="stylesheet" href="home.css" />
   <link rel="stylesheet" href="reviews.css" />
-  <link rel="stylesheet" href="modal.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&family=Anton&family=Oswald:wght@400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
 </head>
 <body>
+  <!-- Light Trail Elements for Background Animation -->
+  <div class="light-trail"></div>
+  <div class="light-trail"></div>
+  <div class="light-trail"></div>
+  <div class="light-trail"></div>
+  
   <header>
     <div class="logo">
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -21,180 +25,127 @@
       <a href="./index.html">Home</a>
       <a href="./reviews.html" class="active">Reviews</a>
       <a href="./editors-choice.html">Editor's Choice</a>
-      <a href="#">Movie Comparisons</a>
-      <a href="#">Viewer Comments</a>
-      <a href="#">Contact Us</a>
+      <a href="./polls.html">Polls</a>
+      <a href="./viewer-comments.html">Viewer Comments</a>
+      <a href="./suggestions.html">Suggestions</a>
+      <a href="./contact.html">Contact</a>
+      <a href="./about.html">About</a>
     </nav>
-
+    <button class="search-btn" aria-label="Search">
+      🔍
+    </button
   </header>
 
   <main>
     <section class="hero">
       <div class="hero-content">
         <h2>Movie Reviews</h2>
-        <p>Discover the latest films through our expert analysis and comprehensive reviews.</p>
+        <p>Discover our comprehensive reviews of the latest releases and timeless classics. From Hollywood blockbusters to Bollywood gems, we provide honest insights to help you choose your next movie.</p>
       </div>
     </section>
 
     <section class="reviews-section">
       <div class="reviews-header">
         <h3>Latest Reviews</h3>
-        <p class="reviews-subtitle">Explore our curated collection of movie reviews</p>
+        <div class="controls">
+          <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search movies..." />
+            <button class="search-button ">🔍</button>
+          </div>
+          <div class="filter-container">
+            <select class="filter-select">
+              <option value="">All Genres</option>
+              <option value="Action">Action</option>
+              <option value="Drama">Drama</option>
+              <option value="Sci-Fi">Sci-Fi</option>
+              <option value="Comedy">Comedy</option>
+              <option value="Thriller">Thriller</option>
+              <option value="Romance">Romance</option>
+              <option value="Horror">Horror</option>
+              <option value="Bollywood">Bollywood</option>
+            </select>
+            <select class="filter-select">
+              <option value="">All Ratings</option>
+              <option value="5">5 Stars</option>
+              <option value="4">4+ Stars</option>
+              <option value="3">3+ Stars</option>
+              <option value="2">2+ Stars</option>
+            </select>
+            <select class="filter-select">
+              <option value="">All Years</option>
+              <option value="2024">2024</option>
+              <option value="2023">2023</option>
+              <option value="2022">2022</option>
+              <option value="2021">2021</option>
+              <option value="2020">2020</option>
+            </select>
+            <select class="sort-select">
+              <option value="latest">Latest First</option>
+              <option value="rating">Highest Rated</option>
+              <option value="title">Alphabetical</option>
+            </select>
+            <button class="clear-filters">Clear All</button>
+          </div>
+        </div>
       </div>
 
-      <div class="reviews-grid">
-        <article class="review-card featured">
-          <div class="review-image" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg');">
-            <div class="featured-badge">Featured</div>
-            <div class="fallback-text">Avengers: Endgame</div>
+      <div class="reviews-grid" id="reviewsGrid">
+        <!-- Review cards imported from home page -->
+        <article class="review-card">
+          <div class="review-image" style="background-image: url('INTERSTELLAR (2014) poster by Jximedesigns.jpg');">
+            <div class="fallback-text">Interstellar</div>
           </div>
           <div class="review-content">
-            <div class="review-header">
-              <h4>Avengers: Endgame</h4>
-              <div class="rating-stars">★★★★★</div>
-            </div>
-            <p class="review-excerpt">A breathtaking superhero epic that redefines the genre with stunning visuals and compelling narrative. Directors Russo brothers deliver a masterpiece that will be remembered for generations.</p>
+            <h4>Interstellar (2014)</h4>
+            <p>Christopher Nolan's ambitious space epic transcends the boundaries of science fiction. With stunning visuals, a haunting score by Hans Zimmer, and emotional depth that matches its cosmic scale, Interstellar is a masterpiece that explores love, sacrifice, and humanity's place in the universe.</p>
             <div class="review-meta">
-              <span class="genre">Sci-Fi</span>
-              <span class="year">2024</span>
-              <span class="runtime">2h 35m</span>
-            </div>
-            <div class="review-stats">
-              <div class="stat">
-                <span class="stat-label">Plot</span>
-                <div class="stat-bar">
-                  <div class="stat-fill" style="width: 95%"></div>
-                </div>
-              </div>
-              <div class="stat">
-                <span class="stat-label">Acting</span>
-                <div class="stat-bar">
-                  <div class="stat-fill" style="width: 90%"></div>
-                </div>
-              </div>
-              <div class="stat">
-                <span class="stat-label">Visuals</span>
-                <div class="stat-bar">
-                  <div class="stat-fill" style="width: 98%"></div>
-                </div>
-              </div>
+              <span class="rating">★★★★★</span>
+              <span class="genre">Sci-Fi Drama</span>
             </div>
             <button class="read-more-btn">Read Full Review</button>
           </div>
         </article>
 
         <article class="review-card">
-          <div class="review-image" style="background-image: url('https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg');">
+          <div class="review-image" style="background-image: url('Oppenheimer.jpeg');">
             <div class="fallback-text">Oppenheimer</div>
           </div>
           <div class="review-content">
-            <div class="review-header">
-              <h4>Oppenheimer</h4>
-              <div class="rating-stars">★★★★★</div>
-            </div>
-            <p class="review-excerpt">A gripping historical drama exploring the complexities of the atomic bomb creation with powerful performances and haunting score. Christopher Nolan's direction brings this period piece to life.</p>
+            <h4>Oppenheimer (2023)</h4>
+            <p>Nolan's biographical thriller about the father of the atomic bomb is a cinematic tour de force. Cillian Murphy delivers a career-defining performance, while the film's technical achievements in sound design and visual storytelling create an immersive experience that lingers long after the credits roll.</p>
             <div class="review-meta">
+              <span class="rating">★★★★★</span>
               <span class="genre">Historical Drama</span>
-              <span class="year">2024</span>
-              <span class="runtime">2h 15m</span>
-            </div>
-            <div class="review-stats">
-              <div class="stat">
-                <span class="stat-label">Plot</span>
-                <div class="stat-bar">
-                  <div class="stat-fill" style="width: 88%"></div>
-                </div>
-              </div>
-              <div class="stat">
-                <span class="stat-label">Acting</span>
-                <div class="stat-bar">
-                  <div class="stat-fill" style="width: 92%"></div>
-                </div>
-              </div>
-              <div class="stat">
-                <span class="stat-label">Visuals</span>
-                <div class="stat-bar">
-                  <div class="stat-fill" style="width: 85%"></div>
-                </div>
-              </div>
             </div>
             <button class="read-more-btn">Read Full Review</button>
           </div>
         </article>
 
         <article class="review-card">
-          <div class="review-image" style="background-image: url('https://image.tmdb.org/t/p/w500/4SYTH5FdB0dAORV98Nwg3llgVnY.jpg');">
-            <div class="fallback-text">Deadpool</div>
+          <div class="review-image" style="background-image: url('https://i.pinimg.com/736x/97/6d/97/976d973e60121bbb4f831f49bbacd161.jpg');">
+            <div class="fallback-text">The Batman</div>
           </div>
           <div class="review-content">
-            <div class="review-header">
-              <h4>Deadpool</h4>
-              <div class="rating-stars">★★★★☆</div>
-            </div>
-            <p class="review-excerpt">A thrilling action-comedy that keeps you on the edge of your seat. Perfect blend of humor and adrenaline-pumping sequences with Ryan Reynolds' iconic performance.</p>
+            <h4>The Batman (2022)</h4>
+            <p>Matt Reeves delivers a dark, grounded take on the Dark Knight. Robert Pattinson brings a brooding intensity to Bruce Wayne, while the film's noir-inspired cinematography and Paul Dano's chilling Riddler create a Batman film unlike any other. A masterclass in atmospheric storytelling.</p>
             <div class="review-meta">
-              <span class="genre">Action Comedy</span>
-              <span class="year">2024</span>
-              <span class="runtime">1h 58m</span>
-            </div>
-            <div class="review-stats">
-              <div class="stat">
-                <span class="stat-label">Plot</span>
-                <div class="stat-bar">
-                  <div class="stat-fill" style="width: 82%"></div>
-                </div>
-              </div>
-              <div class="stat">
-                <span class="stat-label">Acting</span>
-                <div class="stat-bar">
-                  <div class="stat-fill" style="width: 88%"></div>
-                </div>
-              </div>
-              <div class="stat">
-                <span class="stat-label">Visuals</span>
-                <div class="stat-bar">
-                  <div class="stat-fill" style="width: 90%"></div>
-                </div>
-              </div>
+              <span class="rating">★★★★☆</span>
+              <span class="genre">Action Thriller</span>
             </div>
             <button class="read-more-btn">Read Full Review</button>
           </div>
         </article>
 
         <article class="review-card">
-          <div class="review-image" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg');">
-            <div class="fallback-text">Inception</div>
+          <div class="review-image" style="background-image: url('https://i.pinimg.com/736x/c8/89/60/c8896031121292fcf979635fe9922c76.jpg');">
+            <div class="fallback-text">Dune: Part Two</div>
           </div>
           <div class="review-content">
-            <div class="review-header">
-              <h4>Inception</h4>
-              <div class="rating-stars">★★★★★</div>
-            </div>
-            <p class="review-excerpt">A psychological thriller that masterfully builds tension through dream manipulation. The atmospheric cinematography and stellar performances create an unforgettable experience.</p>
+            <h4>Dune: Part Two (2024)</h4>
+            <p>Denis Villeneuve concludes his Dune saga with spectacular visuals and epic storytelling. Timothée Chalamet's Paul Atreides completes his transformation into a messianic leader, while the film explores themes of power, destiny, and the cost of prophecy. A sci-fi masterpiece.</p>
             <div class="review-meta">
-              <span class="genre">Thriller</span>
-              <span class="year">2024</span>
-              <span class="runtime">1h 45m</span>
-            </div>
-            <div class="review-stats">
-              <div class="stat">
-                <span class="stat-label">Plot</span>
-                <div class="stat-bar">
-                  <div class="stat-fill" style="width: 95%"></div>
-                </div>
-              </div>
-              <div class="stat">
-                <span class="stat-label">Acting</span>
-                <div class="stat-bar">
-                  <div class="stat-fill" style="width: 96%"></div>
-                </div>
-              </div>
-              <div class="stat">
-                <span class="stat-label">Visuals</span>
-                <div class="stat-bar">
-                  <div class="stat-fill" style="width: 92%"></div>
-                </div>
-              </div>
+              <span class="rating">★★★★★</span>
+              <span class="genre">Sci-Fi Epic</span>
             </div>
             <button class="read-more-btn">Read Full Review</button>
           </div>
@@ -205,94 +156,125 @@
             <div class="fallback-text">La La Land</div>
           </div>
           <div class="review-content">
-            <div class="review-header">
-              <h4>La La Land</h4>
-              <div class="rating-stars">★★★★☆</div>
-            </div>
-            <p class="review-excerpt">A romantic musical that delivers laughs and heart. The chemistry between Emma Stone and Ryan Gosling makes this modern classic truly enjoyable.</p>
+            <h4>La La Land (2016)</h4>
+            <p>Damien Chazelle's modern musical is a love letter to both romance and cinema. Ryan Gosling and Emma Stone deliver career-defining performances in this bittersweet tale of dreams, love, and the sacrifices we make for art. The cinematography and music create pure magic.</p>
             <div class="review-meta">
-              <span class="genre">Romance</span>
-              <span class="year">2024</span>
-              <span class="runtime">1h 52m</span>
-            </div>
-            <div class="review-stats">
-              <div class="stat">
-                <span class="stat-label">Plot</span>
-                <div class="stat-bar">
-                  <div class="stat-fill" style="width: 70%"></div>
-                </div>
-              </div>
-              <div class="stat">
-                <span class="stat-label">Acting</span>
-                <div class="stat-bar">
-                  <div class="stat-fill" style="width: 85%"></div>
-                </div>
-              </div>
-              <div class="stat">
-                <span class="stat-label">Visuals</span>
-                <div class="stat-bar">
-                  <div class="stat-fill" style="width: 78%"></div>
-                </div>
-              </div>
+              <span class="rating">★★★★★</span>
+              <span class="genre">Musical Romance</span>
             </div>
             <button class="read-more-btn">Read Full Review</button>
           </div>
         </article>
 
         <article class="review-card">
-          <div class="review-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BN2EwM2I5OWMtMGQyMi00Zjg1LWJkNTctZTcwYWM4MmJhN2YxXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg');">
+          <div class="review-image" style="background-image: url('https://i.pinimg.com/1200x/b0/ae/a4/b0aea49646879a043ad9f6ec3002e99f.jpg');">
+            <div class="fallback-text">Inception</div>
+          </div>
+          <div class="review-content">
+            <h4>Inception (2010)</h4>
+            <p>Christopher Nolan's mind-bending thriller about dreams within dreams is a technical and narrative marvel. Leonardo DiCaprio leads an ensemble cast through layers of reality and subconsciousness. The film's innovative concept and stunning practical effects make it a modern classic.</p>
+            <div class="review-meta">
+              <span class="rating">★★★★★</span>
+              <span class="genre">Sci-Fi Thriller</span>
+            </div>
+            <button class="read-more-btn">Read Full Review</button>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-image" style="background-image: url('https://i.pinimg.com/736x/60/f6/43/60f6438d07c414f36db349badab2db9b.jpg');">
+            <div class="fallback-text">RRR</div>
+          </div>
+          <div class="review-content">
+            <h4>RRR (2022)</h4>
+            <p>S.S. Rajamouli's epic action drama is a spectacular celebration of friendship, freedom, and heroism. Ram Charan and Jr. NTR deliver powerhouse performances in this visually stunning film that combines historical fiction with larger-than-life action sequences. A true cinematic experience.</p>
+            <div class="review-meta">
+              <span class="rating">★★★★★</span>
+              <span class="genre">Action Drama</span>
+            </div>
+            <button class="read-more-btn">Read Full Review</button>
+          </div>
+        </article>
+        
+        <!-- Additional review cards can be added here -->
+      </div>
+      
+      <!-- Hidden additional movies that will be shown when "Show More" is clicked -->
+      <div class="additional-movies" id="additionalMovies" style="display: none;">
+        <article class="review-card">
+          <div class="review-image" style="background-image: url('https://i.pinimg.com/736x/97/6d/97/976d973e60121bbb4f831f49bbacd161.jpg');">
+            <div class="fallback-text">The Dark Knight</div>
+          </div>
+          <div class="review-content">
+            <h4>The Dark Knight (2008)</h4>
+            <p>Christopher Nolan's masterpiece redefined the superhero genre. Heath Ledger's iconic Joker performance and the film's exploration of morality make it a cinematic landmark that transcends its genre.</p>
+            <div class="review-meta">
+              <span class="rating">★★★★★</span>
+              <span class="genre">Superhero Drama</span>
+            </div>
+            <button class="read-more-btn">Read Full Review</button>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-image" style="background-image: url('https://i.pinimg.com/736x/60/f6/43/60f6438d07c414f36db349badab2db9b.jpg');">
+            <div class="fallback-text">Baahubali</div>
+          </div>
+          <div class="review-content">
+            <h4>Baahubali: The Beginning (2015)</h4>
+            <p>S.S. Rajamouli's epic fantasy film is a visual spectacle that showcases Indian cinema's potential. With stunning VFX, grand sets, and an engaging story, it's a landmark achievement in Indian filmmaking.</p>
+            <div class="review-meta">
+              <span class="rating">★★★★☆</span>
+              <span class="genre">Epic Fantasy</span>
+            </div>
+            <button class="read-more-btn">Read Full Review</button>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-image" style="background-image: url('https://i.pinimg.com/736x/c8/89/60/c8896031121292fcf979635fe9922c76.jpg');">
+            <div class="fallback-text">Blade Runner 2049</div>
+          </div>
+          <div class="review-content">
+            <h4>Blade Runner 2049 (2017)</h4>
+            <p>Denis Villeneuve's sequel to the sci-fi classic is a visual and philosophical masterpiece. Ryan Gosling's performance and Roger Deakins' cinematography create an immersive dystopian world that honors the original while standing on its own.</p>
+            <div class="review-meta">
+              <span class="rating">★★★★★</span>
+              <span class="genre">Sci-Fi Neo-Noir</span>
+            </div>
+            <button class="read-more-btn">Read Full Review</button>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-image" style="background-image: url('https://i.pinimg.com/736x/97/6d/97/976d973e60121bbb4f831f49bbacd161.jpg');">
             <div class="fallback-text">Mad Max: Fury Road</div>
           </div>
           <div class="review-content">
-            <div class="review-header">
-              <h4>Mad Max: Fury Road</h4>
-              <div class="rating-stars">★★★★☆</div>
-            </div>
-            <p class="review-excerpt">An epic adventure film with breathtaking desert landscapes. The action sequences are spectacular, with George Miller's visionary direction creating a masterpiece.</p>
+            <h4>Mad Max: Fury Road (2015)</h4>
+            <p>George Miller's post-apocalyptic action film is a masterclass in practical effects and kinetic filmmaking. Charlize Theron's Imperator Furiosa and Tom Hardy's Max create an unforgettable cinematic experience.</p>
             <div class="review-meta">
-              <span class="genre">Adventure</span>
-              <span class="year">2024</span>
-              <span class="runtime">2h 20m</span>
-            </div>
-            <div class="review-stats">
-              <div class="stat">
-                <span class="stat-label">Plot</span>
-                <div class="stat-bar">
-                  <div class="stat-fill" style="width: 80%"></div>
-                </div>
-              </div>
-              <div class="stat">
-                <span class="stat-label">Acting</span>
-                <div class="stat-bar">
-                  <div class="stat-fill" style="width: 85%"></div>
-                </div>
-              </div>
-              <div class="stat">
-                <span class="stat-label">Visuals</span>
-                <div class="stat-bar">
-                  <div class="stat-fill" style="width: 95%"></div>
-                </div>
-              </div>
+              <span class="rating">★★★★★</span>
+              <span class="genre">Action Adventure</span>
             </div>
             <button class="read-more-btn">Read Full Review</button>
           </div>
         </article>
       </div>
-
-      <div class="pagination">
-        <button class="page-btn active">1</button>
-        <button class="page-btn">2</button>
-        <button class="page-btn">3</button>
-        <button class="page-btn">Next</button>
+      
+      <div class="show-more-container">
+        <button class="show-more-btn" id="showMoreBtn">Show More Movies</button>
       </div>
-    </section>
-
-    <section class="newsletter-section">
-      <h3>Stay Updated</h3>
-      <p>Get the latest movie reviews and recommendations delivered to your inbox.</p>
-      <div class="newsletter-form">
-        <input type="email" placeholder="Enter your email address" class="newsletter-input">
-        <button class="newsletter-btn">Subscribe</button>
+      
+      <!-- External Reviews Section -->
+      <div id="externalReviewsSection" style="display: none;">
+        <div class="section-header" style="margin: 40px 0 20px 0; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; color: white;">
+          <h3 style="margin: 0; font-size: 1.5rem;">🌐 External Reviews</h3>
+          <p style="margin: 5px 0 0 0; opacity: 0.9;">Reviews from popular movie databases and review sites</p>
+        </div>
+        <div class="reviews-grid" id="externalReviewsGrid">
+          <!-- External review cards will be dynamically generated here -->
+        </div>
       </div>
     </section>
   </main>
@@ -302,16 +284,970 @@
       <nav class="footer-nav">
         <a href="./index.html">Home</a>
         <a href="./reviews.html">Reviews</a>
-        <a href="#">Editor's Choice</a>
-        <a href="#">Movie Comparisons</a>
-        <a href="#">Viewer Comments</a>
-        <a href="#">Contact Us</a>
-        <a href="#">About Us</a>
+        <a href="./editors-choice.html">Editor's Choice</a>
+        <a href="./polls.html">Polls</a>
+        <a href="./viewer-comments.html">Viewer Comments</a>
+        <a href="./suggestions.html">Suggestions</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./about.html">About Us</a>
       </nav>
-              <p class="copyright"> 2025 CineScope. All rights reserved.</p>
+      <p class="copyright">© 2025 CineScope – Honest Movie Reviews. All rights reserved.</p>
     </div>
   </footer>
-  <script src="script.js"></script>
-  <script src="modal.js"></script>
+
+  <!-- Search Dropdown -->
+  <div id="searchDropdown" class="search-dropdown" style="display: none;">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+
+  <!-- Movie Review Modal -->
+  <div id="movieModal" class="movie-modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="modal-body">
+        <div class="modal-header">
+          <div class="movie-poster"></div>
+          <div class="movie-info">
+            <h2 class="movie-title"></h2>
+            <div class="movie-meta">
+              <span class="movie-rating"></span>
+              <span class="movie-genre"></span>
+              <span class="movie-year"></span>
+            </div>
+            <div class="movie-stats">
+              <div class="stat-item">
+                <span class="stat-label">Director</span>
+                <span class="stat-value director"></span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Runtime</span>
+                <span class="stat-value runtime"></span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Release Date</span>
+                <span class="stat-value release-date"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-description">
+          <h3>Synopsis</h3>
+          <p class="movie-synopsis"></p>
+        </div>
+        <div class="modal-review">
+          <h3>Full Review</h3>
+          <div class="review-content-full"></div>
+        </div>
+        <div class="modal-actions">
+          <button class="action-btn primary">Add to Watchlist</button>
+          <button class="action-btn secondary">Share Review</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .search-dropdown {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      width: 400px;
+      max-height: 80vh;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      border: 1px solid #00d4ff;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3), 0 0 0 1px rgba(0, 212, 255, 0.1);
+      z-index: 2000;
+      overflow: hidden;
+      animation: slideDown 0.3s ease;
+    }
+    
+    @keyframes slideDown {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    .search-dropdown-content {
+      padding: 0;
+      overflow-y: auto;
+      max-height: 80vh;
+    }
+    
+    .search-section {
+      padding: 20px;
+      border-bottom: 1px solid #333;
+    }
+    
+    .search-input-container {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    
+    #quickSearchInput {
+      flex: 1;
+      padding: 12px 16px;
+      border: 2px solid #333;
+      border-radius: 10px;
+      font-size: 14px;
+      background: #2d2d2d;
+      color: #ffffff;
+      transition: all 0.3s ease;
+    }
+    
+    #quickSearchInput::placeholder {
+      color: #888;
+    }
+    
+    #quickSearchInput:focus {
+      outline: none;
+      border-color: #00d4ff;
+      background: #333;
+      box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+    }
+    
+    .quick-search-btn {
+      padding: 12px 16px;
+      background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+      color: #121212;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+    
+    .quick-search-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+    }
+    
+    .recommendations-section {
+      padding: 20px;
+    }
+    
+    .recommendations-section h4 {
+      margin: 0 0 15px 0;
+      color: #00d4ff;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    
+    .recommended-movies {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    
+    .movie-suggestion {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px;
+      border-radius: 10px;
+      background: rgba(45, 45, 45, 0.5);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .movie-suggestion:hover {
+      background: rgba(0, 212, 255, 0.1);
+      border-color: #00d4ff;
+      transform: translateX(5px);
+    }
+    
+    .movie-suggestion img {
+      width: 40px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid #333;
+    }
+    
+    .movie-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    
+    .movie-title {
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    
+    .movie-genre {
+      color: #888;
+      font-size: 12px;
+    }
+    
+    .movie-rating {
+      color: #00d4ff;
+      font-size: 12px;
+    }
+    
+    .quick-filters {
+      border-top: 1px solid #333;
+      padding-top: 15px;
+    }
+    
+    .quick-filters h5 {
+      margin: 0 0 10px 0;
+      color: #00d4ff;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    
+    .filter-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .filter-tag {
+      padding: 6px 12px;
+      background: rgba(0, 212, 255, 0.1);
+      color: #00d4ff;
+      border: 1px solid #00d4ff;
+      border-radius: 20px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .filter-tag:hover {
+      background: #00d4ff;
+      color: #121212;
+      transform: translateY(-2px);
+    }
+    
+    /* Responsive design */
+    @media (max-width: 600px) {
+      .search-dropdown {
+        right: 10px;
+        left: 10px;
+        width: auto;
+        top: 70px;
+      }
+      
+      .movie-suggestion {
+        padding: 8px;
+      }
+      
+      .movie-suggestion img {
+        width: 35px;
+        height: 50px;
+      }
+    }
+  </style>
+
+  <script>
+    // New Search Dropdown functionality with recommendations
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchBtn = document.querySelector('.search-btn');
+      const searchDropdown = document.getElementById('searchDropdown');
+      const quickSearchInput = document.getElementById('quickSearchInput');
+      const quickSearchBtn = document.getElementById('quickSearchBtn');
+      const movieSuggestions = document.querySelectorAll('.movie-suggestion');
+      const filterTags = document.querySelectorAll('.filter-tag');
+      
+      // Toggle search dropdown
+      searchBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const isVisible = searchDropdown.style.display === 'block';
+        searchDropdown.style.display = isVisible ? 'none' : 'block';
+        if (!isVisible) {
+          quickSearchInput.focus();
+        }
+      });
+      
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!searchDropdown.contains(e.target) && !searchBtn.contains(e.target)) {
+          searchDropdown.style.display = 'none';
+        }
+      });
+      
+      // Prevent dropdown from closing when clicking inside
+      searchDropdown.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+      
+      // Quick search functionality
+      quickSearchBtn.addEventListener('click', performQuickSearch);
+      quickSearchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          performQuickSearch();
+        }
+      });
+      
+      // Movie suggestion clicks
+      movieSuggestions.forEach(suggestion => {
+        suggestion.addEventListener('click', function() {
+          const movieName = this.querySelector('.movie-title').textContent;
+          quickSearchInput.value = movieName;
+          performQuickSearch();
+          searchDropdown.style.display = 'none';
+        });
+      });
+      
+      // Filter tag clicks
+      filterTags.forEach(tag => {
+        tag.addEventListener('click', function() {
+          const filterValue = this.dataset.filter;
+          quickSearchInput.value = filterValue;
+          performQuickSearch();
+          searchDropdown.style.display = 'none';
+        });
+      });
+      
+      function performQuickSearch() {
+        const searchTerm = quickSearchInput.value.trim().toLowerCase();
+        
+        if (!searchTerm) {
+          showAllReviews();
+          return;
+        }
+        
+        // Get all review cards
+        const reviewCards = document.querySelectorAll('.review-card');
+        let matchCount = 0;
+        let firstMatch = null;
+        
+        reviewCards.forEach(card => {
+          const title = card.querySelector('h4')?.textContent.toLowerCase() || '';
+          const content = card.textContent.toLowerCase();
+          
+          // Enhanced search logic
+          let matches = false;
+          
+          // Direct text match
+          if (title.includes(searchTerm) || content.includes(searchTerm)) {
+            matches = true;
+          }
+          
+          // Special filter handling
+          if (searchTerm === '5-star' && content.includes('★★★★★')) {
+            matches = true;
+          }
+          
+          if (searchTerm === 'nolan' && (content.includes('nolan') || content.includes('christopher'))) {
+            matches = true;
+          }
+          
+          // Genre matching
+          const genreMap = {
+            'sci-fi': ['sci-fi', 'science fiction', 'space', 'future'],
+            'drama': ['drama', 'dramatic'],
+            'action': ['action', 'thriller'],
+            'romance': ['romance', 'romantic'],
+            'comedy': ['comedy', 'funny']
+          };
+          
+          if (genreMap[searchTerm]) {
+            genreMap[searchTerm].forEach(keyword => {
+              if (content.includes(keyword)) {
+                matches = true;
+              }
+            });
+          }
+          
+          if (matches) {
+            card.style.display = 'block';
+            card.style.opacity = '1';
+            card.style.transform = 'scale(1)';
+            
+            if (!firstMatch) {
+              firstMatch = card;
+            }
+            matchCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        
+        // Show results
+        if (matchCount === 0) {
+          showNoResults(searchTerm);
+        } else {
+          hideNoResults();
+          showNotification(`Found ${matchCount} result(s) for "${searchTerm}"`);
+          
+          // Scroll to first match
+          if (firstMatch) {
+            setTimeout(() => {
+              firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+          }
+        }
+        
+        // Close dropdown after search
+        searchDropdown.style.display = 'none';
+      }
+      
+      // Function to show all reviews
+      function showAllReviews() {
+        const reviewCards = document.querySelectorAll('.review-card');
+        reviewCards.forEach(card => {
+          card.style.display = 'block';
+          card.style.opacity = '1';
+          card.style.transform = 'scale(1)';
+        });
+        hideNoResults();
+      }
+      
+      // Function to show no results message
+      function showNoResults(searchTerm) {
+        hideNoResults();
+        
+        const noResultsDiv = document.createElement('div');
+        noResultsDiv.id = 'noResultsMessage';
+        noResultsDiv.innerHTML = `
+          <div style="
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 12px;
+            margin: 20px 0;
+            color: #666;
+          ">
+            <h3 style="margin: 0 0 10px 0; color: #333;">No Results Found</h3>
+            <p style="margin: 0;">No reviews found for "${searchTerm}". Try a different search term or check our recommendations.</p>
+            <button onclick="document.querySelector('#quickSearchInput').value=''; showAllReviewsGlobal();" 
+                    style="
+                      margin-top: 15px;
+                      padding: 8px 16px;
+                      background: #00d4ff;
+                      color: #121212;
+                      border: none;
+                      border-radius: 6px;
+                      cursor: pointer;
+                    ">Clear Search</button>
+          </div>
+        `;
+        
+        const reviewsGrid = document.getElementById('reviewsGrid');
+        reviewsGrid.appendChild(noResultsDiv);
+      }
+      
+      // Function to hide no results message
+      function hideNoResults() {
+        const existing = document.getElementById('noResultsMessage');
+        if (existing) {
+          existing.remove();
+        }
+      }
+      
+      // Function to show notification
+      function showNotification(message) {
+        const existing = document.getElementById('searchNotification');
+        if (existing) existing.remove();
+        
+        const notification = document.createElement('div');
+        notification.id = 'searchNotification';
+        notification.textContent = message;
+        notification.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+          color: #121212;
+          padding: 12px 20px;
+          border-radius: 8px;
+          z-index: 1000;
+          font-family: inherit;
+          box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3);
+          max-width: 300px;
+          font-size: 14px;
+          font-weight: 600;
+          opacity: 0;
+          transform: translateY(-20px);
+          transition: all 0.3s ease;
+        `;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+          notification.style.opacity = '1';
+          notification.style.transform = 'translateY(0)';
+        }, 10);
+        
+        setTimeout(() => {
+          notification.style.opacity = '0';
+          notification.style.transform = 'translateY(-20px)';
+          setTimeout(() => {
+            if (notification.parentNode) {
+              notification.remove();
+            }
+          }, 300);
+        }, 3000);
+      }
+      
+      // Make function globally accessible
+      window.showAllReviewsGlobal = showAllReviews;
+      
+      // Handle URL search parameters (for universal search from other pages)
+      const urlParams = new URLSearchParams(window.location.search);
+      const searchParam = urlParams.get('search');
+      if (searchParam) {
+        quickSearchInput.value = searchParam;
+        performQuickSearch();
+        // Update URL to remove search parameter
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+    });
+  </script>
+
+  <script>
+    // Reviews header search functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchInput = document.querySelector('.search-input');
+      const searchButton = document.querySelector('.search-button');
+      const reviewsGrid = document.getElementById('reviewsGrid');
+      
+      // Store original reviews for filtering
+      let allReviews = [];
+      let isFiltered = false;
+      
+      // Function to perform search/filter
+      function performSearch() {
+        const searchTerm = searchInput.value.trim().toLowerCase();
+        
+        if (!searchTerm) {
+          // If empty search, show all reviews
+          showAllReviews();
+          return;
+        }
+        
+        // Get all review cards
+        const reviewCards = document.querySelectorAll('.review-card');
+        let matchCount = 0;
+        let firstMatch = null;
+        
+        reviewCards.forEach(card => {
+          const title = card.querySelector('h4')?.textContent.toLowerCase() || '';
+          const content = card.textContent.toLowerCase();
+          
+          if (title.includes(searchTerm) || content.includes(searchTerm)) {
+            card.style.display = 'block';
+            card.style.opacity = '1';
+            card.style.transform = 'scale(1)';
+            
+            if (!firstMatch) {
+              firstMatch = card;
+            }
+            matchCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        
+        // Show results
+        if (matchCount === 0) {
+          showNoResults(searchTerm);
+        } else {
+          hideNoResults();
+          showNotification(`Found ${matchCount} result(s) for "${searchTerm}"`);
+          
+          // Scroll to first match
+          if (firstMatch) {
+            setTimeout(() => {
+              firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+          }
+        }
+        
+        isFiltered = true;
+      }
+      
+      // Function to show all reviews
+      function showAllReviews() {
+        const reviewCards = document.querySelectorAll('.review-card');
+        reviewCards.forEach(card => {
+          card.style.display = 'block';
+          card.style.opacity = '1';
+          card.style.transform = 'scale(1)';
+        });
+        hideNoResults();
+        isFiltered = false;
+      }
+      
+      // Function to show no results message
+      function showNoResults(searchTerm) {
+        hideNoResults(); // Remove any existing message
+        
+        const noResultsDiv = document.createElement('div');
+        noResultsDiv.id = 'noResultsMessage';
+        noResultsDiv.innerHTML = `
+          <div style="
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 12px;
+            margin: 20px 0;
+            color: #666;
+          ">
+            <h3 style="margin: 0 0 10px 0; color: #333;">No Results Found</h3>
+            <p style="margin: 0;">No reviews found for "${searchTerm}". Try a different search term.</p>
+            <button onclick="document.querySelector('.search-input').value=''; document.querySelector('.search-input').focus(); performSearchGlobal();" 
+                    style="
+                      margin-top: 15px;
+                      padding: 8px 16px;
+                      background: #667eea;
+                      color: white;
+                      border: none;
+                      border-radius: 6px;
+                      cursor: pointer;
+                    ">Clear Search</button>
+          </div>
+        `;
+        
+        reviewsGrid.appendChild(noResultsDiv);
+      }
+      
+      // Function to hide no results message
+      function hideNoResults() {
+        const existing = document.getElementById('noResultsMessage');
+        if (existing) {
+          existing.remove();
+        }
+      }
+      
+      // Function to show notification
+      function showNotification(message) {
+        // Remove existing notification
+        const existing = document.getElementById('searchNotification');
+        if (existing) existing.remove();
+        
+        const notification = document.createElement('div');
+        notification.id = 'searchNotification';
+        notification.textContent = message;
+        notification.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 12px 20px;
+          border-radius: 8px;
+          z-index: 1000;
+          font-family: inherit;
+          box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+          max-width: 300px;
+          font-size: 14px;
+          opacity: 0;
+          transform: translateY(-20px);
+          transition: all 0.3s ease;
+        `;
+        
+        document.body.appendChild(notification);
+        
+        // Animate in
+        setTimeout(() => {
+          notification.style.opacity = '1';
+          notification.style.transform = 'translateY(0)';
+        }, 10);
+        
+        // Auto remove
+        setTimeout(() => {
+          notification.style.opacity = '0';
+          notification.style.transform = 'translateY(-20px)';
+          setTimeout(() => {
+            if (notification.parentNode) {
+              notification.remove();
+            }
+          }, 300);
+        }, 3000);
+      }
+      
+      // Make performSearch globally accessible for clear button
+      window.performSearchGlobal = performSearch;
+      
+      // Add click event to search button
+      if (searchButton) {
+        searchButton.addEventListener('click', performSearch);
+      }
+      
+      // Add Enter key functionality to search input
+      if (searchInput) {
+        searchInput.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            performSearch();
+          }
+        });
+        
+        // Clear search when input is empty
+        searchInput.addEventListener('input', function() {
+          if (this.value.trim() === '' && isFiltered) {
+            showAllReviews();
+          }
+        });
+      }
+      
+      // Add functionality to clear filters button
+      const clearFiltersBtn = document.querySelector('.clear-filters');
+      if (clearFiltersBtn) {
+        clearFiltersBtn.addEventListener('click', function() {
+          if (searchInput) searchInput.value = '';
+          showAllReviews();
+          showNotification('Filters cleared');
+        });
+      }
+    });
+
+    // Show More Movies Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const showMoreBtn = document.getElementById('showMoreBtn');
+      const additionalMovies = document.getElementById('additionalMovies');
+      const showMoreContainer = document.querySelector('.show-more-container');
+      
+      if (showMoreBtn && additionalMovies) {
+        showMoreBtn.addEventListener('click', function() {
+          // Show additional movies with smooth animation
+          additionalMovies.style.display = 'grid';
+          additionalMovies.style.opacity = '0';
+          
+          // Trigger reflow for animation
+          additionalMovies.offsetHeight;
+          
+          // Animate in
+          additionalMovies.style.transition = 'opacity 0.6s ease-out';
+          additionalMovies.style.opacity = '1';
+          
+          // Hide the show more button
+          showMoreContainer.classList.add('hidden');
+          
+          // Smooth scroll to the newly shown movies
+          setTimeout(() => {
+            additionalMovies.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'start' 
+            });
+          }, 300);
+        });
+      }
+
+      // Movie Review Modal Functionality
+      const movieModal = document.getElementById('movieModal');
+      const closeModal = document.querySelector('.close-modal');
+      
+      // Movie data for the modal
+      const movieData = {
+        'Interstellar (2014)': {
+          poster: 'INTERSTELLAR (2014) poster by Jximedesigns.jpg',
+          rating: '★★★★★',
+          genre: 'Sci-Fi Drama',
+          year: '2014',
+          director: 'Christopher Nolan',
+          runtime: '2h 49m',
+          releaseDate: 'November 7, 2014',
+          synopsis: 'A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival. When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team of researchers, to find a new planet for humans.',
+          fullReview: 'Christopher Nolan\'s ambitious space epic transcends the boundaries of science fiction. With stunning visuals, a haunting score by Hans Zimmer, and emotional depth that matches its cosmic scale, Interstellar is a masterpiece that explores love, sacrifice, and humanity\'s place in the universe. The film\'s scientific accuracy combined with its emotional storytelling creates an experience that is both intellectually stimulating and deeply moving. The performances, especially Matthew McConaughey\'s portrayal of Cooper, bring genuine humanity to this grand cosmic adventure.'
+        },
+        'Oppenheimer (2023)': {
+          poster: 'Oppenheimer.jpeg',
+          rating: '★★★★★',
+          genre: 'Historical Drama',
+          year: '2023',
+          director: 'Christopher Nolan',
+          runtime: '3h 0m',
+          releaseDate: 'July 21, 2023',
+          synopsis: 'The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb. The film explores the moral implications of scientific discovery and the complex legacy of the Manhattan Project.',
+          fullReview: 'Nolan\'s biographical thriller about the father of the atomic bomb is a cinematic tour de force. Cillian Murphy delivers a career-defining performance, while the film\'s technical achievements in sound design and visual storytelling create an immersive experience that lingers long after the credits roll. The film\'s exploration of moral ambiguity and the cost of scientific progress is handled with nuance and sophistication.'
+        },
+        'The Batman (2022)': {
+          poster: 'https://i.pinimg.com/736x/97/6d/97/976d973e60121bbb4f831f49bbacd161.jpg',
+          rating: '★★★★☆',
+          genre: 'Action Thriller',
+          year: '2022',
+          director: 'Matt Reeves',
+          runtime: '2h 56m',
+          releaseDate: 'March 4, 2022',
+          synopsis: 'In his second year of fighting crime, Batman uncovers corruption in Gotham City that connects to his own family while facing a serial killer known as the Riddler.',
+          fullReview: 'Matt Reeves delivers a dark, grounded take on the Dark Knight. Robert Pattinson brings a brooding intensity to Bruce Wayne, while the film\'s noir-inspired cinematography and Paul Dano\'s chilling Riddler create a Batman film unlike any other. A masterclass in atmospheric storytelling that redefines the superhero genre.'
+        },
+        'Dune: Part Two (2024)': {
+          poster: 'https://i.pinimg.com/736x/c8/89/60/c8896031121292fcf979635fe9922c76.jpg',
+          rating: '★★★★★',
+          genre: 'Sci-Fi Epic',
+          year: '2024',
+          director: 'Denis Villeneuve',
+          runtime: '2h 46m',
+          releaseDate: 'March 1, 2024',
+          synopsis: 'Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the universe, he endeavors to prevent a terrible future only he can foresee.',
+          fullReview: 'Denis Villeneuve concludes his Dune saga with spectacular visuals and epic storytelling. Timothée Chalamet\'s Paul Atreides completes his transformation into a messianic leader, while the film explores themes of power, destiny, and the cost of prophecy. A sci-fi masterpiece that honors Frank Herbert\'s vision while creating a cinematic experience of unparalleled grandeur.'
+        },
+        'La La Land (2016)': {
+          poster: 'https://image.tmdb.org/t/p/w500/uDO8zWDhfWwoFdKS4fzkUJt0Rf0.jpg',
+          rating: '★★★★★',
+          genre: 'Musical Romance',
+          year: '2016',
+          director: 'Damien Chazelle',
+          runtime: '2h 8m',
+          releaseDate: 'December 9, 2016',
+          synopsis: 'A jazz pianist falls for an aspiring actress in Los Angeles. This original musical about everyday life explores the joy and pain of pursuing your dreams.',
+          fullReview: 'Damien Chazelle\'s modern musical is a love letter to both romance and cinema. Ryan Gosling and Emma Stone deliver career-defining performances in this bittersweet tale of dreams, love, and the sacrifices we make for art. The cinematography and music create pure magic, making this one of the most enchanting films of the decade.'
+        },
+        'Inception (2010)': {
+          poster: 'https://i.pinimg.com/1200x/b0/ae/a4/b0aea49646879a043ad9f6ec3002e99f.jpg',
+          rating: '★★★★★',
+          genre: 'Sci-Fi Thriller',
+          year: '2010',
+          director: 'Christopher Nolan',
+          runtime: '2h 28m',
+          releaseDate: 'July 16, 2010',
+          synopsis: 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.',
+          fullReview: 'Christopher Nolan\'s mind-bending thriller about dreams within dreams is a technical and narrative marvel. Leonardo DiCaprio leads an ensemble cast through layers of reality and subconsciousness. The film\'s innovative concept and stunning practical effects make it a modern classic that continues to inspire and challenge audiences.'
+        },
+        'RRR (2022)': {
+          poster: 'https://i.pinimg.com/736x/60/f6/43/60f6438d07c414f36db349badab2db9b.jpg',
+          rating: '★★★★★',
+          genre: 'Action Drama',
+          year: '2022',
+          director: 'S.S. Rajamouli',
+          runtime: '3h 7m',
+          releaseDate: 'March 24, 2022',
+          synopsis: 'A tale of two legendary revolutionaries and their journey far away from home. After their journey they return home to start fighting back against British colonialists in the 1920s.',
+          fullReview: 'S.S. Rajamouli\'s epic action drama is a spectacular celebration of friendship, freedom, and heroism. Ram Charan and Jr. NTR deliver powerhouse performances in this visually stunning film that combines historical fiction with larger-than-life action sequences. A true cinematic experience that showcases the best of Indian cinema.'
+        },
+        'The Dark Knight (2008)': {
+          poster: 'https://i.pinimg.com/736x/97/6d/97/976d973e60121bbb4f831f49bbacd161.jpg',
+          rating: '★★★★★',
+          genre: 'Superhero Drama',
+          year: '2008',
+          director: 'Christopher Nolan',
+          runtime: '2h 32m',
+          releaseDate: 'July 18, 2008',
+          synopsis: 'When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.',
+          fullReview: 'Christopher Nolan\'s masterpiece redefined the superhero genre. Heath Ledger\'s iconic Joker performance and the film\'s exploration of morality make it a cinematic landmark that transcends its genre. The film\'s complex themes and exceptional performances create an experience that is both entertaining and thought-provoking.'
+        },
+        'Baahubali: The Beginning (2015)': {
+          poster: 'https://i.pinimg.com/736x/60/f6/43/60f6438d07c414f36db349badab2db9b.jpg',
+          rating: '★★★★☆',
+          genre: 'Epic Fantasy',
+          year: '2015',
+          director: 'S.S. Rajamouli',
+          runtime: '2h 39m',
+          releaseDate: 'July 10, 2015',
+          synopsis: 'In ancient India, an adventurous and daring man becomes involved in a decades-old feud between two warring peoples.',
+          fullReview: 'S.S. Rajamouli\'s epic fantasy film is a visual spectacle that showcases Indian cinema\'s potential. With stunning VFX, grand sets, and an engaging story, it\'s a landmark achievement in Indian filmmaking. The film\'s ambition and scale set new standards for Indian cinema.'
+        },
+        'Blade Runner 2049 (2017)': {
+          poster: 'https://i.pinimg.com/736x/c8/89/60/c8896031121292fcf979635fe9922c76.jpg',
+          rating: '★★★★★',
+          genre: 'Sci-Fi Neo-Noir',
+          year: '2017',
+          director: 'Denis Villeneuve',
+          runtime: '2h 44m',
+          releaseDate: 'October 6, 2017',
+          synopsis: 'A young blade runner\'s discovery of a long-buried secret leads him to track down former blade runner Rick Deckard, who\'s been missing for thirty years.',
+          fullReview: 'Denis Villeneuve\'s sequel to the sci-fi classic is a visual and philosophical masterpiece. Ryan Gosling\'s performance and Roger Deakins\' cinematography create an immersive dystopian world that honors the original while standing on its own. A masterclass in atmospheric filmmaking.'
+        },
+        'Mad Max: Fury Road (2015)': {
+          poster: 'https://i.pinimg.com/736x/97/6d/97/976d973e60121bbb4f831f49bbacd161.jpg',
+          rating: '★★★★★',
+          genre: 'Action Adventure',
+          year: '2015',
+          director: 'George Miller',
+          runtime: '2h 20m',
+          releaseDate: 'May 15, 2015',
+          synopsis: 'In a post-apocalyptic wasteland, a woman rebels against a tyrannical ruler in search for her homeland with the aid of a group of female prisoners, a psychotic worshiper, and a drifter named Max.',
+          fullReview: 'George Miller\'s post-apocalyptic action film is a masterclass in practical effects and kinetic filmmaking. Charlize Theron\'s Imperator Furiosa and Tom Hardy\'s Max create an unforgettable cinematic experience. The film\'s relentless energy and stunning visuals make it one of the greatest action films ever made.'
+        }
+      };
+
+      // Function to open movie modal
+      function openMovieModal(movieTitle) {
+        const movie = movieData[movieTitle];
+        if (!movie) return;
+
+        // Populate modal content
+        document.querySelector('.movie-poster').style.backgroundImage = `url('${movie.poster}')`;
+        document.querySelector('.movie-title').textContent = movieTitle;
+        document.querySelector('.movie-rating').textContent = movie.rating;
+        document.querySelector('.movie-genre').textContent = movie.genre;
+        document.querySelector('.movie-year').textContent = movie.year;
+        document.querySelector('.director').textContent = movie.director;
+        document.querySelector('.runtime').textContent = movie.runtime;
+        document.querySelector('.release-date').textContent = movie.releaseDate;
+        document.querySelector('.movie-synopsis').textContent = movie.synopsis;
+        document.querySelector('.review-content-full').textContent = movie.fullReview;
+
+        // Show modal
+        movieModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      // Function to close movie modal
+      function closeMovieModal() {
+        movieModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+
+      // Add click event to all "Read Full Review" buttons
+      document.querySelectorAll('.read-more-btn').forEach(button => {
+        button.addEventListener('click', function() {
+          const movieCard = this.closest('.review-card');
+          const movieTitle = movieCard.querySelector('h4').textContent;
+          openMovieModal(movieTitle);
+        });
+      });
+
+      // Close modal when clicking close button or outside modal
+      if (closeModal) {
+        closeModal.addEventListener('click', closeMovieModal);
+      }
+
+      if (movieModal) {
+        movieModal.addEventListener('click', function(e) {
+          if (e.target === movieModal) {
+            closeMovieModal();
+          }
+        });
+      }
+
+      // Close modal with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && movieModal.classList.contains('active')) {
+          closeMovieModal();
+        }
+      });
+
+      // Action button functionality
+      document.querySelectorAll('.action-btn').forEach(button => {
+        button.addEventListener('click', function() {
+          if (this.textContent === 'Add to Watchlist') {
+            this.textContent = 'Added to Watchlist';
+            this.style.background = 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)';
+            setTimeout(() => {
+              this.textContent = 'Add to Watchlist';
+              this.style.background = 'linear-gradient(135deg, #00d4ff 0%, #0099cc 100%)';
+            }, 2000);
+          } else if (this.textContent === 'Share Review') {
+            // Create share functionality
+            if (navigator.share) {
+              navigator.share({
+                title: document.querySelector('.movie-title').textContent,
+                text: 'Check out this movie review on CineScope!',
+                url: window.location.href
+              });
+            } else {
+              // Fallback: copy to clipboard
+              navigator.clipboard.writeText(window.location.href).then(() => {
+                this.textContent = 'Link Copied!';
+                setTimeout(() => {
+                  this.textContent = 'Share Review';
+                }, 2000);
+              });
+            }
+          }
+        });
+      });
+    });
+  </script>
+  
+  <script src="reviews.js"></script>
 </body>
-</html>
+</html> 

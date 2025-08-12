@@ -10,6 +10,134 @@
       background: #121212;
       color: #ffffff;
       padding: 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Animated Background Effect */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0, 153, 204, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(42, 42, 74, 0.02) 0%, transparent 50%);
+      animation: backgroundShift 20s ease-in-out infinite;
+    }
+
+    /* Floating Film Reels */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 212, 255, 0.08) 0%, transparent 8px),
+        radial-gradient(circle at 90% 80%, rgba(0, 153, 204, 0.06) 0%, transparent 6px),
+        radial-gradient(circle at 70% 30%, rgba(0, 212, 255, 0.05) 0%, transparent 10px),
+        radial-gradient(circle at 30% 70%, rgba(0, 153, 204, 0.07) 0%, transparent 7px),
+        radial-gradient(circle at 50% 50%, rgba(42, 42, 74, 0.04) 0%, transparent 12px);
+      animation: filmReels 25s linear infinite;
+    }
+
+    /* Film Reel Spinner Effect */
+    @keyframes filmReels {
+      0% {
+        transform: rotate(0deg) scale(1);
+        opacity: 0.3;
+      }
+      25% {
+        opacity: 0.6;
+      }
+      50% {
+        transform: rotate(180deg) scale(1.1);
+        opacity: 0.4;
+      }
+      75% {
+        opacity: 0.7;
+      }
+      100% {
+        transform: rotate(360deg) scale(1);
+        opacity: 0.3;
+      }
+    }
+
+    /* Background Color Shift */
+    @keyframes backgroundShift {
+      0%, 100% {
+        background: 
+          radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.03) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(0, 153, 204, 0.03) 0%, transparent 50%),
+          radial-gradient(circle at 40% 40%, rgba(42, 42, 74, 0.02) 0%, transparent 50%);
+      }
+      33% {
+        background: 
+          radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.04) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(0, 153, 204, 0.03) 0%, transparent 50%),
+          radial-gradient(circle at 60% 60%, rgba(42, 42, 74, 0.03) 0%, transparent 50%);
+      }
+      66% {
+        background: 
+          radial-gradient(circle at 40% 20%, rgba(0, 212, 255, 0.03) 0%, transparent 50%),
+          radial-gradient(circle at 60% 80%, rgba(0, 153, 204, 0.04) 0%, transparent 50%),
+          radial-gradient(circle at 20% 60%, rgba(42, 42, 74, 0.02) 0%, transparent 50%);
+      }
+    }
+
+    /* Subtle Light Trails */
+    .light-trail {
+      position: fixed;
+      width: 1px;
+      height: 100px;
+      background: linear-gradient(to bottom, transparent, rgba(0, 212, 255, 0.1), transparent);
+      z-index: -1;
+      animation: lightTrail 8s linear infinite;
+      opacity: 0;
+    }
+
+    .light-trail:nth-child(1) {
+      left: 15%;
+      animation-delay: 0s;
+    }
+
+    .light-trail:nth-child(2) {
+      left: 45%;
+      animation-delay: 2s;
+    }
+
+    .light-trail:nth-child(3) {
+      left: 75%;
+      animation-delay: 4s;
+    }
+
+    .light-trail:nth-child(4) {
+      left: 85%;
+      animation-delay: 6s;
+    }
+
+    @keyframes lightTrail {
+      0% {
+        opacity: 0;
+        transform: translateY(-100px);
+      }
+      10% {
+        opacity: 0.3;
+      }
+      90% {
+        opacity: 0.3;
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(100vh);
+      }
     }
     .test-image {
       width: 200px;
@@ -26,6 +154,12 @@
   </style>
 </head>
 <body>
+  <!-- Light Trail Elements for Background Animation -->
+  <div class="light-trail"></div>
+  <div class="light-trail"></div>
+  <div class="light-trail"></div>
+  <div class="light-trail"></div>
+  
   <h1>Movie Poster Test</h1>
   
   <div class="test-container">
