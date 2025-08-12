@@ -8,6 +8,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&family=Anton&family=Oswald:wght@400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
 </head>
 <body>
+  <!-- Light Trail Elements for Background Animation -->
+  <div class="light-trail"></div>
+  <div class="light-trail"></div>
+  <div class="light-trail"></div>
+  <div class="light-trail"></div>
+  
   <header>
     <div class="logo">
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -119,7 +125,6 @@
           </tbody>
         </table>
       </div>
-      <p class="view-more">View full comparison</p>
     </section>
 
     <section class="comments-section">
@@ -524,201 +529,7 @@
         searchDropdown.style.display = 'none';
       }
     });
-  </script>
-        </div>
-        
-        <div class="search-filters">
-          <div class="filter-group">
-            <label>Genre:</label>
-            <select id="genreFilter">
-              <option value="">All Genres</option>
-              <option value="sci-fi">Sci-Fi</option>
-              <option value="drama">Drama</option>
-              <option value="historical">Historical</option>
-              <option value="superhero">Superhero</option>
-              <option value="action">Action</option>
-              <option value="thriller">Thriller</option>
-            </select>
-          </div>
-          
-          <div class="filter-group">
-            <label>Rating:</label>
-            <select id="ratingFilter">
-              <option value="">All Ratings</option>
-              <option value="5">★★★★★ (5 stars)</option>
-              <option value="4">★★★★☆ (4+ stars)</option>
-              <option value="3">★★★☆☆ (3+ stars)</option>
-            </select>
-          </div>
-          
-          <div class="filter-group">
-            <label>Content Type:</label>
-            <select id="contentFilter">
-              <option value="">All Content</option>
-              <option value="reviews">Movie Reviews</option>
-              <option value="comments">User Comments</option>
-              <option value="comparison">Movie Comparisons</option>
-            </select>
-          </div>
-        </div>
-        
-        <div class="search-actions">
-          <button id="searchBtn" class="search-action-btn primary">Search</button>
-          <button id="clearBtn" class="search-action-btn secondary">Clear Filters</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <style>
-    .search-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      z-index: 2000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .search-modal-content {
-      background: white;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 500px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      overflow: hidden;
-    }
-    
-    .search-modal-header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .search-modal-header h3 {
-      margin: 0;
-      font-size: 1.4em;
-    }
-    
-    .close-modal {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 24px;
-      cursor: pointer;
-      padding: 0;
-      width: 30px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      transition: background 0.3s;
-    }
-    
-    .close-modal:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-    
-    .search-modal-body {
-      padding: 25px;
-    }
-    
-    .search-input-group {
-      margin-bottom: 25px;
-    }
-    
-    #searchInput {
-      width: 100%;
-      padding: 12px 16px;
-      border: 2px solid #e1e5e9;
-      border-radius: 8px;
-      font-size: 16px;
-      transition: border-color 0.3s;
-      box-sizing: border-box;
-    }
-    
-    #searchInput:focus {
-      outline: none;
-      border-color: #667eea;
-    }
-    
-    .search-filters {
-      margin-bottom: 25px;
-    }
-    
-    .filter-group {
-      margin-bottom: 15px;
-    }
-    
-    .filter-group label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: 600;
-      color: #333;
-    }
-    
-    .filter-group select {
-      width: 100%;
-      padding: 10px 12px;
-      border: 2px solid #e1e5e9;
-      border-radius: 6px;
-      font-size: 14px;
-      background: white;
-      transition: border-color 0.3s;
-      box-sizing: border-box;
-    }
-    
-    .filter-group select:focus {
-      outline: none;
-      border-color: #667eea;
-    }
-    
-    .search-actions {
-      display: flex;
-      gap: 10px;
-    }
-    
-    .search-action-btn {
-      flex: 1;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    
-    .search-action-btn.primary {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-    }
-    
-    .search-action-btn.primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-    }
-    
-    .search-action-btn.secondary {
-      background: #f8f9fa;
-      color: #6c757d;
-      border: 2px solid #e9ecef;
-    }
-    
-    .search-action-btn.secondary:hover {
-      background: #e9ecef;
-    }
-  </style>
-
-  <script>
+ 
     // Enhanced Search functionality with filters
     document.addEventListener('DOMContentLoaded', function() {
       const searchBtn = document.querySelector('.search-btn');
